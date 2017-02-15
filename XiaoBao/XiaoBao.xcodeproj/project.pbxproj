@@ -11,6 +11,9 @@
 		9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E11E5489F40099900F /* YARootViewController.m */; };
 		9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E41E548A290099900F /* YASideViewController.m */; };
 		9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */; };
+		9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */; };
+		9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */; };
+		9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EF1E5497820099900F /* YAStoryItem.m */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E31E540FD7001F8565 /* Main.storyboard */; };
@@ -28,6 +31,11 @@
 		9A4CA4E41E548A290099900F /* YASideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASideViewController.m; sourceTree = "<group>"; };
 		9A4CA4E61E548A980099900F /* YAHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHomeTableViewController.h; sourceTree = "<group>"; };
 		9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHomeTableViewController.m; sourceTree = "<group>"; };
+		9A4CA4E91E5492CA0099900F /* YAStoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAStoryHeaderView.h; sourceTree = "<group>"; };
+		9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAStoryHeaderView.m; sourceTree = "<group>"; };
+		9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAStoryHeaderView.xib; sourceTree = "<group>"; };
+		9A4CA4EE1E5497820099900F /* YAStoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAStoryItem.h; sourceTree = "<group>"; };
+		9A4CA4EF1E5497820099900F /* YAStoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAStoryItem.m; sourceTree = "<group>"; };
 		9ADBF2D71E540FD7001F8565 /* XiaoBao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -201,6 +209,8 @@
 		9ADBF2FC1E54295D001F8565 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9A4CA4EE1E5497820099900F /* YAStoryItem.h */,
+				9A4CA4EF1E5497820099900F /* YAStoryItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +218,9 @@
 		9ADBF2FD1E54295D001F8565 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9A4CA4E91E5492CA0099900F /* YAStoryHeaderView.h */,
+				9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */,
+				9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */,
+				9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */,
 				9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */,
 				9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */,
 			);
@@ -368,9 +382,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */,
 				9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */,
 				9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */,
 				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,
+				9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */,
 				9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */,
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
 				9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */,
