@@ -10,10 +10,12 @@
 		7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
-		9ADBF2E21E540FD7001F8565 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E11E540FD7001F8565 /* ViewController.m */; };
 		9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E31E540FD7001F8565 /* Main.storyboard */; };
 		9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E61E540FD7001F8565 /* Assets.xcassets */; };
 		9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E81E540FD7001F8565 /* LaunchScreen.storyboard */; };
+		9ADBF3011E542A3A001F8565 /* YAHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF3001E542A3A001F8565 /* YAHTTPManager.m */; };
+		9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF3031E542A53001F8565 /* YARefreshFooter.m */; };
+		9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF3051E542A53001F8565 /* YARefreshHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +23,18 @@
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9ADBF2E01E540FD7001F8565 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9ADBF2E11E540FD7001F8565 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9ADBF2E41E540FD7001F8565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9ADBF2E61E540FD7001F8565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ADBF2E91E540FD7001F8565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ADBF2EB1E540FD7001F8565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ADBF2FF1E542A3A001F8565 /* YAHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHTTPManager.h; sourceTree = "<group>"; };
+		9ADBF3001E542A3A001F8565 /* YAHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHTTPManager.m; sourceTree = "<group>"; };
+		9ADBF3021E542A53001F8565 /* YARefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshFooter.h; sourceTree = "<group>"; };
+		9ADBF3031E542A53001F8565 /* YARefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshFooter.m; sourceTree = "<group>"; };
+		9ADBF3041E542A53001F8565 /* YARefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARefreshHeader.h; sourceTree = "<group>"; };
+		9ADBF3051E542A53001F8565 /* YARefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARefreshHeader.m; sourceTree = "<group>"; };
+		9ADBF3081E542ACD001F8565 /* YAPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YAPrefixHeader.pch; path = XiaoBao/YAPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
+		9ADBF3091E542C1E001F8565 /* YAMacroDefinitionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAMacroDefinitionHeader.h; sourceTree = "<group>"; };
 		C6B17FCB41470B899FCCDB18 /* Pods-XiaoBao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao.debug.xcconfig"; sourceTree = "<group>"; };
 		DAC2A0320F510D133DC05600 /* Pods-XiaoBao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBao.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao.release.xcconfig"; sourceTree = "<group>"; };
 		DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoBao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,10 +73,10 @@
 		9ADBF2D91E540FD7001F8565 /* XiaoBao */ = {
 			isa = PBXGroup;
 			children = (
+				9ADBF2FE1E542A25001F8565 /* 工具 */,
+				9ADBF2F11E54295D001F8565 /* Classes */,
 				9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */,
 				9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */,
-				9ADBF2E01E540FD7001F8565 /* ViewController.h */,
-				9ADBF2E11E540FD7001F8565 /* ViewController.m */,
 				9ADBF2E31E540FD7001F8565 /* Main.storyboard */,
 				9ADBF2E61E540FD7001F8565 /* Assets.xcassets */,
 				9ADBF2E81E540FD7001F8565 /* LaunchScreen.storyboard */,
@@ -84,6 +92,124 @@
 				9ADBF2DB1E540FD7001F8565 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9ADBF2F11E54295D001F8565 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9ADBF2F21E54295D001F8565 /* 侧栏 */,
+				9ADBF2F61E54295D001F8565 /* 内容页 */,
+				9ADBF2FA1E54295D001F8565 /* 首页 */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9ADBF2F21E54295D001F8565 /* 侧栏 */ = {
+			isa = PBXGroup;
+			children = (
+				9ADBF2F31E54295D001F8565 /* Controller */,
+				9ADBF2F41E54295D001F8565 /* Model */,
+				9ADBF2F51E54295D001F8565 /* View */,
+			);
+			path = "侧栏";
+			sourceTree = "<group>";
+		};
+		9ADBF2F31E54295D001F8565 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9ADBF2F41E54295D001F8565 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9ADBF2F51E54295D001F8565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9ADBF2F61E54295D001F8565 /* 内容页 */ = {
+			isa = PBXGroup;
+			children = (
+				9ADBF2F71E54295D001F8565 /* Controller */,
+				9ADBF2F81E54295D001F8565 /* Model */,
+				9ADBF2F91E54295D001F8565 /* View */,
+			);
+			path = "内容页";
+			sourceTree = "<group>";
+		};
+		9ADBF2F71E54295D001F8565 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9ADBF2F81E54295D001F8565 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9ADBF2F91E54295D001F8565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9ADBF2FA1E54295D001F8565 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				9ADBF2FB1E54295D001F8565 /* Controller */,
+				9ADBF2FC1E54295D001F8565 /* Model */,
+				9ADBF2FD1E54295D001F8565 /* View */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		9ADBF2FB1E54295D001F8565 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9ADBF2FC1E54295D001F8565 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9ADBF2FD1E54295D001F8565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9ADBF2FE1E542A25001F8565 /* 工具 */ = {
+			isa = PBXGroup;
+			children = (
+				9ADBF3091E542C1E001F8565 /* YAMacroDefinitionHeader.h */,
+				9ADBF3021E542A53001F8565 /* YARefreshFooter.h */,
+				9ADBF3031E542A53001F8565 /* YARefreshFooter.m */,
+				9ADBF3041E542A53001F8565 /* YARefreshHeader.h */,
+				9ADBF3051E542A53001F8565 /* YARefreshHeader.m */,
+				9ADBF2FF1E542A3A001F8565 /* YAHTTPManager.h */,
+				9ADBF3001E542A3A001F8565 /* YAHTTPManager.m */,
+				9ADBF3081E542ACD001F8565 /* YAPrefixHeader.pch */,
+			);
+			path = "工具";
 			sourceTree = "<group>";
 		};
 		9B28F5F1CE8491A96C446E87 /* Pods */ = {
@@ -132,6 +258,7 @@
 		9ADBF2CF1E540FD7001F8565 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YA;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "陈亚伦";
 				TargetAttributes = {
@@ -226,9 +353,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ADBF2E21E540FD7001F8565 /* ViewController.m in Sources */,
+				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,
+				9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */,
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
 				9ADBF2DC1E540FD7001F8565 /* main.m in Sources */,
+				9ADBF3011E542A3A001F8565 /* YAHTTPManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,11 +477,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
+				GCC_PREFIX_HEADER = /Users/chenyalun/Desktop/iOS/XiaoBao/XiaoBao/XiaoBao/YAPrefixHeader.pch;
 				INFOPLIST_FILE = XiaoBao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chenyalun.XiaoBao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -362,11 +493,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
+				GCC_PREFIX_HEADER = /Users/chenyalun/Desktop/iOS/XiaoBao/XiaoBao/XiaoBao/YAPrefixHeader.pch;
 				INFOPLIST_FILE = XiaoBao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chenyalun.XiaoBao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -389,6 +522,7 @@
 				9ADBF2F01E540FD7001F8565 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

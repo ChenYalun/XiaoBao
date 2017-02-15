@@ -1,0 +1,19 @@
+//
+//  YAPrefixHeader.pch
+//  XiaoBao
+//
+//  Created by 陈亚伦 on 2017/2/15.
+//  Copyright © 2017年 陈亚伦. All rights reserved.
+//
+
+#ifndef YAPrefixHeader_pch
+#define YAPrefixHeader_pch
+
+#import <YYCategories/YYCategories.h>
+#import "YAMacroDefinitionHeader.h"
+
+#import "YARefreshFooter.h"
+#import "YARefreshHeader.h"
+#import "YAHTTPManager.h"
+
+#endif /* YAPrefixHeader_pch */
