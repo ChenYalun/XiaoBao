@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E21E540FD7001F8565 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E11E540FD7001F8565 /* ViewController.m */; };
@@ -26,6 +27,9 @@
 		9ADBF2E61E540FD7001F8565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ADBF2E91E540FD7001F8565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ADBF2EB1E540FD7001F8565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6B17FCB41470B899FCCDB18 /* Pods-XiaoBao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao.debug.xcconfig"; sourceTree = "<group>"; };
+		DAC2A0320F510D133DC05600 /* Pods-XiaoBao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBao.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao.release.xcconfig"; sourceTree = "<group>"; };
+		DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoBao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				9ADBF2D91E540FD7001F8565 /* XiaoBao */,
 				9ADBF2D81E540FD7001F8565 /* Products */,
+				9B28F5F1CE8491A96C446E87 /* Pods */,
+				C6C39BE9B69AF78A51D835A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9B28F5F1CE8491A96C446E87 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6B17FCB41470B899FCCDB18 /* Pods-XiaoBao.debug.xcconfig */,
+				DAC2A0320F510D133DC05600 /* Pods-XiaoBao.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C6C39BE9B69AF78A51D835A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ADBF2EE1E540FD7001F8565 /* Build configuration list for PBXNativeTarget "XiaoBao" */;
 			buildPhases = (
+				CC6A33558B45070AC48DBE1F /* [CP] Check Pods Manifest.lock */,
 				9ADBF2D31E540FD7001F8565 /* Sources */,
 				9ADBF2D41E540FD7001F8565 /* Frameworks */,
 				9ADBF2D51E540FD7001F8565 /* Resources */,
+				74B221CE0A9CB0FB054384B7 /* [CP] Embed Pods Frameworks */,
+				5587AA498D678E264DBB1638 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,6 +172,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5587AA498D678E264DBB1638 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74B221CE0A9CB0FB054384B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC6A33558B45070AC48DBE1F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9ADBF2D31E540FD7001F8565 /* Sources */ = {
@@ -269,6 +344,7 @@
 		};
 		9ADBF2EF1E540FD7001F8565 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6B17FCB41470B899FCCDB18 /* Pods-XiaoBao.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
@@ -282,6 +358,7 @@
 		};
 		9ADBF2F01E540FD7001F8565 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAC2A0320F510D133DC05600 /* Pods-XiaoBao.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
