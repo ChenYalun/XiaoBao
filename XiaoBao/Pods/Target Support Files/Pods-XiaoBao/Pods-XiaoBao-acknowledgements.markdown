@@ -446,6 +446,11 @@ SOFTWARE.
 
 
 
+## UMengUShare
+
+Copyright 2011 - 2016 UMeng.com. All rights reserved.
+
+
 ## YYCache
 
 The MIT License (MIT)

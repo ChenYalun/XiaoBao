@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-//#import <UMSocialCore/UMSocialCore.h>
+#import <UMSocialCore/UMSocialCore.h>
 @interface AppDelegate ()
 
 @end
@@ -23,19 +23,21 @@
     }];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
+    // 全局颜色
+    [UINavigationBar appearance].barTintColor = kGlobalColor;
     
     return YES;
 }
 
-// 友盟授权回调
-//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-//{
-//    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
-//    if (!result) {
-//        // 其他如支付等SDK的回调
-//    }
-//    return result;
-//}
+ // 友盟授权回调
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

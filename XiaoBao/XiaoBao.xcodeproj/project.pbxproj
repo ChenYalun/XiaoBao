@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */; };
+		9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E11E5489F40099900F /* YARootViewController.m */; };
+		9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E41E548A290099900F /* YASideViewController.m */; };
+		9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E31E540FD7001F8565 /* Main.storyboard */; };
@@ -19,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A4CA4E01E5489F40099900F /* YARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARootViewController.h; sourceTree = "<group>"; };
+		9A4CA4E11E5489F40099900F /* YARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARootViewController.m; sourceTree = "<group>"; };
+		9A4CA4E31E548A290099900F /* YASideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASideViewController.h; sourceTree = "<group>"; };
+		9A4CA4E41E548A290099900F /* YASideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASideViewController.m; sourceTree = "<group>"; };
+		9A4CA4E61E548A980099900F /* YAHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHomeTableViewController.h; sourceTree = "<group>"; };
+		9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHomeTableViewController.m; sourceTree = "<group>"; };
 		9ADBF2D71E540FD7001F8565 /* XiaoBao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -117,6 +126,10 @@
 		9ADBF2F31E54295D001F8565 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9A4CA4E01E5489F40099900F /* YARootViewController.h */,
+				9A4CA4E11E5489F40099900F /* YARootViewController.m */,
+				9A4CA4E31E548A290099900F /* YASideViewController.h */,
+				9A4CA4E41E548A290099900F /* YASideViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,6 +192,8 @@
 		9ADBF2FB1E54295D001F8565 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9A4CA4E61E548A980099900F /* YAHomeTableViewController.h */,
+				9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -353,9 +368,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */,
+				9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */,
 				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,
 				9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */,
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
+				9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */,
 				9ADBF2DC1E540FD7001F8565 /* main.m in Sources */,
 				9ADBF3011E542A3A001F8565 /* YAHTTPManager.m in Sources */,
 			);
@@ -477,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/chenyalun/Desktop/iOS/XiaoBao/XiaoBao/XiaoBao/YAPrefixHeader.pch;
 				INFOPLIST_FILE = XiaoBao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -493,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/chenyalun/Desktop/iOS/XiaoBao/XiaoBao/XiaoBao/YAPrefixHeader.pch;
 				INFOPLIST_FILE = XiaoBao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

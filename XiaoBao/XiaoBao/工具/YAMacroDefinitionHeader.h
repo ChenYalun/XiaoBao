@@ -190,5 +190,5 @@ item.alpha = 0.0; \
 
 
 //18App全局颜色
-#define kGlobalColor [UIColor colorWithRed:249/255.0 green:190/255.0 blue:29/255.0 alpha:1.0]
+#define kGlobalColor [UIColor colorWithRed:33/255.0 green:165/255.0 blue:253/255.0 alpha:1.0]
 #endif /* kMacroDefinitionHeader_h */
