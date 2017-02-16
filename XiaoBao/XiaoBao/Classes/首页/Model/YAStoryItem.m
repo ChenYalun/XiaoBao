@@ -24,7 +24,7 @@
     return array;
 }
 
-+ (NSString *)formatStringWithDateString:(id)responseObject {
++ (NSString *)formatStringWithDateString:(NSString *)string {
 //    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyyMMdd"];
 //    NSString * dateStr = @"20170214";
@@ -33,6 +33,6 @@
 //    
     
     
-    return responseObject[@"date"];
+    return string;
 }
 @end

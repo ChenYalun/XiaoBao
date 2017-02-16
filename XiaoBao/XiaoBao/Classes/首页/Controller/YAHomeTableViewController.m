@@ -12,6 +12,7 @@
 #import "YARefreshFooter.h"
 #import "YAHTTPManager.h"
 #import "YAProgressHUD.h"
+#import "YASectionHeaderView.h"
 @interface YAHomeTableViewController ()
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
@@ -54,6 +55,8 @@ static NSString *reuseIdentifier = @"story";
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    // 注册sectionHeaderView
+    [self.tableView registerClass:[YASectionHeaderView class] forHeaderFooterViewReuseIdentifier:reuseIdentifier];
     
     // 设置刷新控件
     self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
@@ -162,40 +165,32 @@ static NSString *reuseIdentifier = @"story";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 90;
 }
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) { // 隐藏第0组标题
-        return nil;
-    }
-    return [self.titleSection objectForKey:[NSNumber numberWithInteger:section]];
-}
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if (section == 0) { // 隐藏第0组标题
+//        return nil;
+//    }
+//    return [self.titleSection objectForKey:[NSNumber numberWithInteger:section]];
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) { // 隐藏第0组标题
         return CGFLOAT_MIN;
     }
-    return 10;
+    return 35;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
-    if (sectionTitle == nil) {
+    if (section == 0) { // 隐藏第0组标题
         return nil;
     }
     
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0, 0, 320, 10);
-    label.backgroundColor = kGlobalColor;
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:10];
-    label.text = sectionTitle;
-    
-    UIView *view = [[UIView alloc] init];
-    [view addSubview:label];
-    
-    return view;
+    YASectionHeaderView *sectionHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifier];
+    NSString *formatString = [YAStoryItem formatStringWithDateString:[self.titleSection objectForKey:[NSNumber numberWithInteger:section]]];
+    sectionHeaderView.sectionTitle = formatString;
+    return sectionHeaderView;
 }
 
 /*
