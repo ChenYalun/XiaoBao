@@ -13,6 +13,7 @@
 #import "YAHTTPManager.h"
 #import "YAProgressHUD.h"
 #import "YASectionHeaderView.h"
+#import "YAHomeHeaderScrollView.h"
 @interface YAHomeTableViewController ()
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
@@ -23,6 +24,7 @@
 /** sectionID对应section标题 */
 @property (nonatomic,strong) NSMutableDictionary *titleSection;
 @property (nonatomic,assign) NSInteger sectionID;
+
 @end
 
 @implementation YAHomeTableViewController
@@ -47,6 +49,7 @@ static NSString *reuseIdentifier = @"story";
     }
     return _titleSection;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -57,6 +60,9 @@ static NSString *reuseIdentifier = @"story";
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     // 注册sectionHeaderView
     [self.tableView registerClass:[YASectionHeaderView class] forHeaderFooterViewReuseIdentifier:reuseIdentifier];
+
+    // 设置tableHeaderView
+    self.tableView.tableHeaderView = [[YAHomeHeaderScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
     
     // 设置刷新控件
     self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
@@ -74,6 +80,8 @@ static NSString *reuseIdentifier = @"story";
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
         [self.topStoryItems addObjectsFromArray:topStoryItems];
+        YAHomeHeaderScrollView *homeHeaderScrollView = (YAHomeHeaderScrollView *)self.tableView.tableHeaderView;
+        homeHeaderScrollView.storyItems = topStoryItems;
         
         // 获取普通新闻
         NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
@@ -165,13 +173,7 @@ static NSString *reuseIdentifier = @"story";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 90;
 }
-//
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    if (section == 0) { // 隐藏第0组标题
-//        return nil;
-//    }
-//    return [self.titleSection objectForKey:[NSNumber numberWithInteger:section]];
-//}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) { // 隐藏第0组标题
         return CGFLOAT_MIN;
@@ -193,6 +195,16 @@ static NSString *reuseIdentifier = @"story";
     return sectionHeaderView;
 }
 
+
+//- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
+//    self.navigationItem.title = @"1";
+//}
+
+//- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+//    if (self.storySection objectForKey:[NSNumber numberWithInteger:indexPath.s]) {
+//        <#statements#>
+//    }
+//}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

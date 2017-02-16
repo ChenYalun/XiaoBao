@@ -18,6 +18,7 @@
 		9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C15481E551E1D003BE177 /* YAStoryTableViewCell.xib */; };
 		9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C154C1E5524FD003BE177 /* YAProgressHUD.m */; };
 		9A5C15501E554CB2003BE177 /* YASectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C154F1E554CB2003BE177 /* YASectionHeaderView.m */; };
+		9A5C15531E558068003BE177 /* YAHomeHeaderScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C15521E558068003BE177 /* YAHomeHeaderScrollView.m */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E31E540FD7001F8565 /* Main.storyboard */; };
@@ -47,6 +48,8 @@
 		9A5C154C1E5524FD003BE177 /* YAProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAProgressHUD.m; sourceTree = "<group>"; };
 		9A5C154E1E554CB2003BE177 /* YASectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASectionHeaderView.h; sourceTree = "<group>"; };
 		9A5C154F1E554CB2003BE177 /* YASectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASectionHeaderView.m; sourceTree = "<group>"; };
+		9A5C15511E558068003BE177 /* YAHomeHeaderScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHomeHeaderScrollView.h; sourceTree = "<group>"; };
+		9A5C15521E558068003BE177 /* YAHomeHeaderScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHomeHeaderScrollView.m; sourceTree = "<group>"; };
 		9ADBF2D71E540FD7001F8565 /* XiaoBao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -229,6 +232,8 @@
 		9ADBF2FD1E54295D001F8565 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9A5C15511E558068003BE177 /* YAHomeHeaderScrollView.h */,
+				9A5C15521E558068003BE177 /* YAHomeHeaderScrollView.m */,
 				9A4CA4E91E5492CA0099900F /* YAStoryHeaderView.h */,
 				9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */,
 				9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */,
@@ -402,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */,
+				9A5C15531E558068003BE177 /* YAHomeHeaderScrollView.m in Sources */,
 				9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */,
 				9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */,
 				9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */,

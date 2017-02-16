@@ -12,16 +12,16 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="YAStoryHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="475" height="190"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WCb-HX-8Zr">
-                    <rect key="frame" x="0.0" y="0.0" width="475" height="190"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WCb-HX-8Zr">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文字文字文字文字文字文字文字文字文字文字文字文字文文字文字文字文字文字文字文" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQt-z4-iJo">
-                    <rect key="frame" x="20" y="129.5" width="435" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文字文字文字文字文字文字文字文字文字文字文字文字文文字文字文字文字文字文字文" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQt-z4-iJo">
+                    <rect key="frame" x="15" y="98" width="285" height="72"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -31,11 +31,15 @@
                 <constraint firstItem="WCb-HX-8Zr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AEn-AB-slb"/>
                 <constraint firstAttribute="trailing" secondItem="fQt-z4-iJo" secondAttribute="trailing" constant="20" id="O4Z-sf-rkD"/>
                 <constraint firstAttribute="trailing" secondItem="WCb-HX-8Zr" secondAttribute="trailing" id="Wj1-zV-15n"/>
-                <constraint firstAttribute="bottom" secondItem="fQt-z4-iJo" secondAttribute="bottom" constant="40" id="Z0A-tJ-wH3"/>
+                <constraint firstAttribute="bottom" secondItem="fQt-z4-iJo" secondAttribute="bottom" constant="30" id="Z0A-tJ-wH3"/>
                 <constraint firstAttribute="bottom" secondItem="WCb-HX-8Zr" secondAttribute="bottom" id="e7e-aj-JHz"/>
-                <constraint firstItem="fQt-z4-iJo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="eCC-W3-KvZ"/>
+                <constraint firstItem="fQt-z4-iJo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="eCC-W3-KvZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="picImageView" destination="WCb-HX-8Zr" id="g0x-BE-6QI"/>
+                <outlet property="titleLabel" destination="fQt-z4-iJo" id="1Tc-hH-ENk"/>
+            </connections>
             <point key="canvasLocation" x="-1.5" y="177"/>
         </view>
     </objects>

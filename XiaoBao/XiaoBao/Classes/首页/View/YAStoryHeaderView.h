@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YAStoryItem.h"
 @interface YAStoryHeaderView : UIView
-
+@property (nonatomic,strong) YAStoryItem *story;
 @end
