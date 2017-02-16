@@ -8,6 +8,7 @@
 
 #import "YAStoryTableViewCell.h"
 #import <UIImageView+YYWebImage.h>
+
 @interface YAStoryTableViewCell()
 // 图片
 @property (weak, nonatomic) IBOutlet UIImageView *picImageView;
@@ -21,12 +22,10 @@
 
 - (void)setStory:(YAStoryItem *)story {
     _story = story;
-    if (story.image) {
-        NSLog(@"设置滚动image");
-        [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.image] options:YYWebImageOptionShowNetworkActivity];
-    } else {
-        [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] options:YYWebImageOptionShowNetworkActivity];
-    }
+
+    
+    [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+
     
     self.titleLabel.text = story.title;
     
