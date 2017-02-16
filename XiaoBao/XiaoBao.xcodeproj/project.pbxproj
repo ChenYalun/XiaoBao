@@ -14,6 +14,9 @@
 		9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */; };
 		9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */; };
 		9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EF1E5497820099900F /* YAStoryItem.m */; };
+		9A5C15491E551E1D003BE177 /* YAStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C15471E551E1D003BE177 /* YAStoryTableViewCell.m */; };
+		9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C15481E551E1D003BE177 /* YAStoryTableViewCell.xib */; };
+		9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C154C1E5524FD003BE177 /* YAProgressHUD.m */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E31E540FD7001F8565 /* Main.storyboard */; };
@@ -36,6 +39,11 @@
 		9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAStoryHeaderView.xib; sourceTree = "<group>"; };
 		9A4CA4EE1E5497820099900F /* YAStoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAStoryItem.h; sourceTree = "<group>"; };
 		9A4CA4EF1E5497820099900F /* YAStoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAStoryItem.m; sourceTree = "<group>"; };
+		9A5C15461E551E1D003BE177 /* YAStoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAStoryTableViewCell.h; sourceTree = "<group>"; };
+		9A5C15471E551E1D003BE177 /* YAStoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAStoryTableViewCell.m; sourceTree = "<group>"; };
+		9A5C15481E551E1D003BE177 /* YAStoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAStoryTableViewCell.xib; sourceTree = "<group>"; };
+		9A5C154B1E5524FD003BE177 /* YAProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAProgressHUD.h; sourceTree = "<group>"; };
+		9A5C154C1E5524FD003BE177 /* YAProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAProgressHUD.m; sourceTree = "<group>"; };
 		9ADBF2D71E540FD7001F8565 /* XiaoBao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -221,6 +229,9 @@
 				9A4CA4E91E5492CA0099900F /* YAStoryHeaderView.h */,
 				9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */,
 				9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */,
+				9A5C15461E551E1D003BE177 /* YAStoryTableViewCell.h */,
+				9A5C15471E551E1D003BE177 /* YAStoryTableViewCell.m */,
+				9A5C15481E551E1D003BE177 /* YAStoryTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +247,8 @@
 				9ADBF2FF1E542A3A001F8565 /* YAHTTPManager.h */,
 				9ADBF3001E542A3A001F8565 /* YAHTTPManager.m */,
 				9ADBF3081E542ACD001F8565 /* YAPrefixHeader.pch */,
+				9A5C154B1E5524FD003BE177 /* YAProgressHUD.h */,
+				9A5C154C1E5524FD003BE177 /* YAProgressHUD.m */,
 			);
 			path = "工具";
 			sourceTree = "<group>";
@@ -320,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */,
 				9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */,
 				9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */,
 				9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */,
@@ -384,6 +398,7 @@
 			files = (
 				9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */,
 				9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */,
+				9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */,
 				9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */,
 				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,
 				9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */,
@@ -391,6 +406,7 @@
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
 				9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */,
 				9ADBF2DC1E540FD7001F8565 /* main.m in Sources */,
+				9A5C15491E551E1D003BE177 /* YAStoryTableViewCell.m in Sources */,
 				9ADBF3011E542A3A001F8565 /* YAHTTPManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,13 +17,14 @@
 @property (nonatomic,assign) BOOL multipic;
 /** image--top */
 @property (nonatomic,copy) NSString *image;
-
+/** id */
+@property (nonatomic,assign) NSInteger ID;
 
 
 // 字典转模型
-+ (NSArray *)storyItemsWithKeyValues:(id)responseObject;
-+ (NSArray *)topStoryItemWithKeyValues:(id)responseObject;
++ (NSArray <YAStoryItem *> *)storyItemsWithKeyValues:(id)responseObject;
++ (NSArray <YAStoryItem *> *)topStoryItemWithKeyValues:(id)responseObject;
 
 // 根据字符串'20170214'返回指定格式'02月14日 星期二'
-+ (NSString *)formatStringWithDateString:(NSString *)string;
++ (NSString *)formatStringWithDateString:(id)responseObject;
 @end

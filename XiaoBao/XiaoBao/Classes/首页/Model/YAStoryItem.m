@@ -9,27 +9,30 @@
 #import "YAStoryItem.h"
 #import <MJExtension.h>
 @implementation YAStoryItem
-+ (NSArray *)storyItemsWithKeyValues:(id)responseObject {
+// 替换关键字
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID" : @"id"};
+}
+
++ (NSArray <YAStoryItem *> *)storyItemsWithKeyValues:(id)responseObject {
     NSArray *array = [YAStoryItem mj_objectArrayWithKeyValuesArray:responseObject[@"stories"]];
     return array;
 }
 
-+ (NSArray *)topStoryItemWithKeyValues:(id)responseObject {
++ (NSArray <YAStoryItem *> *)topStoryItemWithKeyValues:(id)responseObject {
     NSArray *array = [YAStoryItem mj_objectArrayWithKeyValuesArray:responseObject[@"top_stories"]];
     return array;
 }
 
-+ (NSString *)formatStringWithDateString:(NSString *)string {
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyyMMdd"];
-    NSString * dateStr = @"20170214";
++ (NSString *)formatStringWithDateString:(id)responseObject {
+//    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyyMMdd"];
+//    NSString * dateStr = @"20170214";
+//    
+//    NSDate * date = [formatter dateFromString:dateStr];
+//    
     
-    NSDate * date = [formatter dateFromString:dateStr];
     
-    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]; // 指定日历的算法
-     [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    NSDateComponents *comps = [calendar components:NSWeekdayCalendarUnit fromDate:date];
-    
-    return [NSString stringWithFormat:@"%ld",comps.weekday];
+    return responseObject[@"date"];
 }
 @end
