@@ -17,8 +17,10 @@
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
 /** 组新闻 */
 @property (nonatomic,strong) NSMutableDictionary *storySection;
-
-@property (nonatomic,assign) NSInteger ID;
+/** 日期20170214 */
+@property (nonatomic,copy) NSString *dateID;
+/** sectionID对应section标题 */
+@property (nonatomic,strong) NSMutableDictionary *titleSection;
 @property (nonatomic,assign) NSInteger sectionID;
 @end
 
@@ -37,6 +39,12 @@ static NSString *reuseIdentifier = @"story";
         _storySection = [NSMutableDictionary dictionary];
     }
     return _storySection;
+}
+- (NSMutableDictionary *)titleSection {
+    if (_titleSection == nil) {
+        _titleSection = [NSMutableDictionary dictionary];
+    }
+    return _titleSection;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,12 +76,10 @@ static NSString *reuseIdentifier = @"story";
         NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
         [self.storySection setObject:storyItems forKey:[NSNumber numberWithInteger:self.sectionID]];
         
-        
-        
-        // 存储ID
-        YAStoryItem *lastItem = storyItems.lastObject;
-        self.ID = lastItem.ID;
-        
+        // 存储日期ID
+        self.dateID = responseObject[@"date"];
+        // 保存每组索引对应的标题
+        [self.titleSection setObject:self.dateID forKey:[NSNumber numberWithInteger:self.sectionID]];
         // 刷新
         [self.tableView reloadData];
         
@@ -93,7 +99,39 @@ static NSString *reuseIdentifier = @"story";
 
 
 - (void)refreshForMoreStories {
+    // 成功回调
+    requestSuccessBlock sblock = ^(id responseObject){
+        // 停止刷新
+        [self.tableView.mj_footer endRefreshing];
+        
+        self.sectionID += 1;
+        
+        // 获取普通新闻
+        NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
+        [self.storySection setObject:storyItems forKey:[NSNumber numberWithInteger:self.sectionID]];
+        
+        
+        
+        // 存储ID
+        self.dateID = responseObject[@"date"];
+        // 保存每组索引对应的标题
+        [self.titleSection setObject:self.dateID forKey:[NSNumber numberWithInteger:self.sectionID]];
+        // 刷新
+        [self.tableView reloadData];
+        
+    };
     
+    // 失败回调
+    requestFailureBlock fblock = ^(NSError *error){
+        // 停止刷新
+        [self.tableView.mj_header endRefreshing];
+        kLog(@"%@", error);
+        [YAProgressHUD showErrorWithStatus:@"刷新失败"];
+    };
+    
+    // 发送请求
+    NSString *path = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/news/before/%@",self.dateID];
+    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:path WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:fblock];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +161,41 @@ static NSString *reuseIdentifier = @"story";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 90;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) { // 隐藏第0组标题
+        return nil;
+    }
+    return [self.titleSection objectForKey:[NSNumber numberWithInteger:section]];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) { // 隐藏第0组标题
+        return CGFLOAT_MIN;
+    }
+    return 10;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    if (sectionTitle == nil) {
+        return nil;
+    }
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, 0, 320, 10);
+    label.backgroundColor = kGlobalColor;
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:10];
+    label.text = sectionTitle;
+    
+    UIView *view = [[UIView alloc] init];
+    [view addSubview:label];
+    
+    return view;
 }
 
 /*

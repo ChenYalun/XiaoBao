@@ -25,7 +25,6 @@
         NSLog(@"设置滚动image");
         [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.image] options:YYWebImageOptionShowNetworkActivity];
     } else {
-        NSLog(@"设置普通image");
         [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] options:YYWebImageOptionShowNetworkActivity];
     }
     
