@@ -1,5 +1,5 @@
 //
-//  YAHomeHeaderScrollView.h
+//  YAHomeHeaderView.h
 //  XiaoBao
 //
 //  Created by 陈亚伦 on 2017/2/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YAHomeHeaderScrollView : UIScrollView
+@interface YAHomeHeaderView : UIView
 @property (nonatomic,strong) NSArray *storyItems;
 @end

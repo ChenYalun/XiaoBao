@@ -13,7 +13,7 @@
 #import "YAHTTPManager.h"
 #import "YAProgressHUD.h"
 #import "YASectionHeaderView.h"
-#import "YAHomeHeaderScrollView.h"
+#import "YAHomeHeaderView.h"
 @interface YAHomeTableViewController ()
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
@@ -62,7 +62,7 @@ static NSString *reuseIdentifier = @"story";
     [self.tableView registerClass:[YASectionHeaderView class] forHeaderFooterViewReuseIdentifier:reuseIdentifier];
 
     // 设置tableHeaderView
-    self.tableView.tableHeaderView = [[YAHomeHeaderScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
+    self.tableView.tableHeaderView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
     
     // 设置刷新控件
     self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
@@ -80,7 +80,7 @@ static NSString *reuseIdentifier = @"story";
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
         [self.topStoryItems addObjectsFromArray:topStoryItems];
-        YAHomeHeaderScrollView *homeHeaderScrollView = (YAHomeHeaderScrollView *)self.tableView.tableHeaderView;
+        YAHomeHeaderView *homeHeaderScrollView = (YAHomeHeaderView *)self.tableView.tableHeaderView;
         homeHeaderScrollView.storyItems = topStoryItems;
         
         // 获取普通新闻
