@@ -14,6 +14,7 @@
 #import "YAProgressHUD.h"
 #import "YASectionHeaderView.h"
 #import "YAHomeHeaderView.h"
+#define kHeaderViewHeight 220
 @interface YAHomeTableViewController ()
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
@@ -24,7 +25,7 @@
 /** sectionID对应section标题 */
 @property (nonatomic,strong) NSMutableDictionary *titleSection;
 @property (nonatomic,assign) NSInteger sectionID;
-
+@property (nonatomic,weak) UIImageView *barImageView;
 @end
 
 @implementation YAHomeTableViewController
@@ -50,11 +51,30 @@ static NSString *reuseIdentifier = @"story";
     return _titleSection;
 }
 
+- (UIImageView *)barImageView {
+    if (!_barImageView) {
+        _barImageView = self.navigationController.navigationBar.subviews.firstObject;
+        _barImageView.backgroundColor = kGlobalColor;
+    }
+    return _barImageView;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // 设置导航栏
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    CGRect frame = self.tableView.frame;
+    frame.origin.y = 0;
+    self.tableView.frame = frame;
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
@@ -62,7 +82,7 @@ static NSString *reuseIdentifier = @"story";
     [self.tableView registerClass:[YASectionHeaderView class] forHeaderFooterViewReuseIdentifier:reuseIdentifier];
 
     // 设置tableHeaderView
-    self.tableView.tableHeaderView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
+    self.tableView.tableHeaderView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight)];
     
     // 设置刷新控件
     self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
@@ -145,6 +165,7 @@ static NSString *reuseIdentifier = @"story";
     [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:path WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:fblock];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -196,6 +217,47 @@ static NSString *reuseIdentifier = @"story";
 }
 
 
+#pragma mark - scrollView代理
+//滚动tableview 完毕之后
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat minAlphaOffset = 0;
+    CGFloat maxAlphaOffset = kHeaderViewHeight;
+    CGFloat offset = scrollView.contentOffset.y;
+    
+    CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
+    self.barImageView.alpha = alpha;
+
+
+//    //图片高度
+//    CGFloat imageHeight = self.tableView.tableHeaderView.frame.size.height;
+//    //图片宽度
+//    CGFloat imageWidth = kScreenWidth;
+//    //图片上下偏移量
+//    CGFloat imageOffsetY = scrollView.contentOffset.y;
+//    
+//    NSLog(@"图片上下偏移量 imageOffsetY:%f ->",imageOffsetY);
+    
+    
+//    
+//    //上移
+//    if (imageOffsetY < 0) {
+//        CGFloat totalOffset = imageHeight + ABS(imageOffsetY);
+//        CGFloat f = totalOffset / imageHeight;
+//        
+//        self.tableView.tableHeaderView.frame = CGRectMake(-(imageWidth * f - imageWidth) * 0.5, imageOffsetY, imageWidth * f, totalOffset);
+//    }
+//    
+        //下移
+//        if (imageOffsetY > 0) {
+//            CGFloat totalOffset = imageHeight - ABS(imageOffsetY);
+//            CGFloat f = totalOffset / imageHeight;
+//    
+//            [self.tableView.tableHeaderView setFrame:CGRectMake(-(imageWidth * f - imageWidth) * 0.5, imageOffsetY, imageWidth * f, totalOffset)];
+//        }
+    
+    
+}
 //- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
 //    self.navigationItem.title = @"1";
 //}

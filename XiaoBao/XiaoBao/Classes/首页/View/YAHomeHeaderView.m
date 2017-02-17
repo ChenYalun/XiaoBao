@@ -8,7 +8,7 @@
 
 #import "YAHomeHeaderView.h"
 #import "YAStoryHeaderView.h"
-#define kHeaderViewHeight 200
+#define kHeaderViewHeight 220
 #define kHeaderViewCount 5
 @interface YAHomeHeaderView()<UIScrollViewDelegate>
 //@property (nonatomic,strong) NSMutableArray <YAStoryHeaderView *> *headerViews;
@@ -102,7 +102,7 @@
     
     // 添加到视图
     self.picScrollView.frame = self.bounds;
-    self.pageControl.frame = CGRectMake(0, 165, kScreenWidth, 34);
+    self.pageControl.frame = CGRectMake(0, kHeaderViewHeight - 35, kScreenWidth, 34);
 }
 
 - (void)setStoryItems:(NSArray *)storyItems {
