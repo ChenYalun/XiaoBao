@@ -10,7 +10,7 @@
 		7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */; };
 		9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E11E5489F40099900F /* YARootViewController.m */; };
 		9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E41E548A290099900F /* YASideViewController.m */; };
-		9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */; };
+		9A4CA4E81E548A980099900F /* YAHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E71E548A980099900F /* YAHomeViewController.m */; };
 		9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */; };
 		9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */; };
 		9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4EF1E5497820099900F /* YAStoryItem.m */; };
@@ -34,8 +34,8 @@
 		9A4CA4E11E5489F40099900F /* YARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARootViewController.m; sourceTree = "<group>"; };
 		9A4CA4E31E548A290099900F /* YASideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASideViewController.h; sourceTree = "<group>"; };
 		9A4CA4E41E548A290099900F /* YASideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASideViewController.m; sourceTree = "<group>"; };
-		9A4CA4E61E548A980099900F /* YAHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHomeTableViewController.h; sourceTree = "<group>"; };
-		9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHomeTableViewController.m; sourceTree = "<group>"; };
+		9A4CA4E61E548A980099900F /* YAHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHomeViewController.h; sourceTree = "<group>"; };
+		9A4CA4E71E548A980099900F /* YAHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHomeViewController.m; sourceTree = "<group>"; };
 		9A4CA4E91E5492CA0099900F /* YAStoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAStoryHeaderView.h; sourceTree = "<group>"; };
 		9A4CA4EA1E5492CA0099900F /* YAStoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAStoryHeaderView.m; sourceTree = "<group>"; };
 		9A4CA4EC1E5492D90099900F /* YAStoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAStoryHeaderView.xib; sourceTree = "<group>"; };
@@ -214,8 +214,8 @@
 		9ADBF2FB1E54295D001F8565 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9A4CA4E61E548A980099900F /* YAHomeTableViewController.h */,
-				9A4CA4E71E548A980099900F /* YAHomeTableViewController.m */,
+				9A4CA4E61E548A980099900F /* YAHomeViewController.h */,
+				9A4CA4E71E548A980099900F /* YAHomeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -408,7 +408,7 @@
 			files = (
 				9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */,
 				9A5C15531E558068003BE177 /* YAHomeHeaderView.m in Sources */,
-				9A4CA4E81E548A980099900F /* YAHomeTableViewController.m in Sources */,
+				9A4CA4E81E548A980099900F /* YAHomeViewController.m in Sources */,
 				9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */,
 				9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */,
 				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,

@@ -9,47 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--今日热闻-->
-        <scene sceneID="bCp-OD-5iM">
-            <objects>
-                <tableViewController id="tCm-JC-cZp" customClass="YAHomeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="C3B-su-wvp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.84304791690000003" green="0.84319019319999999" blue="0.84302788969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ai6-GV-MxZ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ai6-GV-MxZ" id="fL5-xZ-wXR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="tCm-JC-cZp" id="nLZ-Q0-10j"/>
-                            <outlet property="delegate" destination="tCm-JC-cZp" id="y1D-qN-IiG"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="今日热闻" id="rKo-gT-jFI">
-                        <barButtonItem key="leftBarButtonItem" image="iOS6_Home_Icon_Menu_G_Highlight" id="4s0-4k-GIh">
-                            <inset key="imageInsets" minX="-25" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="presentLeftMenuViewController:" destination="tCm-JC-cZp" id="D45-da-Nlz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="95l-I9-6jJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="884" y="230"/>
-        </scene>
         <!--Root View Controller-->
         <scene sceneID="OgD-eu-3II">
             <objects>
@@ -67,6 +26,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGO-X0-x2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1362" y="-38"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="tZq-uv-EhL">
+            <objects>
+                <viewController storyboardIdentifier="contentViewController" id="A7K-FR-8wh" customClass="YAHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qze-L2-Xt9"/>
+                        <viewControllerLayoutGuide type="bottom" id="SD6-jb-EuU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vge-uq-gRZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qMA-yi-fNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-207.19999999999999" y="142.57871064467767"/>
         </scene>
         <!--Side View Controller-->
         <scene sceneID="jx8-o0-Gj8">
@@ -95,25 +73,6 @@
             </objects>
             <point key="canvasLocation" x="-713" y="-861"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="q7M-IG-ynX">
-            <objects>
-                <navigationController storyboardIdentifier="contentViewController" id="yW5-GE-5IU" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BbU-Pz-IDI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="tCm-JC-cZp" kind="relationship" relationship="rootViewController" id="f5q-iH-9o8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5dB-d0-Brs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-7" y="214"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="iOS6_Home_Icon_Menu_G_Highlight" width="54" height="38"/>
-    </resources>
     <color key="tintColor" red="0.12919012802403149" green="0.64538826302784247" blue="0.99252361059188843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

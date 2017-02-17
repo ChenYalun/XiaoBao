@@ -62,7 +62,7 @@
         _picScrollView.delegate = self;
         
         // 设置无限循环
-        _picScrollView.contentSize = CGSizeMake(kScreenWidth * 3, kHeaderViewHeight);
+        _picScrollView.contentSize = CGSizeMake(kScreenWidth * 3, self.height);
         [_picScrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:NO];
     }
     return _picScrollView;
@@ -95,14 +95,16 @@
 //    [self.headerViews enumerateObjectsUsingBlock:^(YAStoryHeaderView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
 //        view.frame = CGRectMake(kScreenWidth * idx, 0, kScreenWidth, kHeaderViewHeight);
 //    }];
-    self.leftView.frame = CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight);
-    self.centerView.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, kHeaderViewHeight);
-    self.rightView.frame = CGRectMake(2 * kScreenWidth, 0, kScreenWidth, kHeaderViewHeight);
-    
-    
     // 添加到视图
     self.picScrollView.frame = self.bounds;
-    self.pageControl.frame = CGRectMake(0, kHeaderViewHeight - 35, kScreenWidth, 34);
+    // 先设置父视图再设置子视图
+    self.leftView.frame = CGRectMake(0, 0, kScreenWidth, self.height);
+    self.centerView.frame = CGRectMake(kScreenWidth, 0, kScreenWidth, self.height);
+    self.rightView.frame = CGRectMake(2 * kScreenWidth, 0, kScreenWidth, self.height);
+    
+    
+    
+    self.pageControl.frame = CGRectMake(0, self.height - 35, kScreenWidth, 34);
 }
 
 - (void)setStoryItems:(NSArray *)storyItems {

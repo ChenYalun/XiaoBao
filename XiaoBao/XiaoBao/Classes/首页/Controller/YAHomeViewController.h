@@ -1,5 +1,5 @@
 //
-//  YAHomeTableViewController.h
+//  YAHomeViewController.h
 //  XiaoBao
 //
 //  Created by 陈亚伦 on 2017/2/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YAHomeTableViewController : UITableViewController
+@interface YAHomeViewController : UIViewController
 
 @end

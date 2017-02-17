@@ -1,12 +1,12 @@
 //
-//  YAHomeTableViewController.m
+//  YAHomeViewController.m
 //  XiaoBao
 //
 //  Created by 陈亚伦 on 2017/2/15.
 //  Copyright © 2017年 陈亚伦. All rights reserved.
 //
 
-#import "YAHomeTableViewController.h"
+#import "YAHomeViewController.h"
 #import "YAStoryTableViewCell.h"
 #import "YARefreshHeader.h"
 #import "YARefreshFooter.h"
@@ -14,8 +14,8 @@
 #import "YAProgressHUD.h"
 #import "YASectionHeaderView.h"
 #import "YAHomeHeaderView.h"
-#define kHeaderViewHeight 220
-@interface YAHomeTableViewController ()
+#define kHeaderViewHeight 200
+@interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
 /** 组新闻 */
@@ -25,12 +25,25 @@
 /** sectionID对应section标题 */
 @property (nonatomic,strong) NSMutableDictionary *titleSection;
 @property (nonatomic,assign) NSInteger sectionID;
-@property (nonatomic,weak) UIImageView *barImageView;
+
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UIView *navigationView;
+@property (nonatomic,strong) UILabel *titleLabel;
+@property (nonatomic,strong) YAHomeHeaderView *headerView;
 @end
 
-@implementation YAHomeTableViewController
+@implementation YAHomeViewController
 static NSString *reuseIdentifier = @"story";
 #pragma mark - 懒加载
+- (UIView *)navigationView{
+    if (_navigationView == nil) {
+        _navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 55)];
+        _navigationView.backgroundColor = kGlobalColor;
+        _navigationView.alpha = 0;
+    }
+    return _navigationView;
+}
+
 -(NSMutableArray *)stories {
     if (_topStoryItems == nil) {
         _topStoryItems = [NSMutableArray array];
@@ -50,39 +63,58 @@ static NSString *reuseIdentifier = @"story";
     }
     return _titleSection;
 }
-
-- (UIImageView *)barImageView {
-    if (!_barImageView) {
-        _barImageView = self.navigationController.navigationBar.subviews.firstObject;
-        _barImageView.backgroundColor = kGlobalColor;
+- (YAHomeHeaderView *)headerView {
+    if (_headerView == nil) {
+        _headerView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight + 20)];
+        _headerView.contentMode = UIViewContentModeScaleAspectFill;
     }
-    return _barImageView;
+    return _headerView;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+- (UITableView *)tableView {
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight - 20) style:UITableViewStylePlain];
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight)];
+    }
+    return _tableView;
+}
+- (UILabel *)titleLabel{
+    if (_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.attributedText = [[NSAttributedString alloc]
+                                      initWithString:@"今日热闻"
+                                      attributes:@{NSFontAttributeName:
+                                                       [UIFont
+                                                        systemFontOfSize:18],NSForegroundColorAttributeName:
+                                                       [UIColor whiteColor]}];
+        [_titleLabel sizeToFit];
+        _titleLabel.centerX = self.view.centerX;
+        _titleLabel.centerY = 35;
+    }
+    return _titleLabel;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // 设置导航栏
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
-    CGRect frame = self.tableView.frame;
-    frame.origin.y = 0;
-    self.tableView.frame = frame;
-    
+
+    // 设置控件
+    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.headerView];
+//    [self.view addSubview:self.navigationView];
+//    [self.view addSubview:self.titleLabel];
+//    
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     // 注册sectionHeaderView
     [self.tableView registerClass:[YASectionHeaderView class] forHeaderFooterViewReuseIdentifier:reuseIdentifier];
 
-    // 设置tableHeaderView
-    self.tableView.tableHeaderView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight)];
+    
     
     // 设置刷新控件
     self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
@@ -100,8 +132,9 @@ static NSString *reuseIdentifier = @"story";
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
         [self.topStoryItems addObjectsFromArray:topStoryItems];
-        YAHomeHeaderView *homeHeaderScrollView = (YAHomeHeaderView *)self.tableView.tableHeaderView;
-        homeHeaderScrollView.storyItems = topStoryItems;
+
+        // 设置轮播图
+        self.headerView.storyItems = topStoryItems;
         
         // 获取普通新闻
         NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
@@ -114,6 +147,7 @@ static NSString *reuseIdentifier = @"story";
         // 刷新
         [self.tableView reloadData];
         
+
     };
     
     // 失败回调
@@ -216,112 +250,20 @@ static NSString *reuseIdentifier = @"story";
     return sectionHeaderView;
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    
-//    if (indexPath.section == 0) {
-//        
-//        self.navigationItem.title = @"今日热闻";
-//    } else {
-//        self.navigationItem.title = [NSString stringWithFormat:@"%d",indexPath.section];
-//    }
-//}
-#pragma mark - scrollView代理
-//滚动tableview 完毕之后
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offSetY = scrollView.contentOffset.y;
+    if (offSetY > 0 ) {
+        CGRect frame = self.headerView.frame;
+        frame.origin.y = -offSetY;
+        self.headerView.frame = frame;
     
-    // 导航栏渐变
-    CGFloat minAlphaOffset = 0;
-    CGFloat maxAlphaOffset = kHeaderViewHeight;
-    CGFloat offsetY= scrollView.contentOffset.y;
+    } else {
+        CGRect frame = self.headerView.frame;
+        frame.size.height = -offSetY + kHeaderViewHeight + 20;
+        self.headerView.frame = frame;
+    }
     
-    CGFloat alpha = (offsetY - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
-    self.barImageView.alpha = alpha;
 
-    // headerView拉伸
 
-        
-
-//    //图片高度
-//    CGFloat imageHeight = self.tableView.tableHeaderView.frame.size.height;
-//    //图片宽度
-//    CGFloat imageWidth = kScreenWidth;
-//    //图片上下偏移量
-//    CGFloat imageOffsetY = scrollView.contentOffset.y;
-//    
-//    NSLog(@"图片上下偏移量 imageOffsetY:%f ->",imageOffsetY);
-    
-    
-//    
-//    //上移
-//    if (imageOffsetY < 0) {
-//        CGFloat totalOffset = imageHeight + ABS(imageOffsetY);
-//        CGFloat f = totalOffset / imageHeight;
-//        
-//        self.tableView.tableHeaderView.frame = CGRectMake(-(imageWidth * f - imageWidth) * 0.5, imageOffsetY, imageWidth * f, totalOffset);
-//    }
-//    
-        //下移
-//        if (imageOffsetY > 0) {
-//            CGFloat totalOffset = imageHeight - ABS(imageOffsetY);
-//            CGFloat f = totalOffset / imageHeight;
-//    
-//            [self.tableView.tableHeaderView setFrame:CGRectMake(-(imageWidth * f - imageWidth) * 0.5, imageOffsetY, imageWidth * f, totalOffset)];
-//        }
-    
-    
 }
-//- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
-//    self.navigationItem.title = @"1";
-//}
-
-//- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
-//    if (self.storySection objectForKey:[NSNumber numberWithInteger:indexPath.s]) {
-//        <#statements#>
-//    }
-//}
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
