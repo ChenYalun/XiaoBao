@@ -90,16 +90,16 @@ static NSString *reuseIdentifier = @"story";
                                       initWithString:@"今日热闻"
                                       attributes:@{NSFontAttributeName:
                                                        [UIFont
-                                                        systemFontOfSize:18],NSForegroundColorAttributeName:
+                                                        boldSystemFontOfSize:18],NSForegroundColorAttributeName:
                                                        [UIColor whiteColor]}];
         [_titleLabel sizeToFit];
         _titleLabel.centerX = self.view.centerX;
-        _titleLabel.centerY = 35;
+        _titleLabel.centerY = 37;
     }
     return _titleLabel;
 }
 
-  
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -109,10 +109,9 @@ static NSString *reuseIdentifier = @"story";
     // 设置控件
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.headerView];
-//    [self.headerView addGestureRecognizer:self.pan];
-//    [self.view addSubview:self.navigationView];
-//    [self.view addSubview:self.titleLabel];
-//    
+    [self.view addSubview:self.navigationView];
+    [self.view addSubview:self.titleLabel];
+//
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     // 注册sectionHeaderView
@@ -122,8 +121,18 @@ static NSString *reuseIdentifier = @"story";
     
     // 设置刷新控件
 
+    self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
+    
     self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
-    [self refreshForNewStories];
+    
+    // 将mj_header置于最前
+    [self.tableView bringSubviewToFront:self.tableView.mj_header];
+    
+    [self.tableView.mj_header beginRefreshing];
+    
+    
+    
+    
 }
 
 #pragma mark - 刷新
@@ -131,6 +140,7 @@ static NSString *reuseIdentifier = @"story";
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
 
+        [self.tableView.mj_header endRefreshing];
         
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
@@ -155,7 +165,7 @@ static NSString *reuseIdentifier = @"story";
     
     // 失败回调
     requestFailureBlock fblock = ^(NSError *error){
-
+        [self.tableView.mj_header endRefreshing];
         kLog(@"%@", error);
         [YAProgressHUD showErrorWithStatus:@"刷新失败"];
     };
@@ -252,6 +262,23 @@ static NSString *reuseIdentifier = @"story";
     return sectionHeaderView;
 }
 
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    if (section == 0) {
+        self.navigationView.height = 55;
+        self.navigationView.alpha = 1;
+        self.titleLabel.hidden = NO;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
+    if (section == 0) {
+        self.navigationView.height = 20;
+        self.titleLabel.hidden = YES;
+    }
+}
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offSetY = scrollView.contentOffset.y;
 
@@ -264,6 +291,10 @@ static NSString *reuseIdentifier = @"story";
     }
    
 
+    // 导航view逐渐显示
+    if (offSetY > 0) {
+        self.navigationView.alpha = offSetY / 200.0;
+    }
 
 }
 @end
