@@ -26,6 +26,12 @@
     // 全局颜色
     [UINavigationBar appearance].barTintColor = kGlobalColor;
     
+    
+    
+    
+    
+//    导航栏 渐变LTNavigationBar
+
     return YES;
 }
 

@@ -161,7 +161,7 @@
 
 #pragma mark - 定时器
 - (void)setupTimer {
-    self.timer = [NSTimer timerWithTimeInterval:5.0 block:^(NSTimer * _Nonnull timer) {
+    self.timer = [NSTimer timerWithTimeInterval:8.0 block:^(NSTimer * _Nonnull timer) {
         [self turnRightPage];
     } repeats:YES];
     

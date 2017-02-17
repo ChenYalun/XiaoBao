@@ -216,18 +216,31 @@ static NSString *reuseIdentifier = @"story";
     return sectionHeaderView;
 }
 
-
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    
+//    if (indexPath.section == 0) {
+//        
+//        self.navigationItem.title = @"今日热闻";
+//    } else {
+//        self.navigationItem.title = [NSString stringWithFormat:@"%d",indexPath.section];
+//    }
+//}
 #pragma mark - scrollView代理
 //滚动tableview 完毕之后
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
+    // 导航栏渐变
     CGFloat minAlphaOffset = 0;
     CGFloat maxAlphaOffset = kHeaderViewHeight;
-    CGFloat offset = scrollView.contentOffset.y;
+    CGFloat offsetY= scrollView.contentOffset.y;
     
-    CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
+    CGFloat alpha = (offsetY - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
     self.barImageView.alpha = alpha;
 
+    // headerView拉伸
+
+        
 
 //    //图片高度
 //    CGFloat imageHeight = self.tableView.tableHeaderView.frame.size.height;
