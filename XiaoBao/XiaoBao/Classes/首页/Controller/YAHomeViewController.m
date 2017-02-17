@@ -30,6 +30,7 @@
 @property (nonatomic,strong) UIView *navigationView;
 @property (nonatomic,strong) UILabel *titleLabel;
 @property (nonatomic,strong) YAHomeHeaderView *headerView;
+
 @end
 
 @implementation YAHomeViewController
@@ -65,7 +66,7 @@ static NSString *reuseIdentifier = @"story";
 }
 - (YAHomeHeaderView *)headerView {
     if (_headerView == nil) {
-        _headerView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight + 20)];
+        _headerView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, -20, kScreenWidth, kHeaderViewHeight + 20)];
         _headerView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _headerView;
@@ -78,6 +79,7 @@ static NSString *reuseIdentifier = @"story";
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight)];
+        _tableView.clipsToBounds = NO;
     }
     return _tableView;
 }
@@ -97,6 +99,7 @@ static NSString *reuseIdentifier = @"story";
     return _titleLabel;
 }
 
+  
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -105,7 +108,8 @@ static NSString *reuseIdentifier = @"story";
 
     // 设置控件
     [self.view addSubview:self.tableView];
-    [self.view addSubview:self.headerView];
+    [self.tableView addSubview:self.headerView];
+//    [self.headerView addGestureRecognizer:self.pan];
 //    [self.view addSubview:self.navigationView];
 //    [self.view addSubview:self.titleLabel];
 //    
@@ -117,17 +121,16 @@ static NSString *reuseIdentifier = @"story";
     
     
     // 设置刷新控件
-    self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
+
     self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
-    [self.tableView.mj_header beginRefreshing];
+    [self refreshForNewStories];
 }
 
 #pragma mark - 刷新
 - (void)refreshForNewStories {
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
-        // 停止刷新
-        [self.tableView.mj_header endRefreshing];
+
         
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
@@ -152,8 +155,7 @@ static NSString *reuseIdentifier = @"story";
     
     // 失败回调
     requestFailureBlock fblock = ^(NSError *error){
-        // 停止刷新
-        [self.tableView.mj_header endRefreshing];
+
         kLog(@"%@", error);
         [YAProgressHUD showErrorWithStatus:@"刷新失败"];
     };
@@ -252,17 +254,15 @@ static NSString *reuseIdentifier = @"story";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offSetY = scrollView.contentOffset.y;
-    if (offSetY > 0 ) {
+
+    // 下拉放大
+    if (offSetY < 0 ) {
         CGRect frame = self.headerView.frame;
-        frame.origin.y = -offSetY;
-        self.headerView.frame = frame;
-    
-    } else {
-        CGRect frame = self.headerView.frame;
+        frame.origin.y = offSetY - 20;
         frame.size.height = -offSetY + kHeaderViewHeight + 20;
         self.headerView.frame = frame;
     }
-    
+   
 
 
 }
