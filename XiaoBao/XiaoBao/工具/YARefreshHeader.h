@@ -6,8 +6,9 @@
 //  Copyright © 2017年 陈亚伦. All rights reserved.
 //
 
-#import <MJRefresh/MJRefresh.h>
-
-@interface YARefreshHeader : MJRefreshNormalHeader
-
+#import <UIKit/UIKit.h>
+@interface YARefreshHeader : UIView
+-(void)updateProgress:(CGFloat)progress;
+-(void)startAnimation;
+-(void)stopAnimation;
 @end

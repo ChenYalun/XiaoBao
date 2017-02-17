@@ -15,6 +15,8 @@
 #import "YASectionHeaderView.h"
 #import "YAHomeHeaderView.h"
 #define kHeaderViewHeight 200
+#define kMargin 10
+#define kRefreshViewWH 18
 @interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
@@ -30,6 +32,7 @@
 @property (nonatomic,strong) UIView *navigationView;
 @property (nonatomic,strong) UILabel *titleLabel;
 @property (nonatomic,strong) YAHomeHeaderView *headerView;
+@property (nonatomic,strong) YARefreshHeader *refreshHeader;
 
 @end
 
@@ -99,6 +102,18 @@ static NSString *reuseIdentifier = @"story";
     return _titleLabel;
 }
 
+- (YARefreshHeader *)refreshHeader {
+    if (_refreshHeader == nil) {
+        _refreshHeader = [[YARefreshHeader alloc] init];
+        // 无父控件无center
+//        _refreshHeader.centerY = 37;
+//        _refreshHeader.centerX = self.view.centerX - kRefreshViewWH - kMargin;
+//        _refreshHeader.size = CGSizeMake(kRefreshViewWH, kRefreshViewWH);
+        _refreshHeader = [[YARefreshHeader alloc] initWithFrame:CGRectMake(100, 28, kRefreshViewWH, kRefreshViewWH)];
+    }
+    return _refreshHeader;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -111,6 +126,8 @@ static NSString *reuseIdentifier = @"story";
     [self.tableView addSubview:self.headerView];
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.titleLabel];
+
+    [self.view addSubview:self.refreshHeader];
 //
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
@@ -121,26 +138,24 @@ static NSString *reuseIdentifier = @"story";
     
     // 设置刷新控件
 
-    self.tableView.mj_header = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
     
     self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
     
-    // 将mj_header置于最前
-    [self.tableView bringSubviewToFront:self.tableView.mj_header];
-    
-    [self.tableView.mj_header beginRefreshing];
-    
-    
+
+
+    [self refreshForNewStories];
+
     
     
 }
 
 #pragma mark - 刷新
 - (void)refreshForNewStories {
+    
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
 
-        [self.tableView.mj_header endRefreshing];
+        
         
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
@@ -165,7 +180,6 @@ static NSString *reuseIdentifier = @"story";
     
     // 失败回调
     requestFailureBlock fblock = ^(NSError *error){
-        [self.tableView.mj_header endRefreshing];
         kLog(@"%@", error);
         [YAProgressHUD showErrorWithStatus:@"刷新失败"];
     };
@@ -252,25 +266,29 @@ static NSString *reuseIdentifier = @"story";
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) { // 隐藏第0组标题
-        return nil;
-    }
+  
     
     YASectionHeaderView *sectionHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifier];
     NSString *formatString = [YAStoryItem formatStringWithDateString:[self.titleSection objectForKey:[NSNumber numberWithInteger:section]]];
     sectionHeaderView.sectionTitle = formatString;
+    
+    if (section == 0) { // 隐藏第0组标题
+        sectionHeaderView.hidden = YES;
+    } else {
+        sectionHeaderView.hidden = NO;
+    }
     return sectionHeaderView;
 }
 
-
+// headerView显示的那刻调用
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     if (section == 0) {
         self.navigationView.height = 55;
-        self.navigationView.alpha = 1;
         self.titleLabel.hidden = NO;
     }
 }
 
+// headerView消失的那刻调用
 - (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
     if (section == 0) {
         self.navigationView.height = 20;
@@ -292,9 +310,36 @@ static NSString *reuseIdentifier = @"story";
    
 
     // 导航view逐渐显示
-    if (offSetY > 0) {
+    if (offSetY >= -1) {
         self.navigationView.alpha = offSetY / 200.0;
     }
+    
+    // 头部刷新控件
+    if (offSetY < 0) {
+        CGFloat pro = -offSetY / 60.0;
+       // kLog(@"%f",pro);
+        self.refreshHeader.hidden = NO;
+        [self.refreshHeader updateProgress:pro];
+        
+    } else {
+        self.refreshHeader.hidden = YES;
+    }
+    
 
+
+}
+
+// 停止拖拽(松手)
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (-offsetY > 60.0) {
+        [self.refreshHeader startAnimation];
+    }
+    
+}
+
+// 停止滚动
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self.refreshHeader stopAnimation];
 }
 @end
