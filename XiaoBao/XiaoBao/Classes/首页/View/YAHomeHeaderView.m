@@ -132,73 +132,62 @@
 //        view.story = storyItems[idx];
 //    }];
     
-    
-    [self reloadImage];
+    // 刷新视图并开启定时器
+    [self reloadView];
     [self setupTimer];
 }
-- (void)pre {
-    if (self.pageControl.currentPage == 0) {
-        self.pageControl.currentPage = 4;
-    } else {
-        self.pageControl.currentPage -= 1;
-    }
+
+#pragma mark - 滚动视图
+- (void)turnLeftPage {
+
+    self.pageControl.currentPage = (self.pageControl.currentPage - 1 + kHeaderViewCount) % kHeaderViewCount;
     [self.picScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
-- (void)next {
-    if (self.pageControl.currentPage == 4) {
-        self.pageControl.currentPage = 0;
-    } else {
-        self.pageControl.currentPage += 1;
-    }
+- (void)turnRightPage {
+    self.pageControl.currentPage = (self.pageControl.currentPage + 1) % kHeaderViewCount;
     [self.picScrollView setContentOffset:CGPointMake(2 * kScreenWidth, 0) animated:YES];
 }
-- (void)reloadImage {
+- (void)reloadView {
     NSInteger leftImageIndex,rightImageIndex;
-
-
-    
-    leftImageIndex = (self.pageControl.currentPage + 4) % 5;
-    rightImageIndex = (self.pageControl.currentPage + 1) % 5;
+    leftImageIndex = (self.pageControl.currentPage + kHeaderViewCount - 1) % kHeaderViewCount;
+    rightImageIndex = (self.pageControl.currentPage + 1) % kHeaderViewCount;
     
     self.centerView.story = self.storyItems[self.pageControl.currentPage];
     self.leftView.story = self.storyItems[leftImageIndex];
     self.rightView.story = self.storyItems[rightImageIndex];
     
-    
-    
-    
 }
+
 #pragma mark - 定时器
 - (void)setupTimer {
     self.timer = [NSTimer timerWithTimeInterval:5.0 block:^(NSTimer * _Nonnull timer) {
-       
-        [self next];
+        [self turnRightPage];
     } repeats:YES];
     
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
-
-
 #pragma mark - 代理方法
+//检测UIScrollView滚动动画是否结束
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    [self reloadImage];
+    [self reloadView];
     [self.picScrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:NO];
 }
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     // 停止定时器
     [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [self setupTimer];
     
-    
     if (scrollView.contentOffset.x < kScreenWidth) {
-        [self pre];
+        [self turnLeftPage];
     } else {
-        [self next];
+        [self turnRightPage];
     }
 }
 
