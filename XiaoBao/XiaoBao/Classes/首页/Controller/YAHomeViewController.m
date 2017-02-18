@@ -104,7 +104,7 @@ static NSString *reuseIdentifier = @"story";
 
 
 
-
+#pragma mark - view初始化
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -133,21 +133,17 @@ static NSString *reuseIdentifier = @"story";
     self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
 
 
-
     [refreahHeader beginRefreshing];
 
-
-
-    
 }
 
 #pragma mark - 刷新
+// 加载更新
 - (void)refreshForNewStories {
     
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
 
-        
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
         [self.topStoryItems addObjectsFromArray:topStoryItems];
@@ -169,16 +165,11 @@ static NSString *reuseIdentifier = @"story";
 
     };
     
-    // 失败回调
-    requestFailureBlock fblock = ^(NSError *error){
-        kLog(@"%@", error);
-    };
-    
     // 发送请求
-    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:@"http://news-at.zhihu.com/api/4/news/latest" WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:fblock];
+    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:@"http://news-at.zhihu.com/api/4/news/latest" WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:nil];
 }
 
-
+// 加载更多
 - (void)refreshForMoreStories {
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
@@ -190,8 +181,6 @@ static NSString *reuseIdentifier = @"story";
         // 获取普通新闻
         NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
         [self.storySection setObject:storyItems forKey:[NSNumber numberWithInteger:self.sectionID]];
-        
-        
         
         // 存储ID
         self.dateID = responseObject[@"date"];
@@ -206,8 +195,6 @@ static NSString *reuseIdentifier = @"story";
     requestFailureBlock fblock = ^(NSError *error){
         // 停止刷新
         [self.tableView.mj_header endRefreshing];
-        kLog(@"%@", error);
-        [YAProgressHUD showErrorWithStatus:@"刷新失败"];
     };
     
     // 发送请求
@@ -270,6 +257,7 @@ static NSString *reuseIdentifier = @"story";
     return sectionHeaderView;
 }
 
+#pragma mark - tableView 代理
 // headerView显示的那刻调用
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     if (section == 0) {
@@ -287,6 +275,7 @@ static NSString *reuseIdentifier = @"story";
 }
 
 
+#pragma mark - scrollView代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offSetY = scrollView.contentOffset.y;
 
@@ -302,6 +291,19 @@ static NSString *reuseIdentifier = @"story";
     // 导航view逐渐显示
     if (offSetY >= -1) {
         self.navigationView.alpha = offSetY / 200.0;
+    }
+    
+    // 预加载
+    CGSize contentSize = scrollView.contentSize;
+    CGFloat y = offSetY + kScreenHeight;
+    CGFloat reload_distance = 1400;
+    if (y > contentSize.height - reload_distance) {
+        if ([self.tableView.mj_footer isRefreshing]) {
+            // 正在刷新,返回
+        } else {
+            [self.tableView.mj_footer beginRefreshing];
+        }
+        
     }
     
 }

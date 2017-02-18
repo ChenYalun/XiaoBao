@@ -22,19 +22,7 @@
 @end
 @implementation YAHomeHeaderView
 #pragma mark - 懒加载
-//- (NSMutableArray<YAStoryHeaderView *> *)headerViews {
-//    if (_headerViews == nil) {
-//        _headerViews = [NSMutableArray array];
-//        
-//        for (NSInteger i = 0; i < 3; i++) {
-//            YAStoryHeaderView *headerView = [[NSBundle mainBundle] loadNibNamed:[YAStoryHeaderView className] owner:nil options:nil].firstObject;
-//            [self.picScrollView addSubview:headerView];
-//            [_headerViews addObject:headerView];
-//        }
-//
-//    }
-//    return _headerViews;
-//}
+
 
 - (UIPageControl *)pageControl {
     if (_pageControl == nil) {
@@ -91,10 +79,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    
-//    [self.headerViews enumerateObjectsUsingBlock:^(YAStoryHeaderView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
-//        view.frame = CGRectMake(kScreenWidth * idx, 0, kScreenWidth, kHeaderViewHeight);
-//    }];
+
     // 添加到视图
     self.picScrollView.frame = self.bounds;
     // 先设置父视图再设置子视图
@@ -110,29 +95,7 @@
 - (void)setStoryItems:(NSArray *)storyItems {
     _storyItems = storyItems;
     
-    // 遍历YAStoryHeaderView
-    // NSEnumerationConcurrent并发遍历 会出现问题
-    // NSEnumerationReverse 逆制
-    /*
-    [self.headerViews enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(YAStoryHeaderView *view, NSUInteger index, BOOL *stop) {
-        view.frame = CGRectMake(kScreenWidth * index, 0, kScreenWidth, 200);
-            view.story = storyItems[index];
 
-    }];
-    */
-    
-    // 普通遍历
-    /*
-    for (NSInteger i = 0; i < 5; i++) {
-        self.headerViews[i].frame = CGRectMake(kScreenWidth * i, 0, kScreenWidth, 200);
-        self.headerViews[i].story = storyItems[i];
-    }
-     */
-
-    
-//    [self.headerViews enumerateObjectsUsingBlock:^(YAStoryHeaderView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
-//        view.story = storyItems[idx];
-//    }];
     
     // 刷新视图并开启定时器
     [self reloadView];
