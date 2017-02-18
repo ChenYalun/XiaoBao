@@ -8,7 +8,7 @@
 
 #import "YARootViewController.h"
 
-@interface YARootViewController ()
+@interface YARootViewController ()<RESideMenuDelegate>
 
 @end
 
@@ -30,15 +30,33 @@
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
 
-    self.parallaxEnabled = NO;  //视图差效果
-    self.scaleContentView = YES;  //中心视图缩放功能打开
+    // 设置代理
+    self.delegate = self;
+   
+    self.scaleContentView = NO;  //内容视图缩放功能
     self.contentViewScaleValue = 1;  //侧滑出现时缩放比
     self.scaleMenuView = NO;        //侧滑出来的视图是否支持缩放
     self.contentViewShadowEnabled = YES; //中心视图阴影效果，打开显得有层次感。
     self.contentViewShadowRadius = 4.5;  //中心视图阴影效果Radius
     self.panGestureEnabled = YES;   //关闭拖动支持手势
-    self.contentViewInPortraitOffsetCenterX = 50;
-    //    self.contentViewInLandscapeOffsetCenterX = 300;
+    self.contentViewInPortraitOffsetCenterX = 70; // 偏移中心,内容视图偏移菜单中心+70
+    self.bouncesHorizontally = NO;
+    self.panFromEdge = NO; // 只能从从边缘划开
+    self.panMinimumOpenThreshold = 50; // 至少划开100才能打开菜单,否则弹回去
+    self.interactivePopGestureRecognizerEnabled = YES;
+    self.fadeMenuView = NO; // 淡出菜单视图
+//    self.menuViewControllerTransformation 
+//    self.contentViewInLandscapeOffsetCenterX = 200;
+
+    
+    self.parallaxEnabled = NO; // 视差效果,也就是远近(大小)效果
+//    self.parallaxMenuMinimumRelativeValue = 200;// 菜单视差最小相对值
+//    self.parallaxMenuMaximumRelativeValue = 20;// 菜单视差最大相对值
+//    self.parallaxContentMinimumRelativeValue = 100;// 内容视差最小相对值
+//    self.parallaxContentMaximumRelativeValue = 10;// 内容视差最大相对值
+    
+    
+//        self.contentViewInLandscapeOffsetCenterX = 70;
     
     
     //    动画持续时间
@@ -72,14 +90,15 @@
 
     
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - 代理方法
+- (void)sideMenu:(RESideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer {
+    
+    // 根据视图层级关系找到移动的view
+    UIView *view = [UIApplication sharedApplication].keyWindow.subviews.firstObject.subviews.lastObject;
+    if (view.ya_x >= (0.5 * kScreenWidth + 68)) {
+        view.ya_x = 0.5 * kScreenWidth + 70;
+    }
 }
-*/
 
 @end

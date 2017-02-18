@@ -25,7 +25,8 @@
     
     // 全局颜色
     [UINavigationBar appearance].barTintColor = kGlobalColor;
-    
+
+
     
     
     

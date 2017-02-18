@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -58,20 +59,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RX2-Pe-FjD">
-                                <rect key="frame" x="166" y="238" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5l-cd-AzP">
+                                <rect key="frame" x="0.0" y="0.0" width="257.5" height="667"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L5l-cd-AzP" firstAttribute="leading" secondItem="Yct-Rm-dVi" secondAttribute="leading" id="P5P-8K-CAo"/>
+                            <constraint firstItem="L5l-cd-AzP" firstAttribute="width" secondItem="Yct-Rm-dVi" secondAttribute="width" multiplier="0.5" constant="70" id="S7A-m7-Vqd"/>
+                            <constraint firstItem="L5l-cd-AzP" firstAttribute="top" secondItem="4r4-B6-f26" secondAttribute="bottom" constant="-20" id="d9a-mt-eK2"/>
+                            <constraint firstAttribute="bottom" secondItem="L5l-cd-AzP" secondAttribute="bottom" id="hCF-CU-heg"/>
+                        </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igt-qX-kOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-713" y="-861"/>
+            <point key="canvasLocation" x="-714.39999999999998" y="-861.3193403298352"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.12919012802403149" green="0.64538826302784247" blue="0.99252361059188843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
