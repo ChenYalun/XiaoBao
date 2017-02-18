@@ -7,8 +7,40 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
+
+
 @interface YARefreshHeader : UIView
--(void)updateProgress:(CGFloat)progress;
--(void)startAnimation;
--(void)stopAnimation;
+/** 绑定的scrollView */
+@property (nonatomic,weak) UIScrollView *attachScrollView;
+- (void)beginRefreshing;
++ (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action;
+@end
+
+
+#pragma mark 头部刷新控件分类 
+@interface UIView (YARefreshHeader)
+@property  UIView *ya_refreshHeader;
+@end
+
+@implementation UIView (YARefreshHeader)
+
+static const char YARefreshHeadererKey = '\0';
+
+- (UIView *)ya_refreshHeader {
+    return objc_getAssociatedObject(self, &YARefreshHeadererKey);
+}
+- (void)setYa_refreshHeader:(UIView *)ya_refreshHeader {
+
+    if (ya_refreshHeader != self.ya_refreshHeader) {
+        [self.ya_refreshHeader removeFromSuperview];
+        [self addSubview:ya_refreshHeader];
+        
+        objc_setAssociatedObject(self, &YARefreshHeadererKey, ya_refreshHeader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+}
+
+
+
+
 @end

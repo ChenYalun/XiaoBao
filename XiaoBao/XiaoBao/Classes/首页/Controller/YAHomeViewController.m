@@ -32,7 +32,7 @@
 @property (nonatomic,strong) UIView *navigationView;
 @property (nonatomic,strong) UILabel *titleLabel;
 @property (nonatomic,strong) YAHomeHeaderView *headerView;
-@property (nonatomic,strong) YARefreshHeader *refreshHeader;
+
 
 @end
 
@@ -102,17 +102,7 @@ static NSString *reuseIdentifier = @"story";
     return _titleLabel;
 }
 
-- (YARefreshHeader *)refreshHeader {
-    if (_refreshHeader == nil) {
-        _refreshHeader = [[YARefreshHeader alloc] init];
-        // 无父控件无center
-//        _refreshHeader.centerY = 37;
-//        _refreshHeader.centerX = self.view.centerX - kRefreshViewWH - kMargin;
-//        _refreshHeader.size = CGSizeMake(kRefreshViewWH, kRefreshViewWH);
-        _refreshHeader = [[YARefreshHeader alloc] initWithFrame:CGRectMake(100, 28, kRefreshViewWH, kRefreshViewWH)];
-    }
-    return _refreshHeader;
-}
+
 
 
 - (void)viewDidLoad {
@@ -124,11 +114,14 @@ static NSString *reuseIdentifier = @"story";
     // 设置控件
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.headerView];
+    
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.titleLabel];
+    self.view.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
+    YARefreshHeader *refreahHeader = (YARefreshHeader *)self.view.ya_refreshHeader;
+    refreahHeader.attachScrollView = self.tableView;
 
-    [self.view addSubview:self.refreshHeader];
-//
+    
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     // 注册sectionHeaderView
@@ -137,15 +130,14 @@ static NSString *reuseIdentifier = @"story";
     
     
     // 设置刷新控件
-
-    
     self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
-    
 
 
-    [self refreshForNewStories];
 
-    
+    [refreahHeader beginRefreshing];
+
+
+
     
 }
 
@@ -155,7 +147,6 @@ static NSString *reuseIdentifier = @"story";
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
 
-        
         
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
@@ -181,7 +172,6 @@ static NSString *reuseIdentifier = @"story";
     // 失败回调
     requestFailureBlock fblock = ^(NSError *error){
         kLog(@"%@", error);
-        [YAProgressHUD showErrorWithStatus:@"刷新失败"];
     };
     
     // 发送请求
@@ -314,32 +304,7 @@ static NSString *reuseIdentifier = @"story";
         self.navigationView.alpha = offSetY / 200.0;
     }
     
-    // 头部刷新控件
-    if (offSetY < 0) {
-        CGFloat pro = -offSetY / 60.0;
-       // kLog(@"%f",pro);
-        self.refreshHeader.hidden = NO;
-        [self.refreshHeader updateProgress:pro];
-        
-    } else {
-        self.refreshHeader.hidden = YES;
-    }
-    
-
-
 }
 
-// 停止拖拽(松手)
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    if (-offsetY > 60.0) {
-        [self.refreshHeader startAnimation];
-    }
-    
-}
 
-// 停止滚动
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.refreshHeader stopAnimation];
-}
 @end

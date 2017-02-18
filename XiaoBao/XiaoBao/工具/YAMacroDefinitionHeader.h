@@ -36,7 +36,7 @@
 
 //4.设置RGB颜色/设置RGBA颜色
 #define kRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
-#define kRGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(r)/255.0 blue:(r)/255.0 alpha:a]
+#define kRGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
 // clear背景颜色
 #define kClearColor [UIColor clearColor]
 
@@ -191,4 +191,13 @@ item.alpha = 0.0; \
 
 //18App全局颜色
 #define kGlobalColor [UIColor colorWithRed:33/255.0 green:165/255.0 blue:253/255.0 alpha:1.0]
-#endif /* kMacroDefinitionHeader_h */
+#endif 
+
+
+//19运行时objc_msgSend
+#define kMsgSend(...) ((void (*)(void *, SEL, UIView *))objc_msgSend)(__VA_ARGS__)
+#define kMsgTarget(target) (__bridge void *)(target)
+
+// ((void(*)(id,SEL, id,id))objc_msgSend)(self.refreshingTarget,self.refreshingAction, nil, nil);
+
+/* kMacroDefinitionHeader_h */
