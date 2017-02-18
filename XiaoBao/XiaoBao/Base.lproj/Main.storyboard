@@ -59,9 +59,140 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5l-cd-AzP">
+                            <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5l-cd-AzP">
                                 <rect key="frame" x="0.0" y="0.0" width="257.5" height="667"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account_Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="jE7-w4-clk">
+                                        <rect key="frame" x="15" y="30" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="IpF-18-xtM"/>
+                                            <constraint firstAttribute="width" constant="35" id="fNv-Q2-oJY"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddV-xP-11r">
+                                        <rect key="frame" x="70" y="39" width="46" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vpi-pW-qZa">
+                                        <rect key="frame" x="0.0" y="80" width="237.5" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7n-zf-GHo">
+                                                <rect key="frame" x="79" y="0.0" width="79.5" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="VeG-PO-mUU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                <inset key="titleEdgeInsets" minX="-8" minY="20" maxX="30" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="20"/>
+                                                <state key="normal" title="消息" image="Menu_Icon_Message">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXc-ZF-tCg">
+                                                <rect key="frame" x="159" y="0.0" width="79" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="ILf-eb-w2E"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <inset key="titleEdgeInsets" minX="-6" minY="20" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="13" minY="0.0" maxX="0.0" maxY="20"/>
+                                                <state key="normal" title="设置" image="Menu_Icon_Setting">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rr-aD-4Jp">
+                                                <rect key="frame" x="0.0" y="0.0" width="79" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="HBF-VG-wbo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                <inset key="titleEdgeInsets" minX="-5" minY="20" maxX="-2" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="22"/>
+                                                <state key="normal" title="收藏" image="Menu_Icon_Collect">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="M7n-zf-GHo" firstAttribute="top" secondItem="Vpi-pW-qZa" secondAttribute="top" id="D2P-Jd-mIu"/>
+                                            <constraint firstAttribute="height" constant="45" id="Oac-XU-7q4"/>
+                                            <constraint firstItem="dXc-ZF-tCg" firstAttribute="top" secondItem="Vpi-pW-qZa" secondAttribute="top" id="SFh-T0-Om8"/>
+                                            <constraint firstItem="1rr-aD-4Jp" firstAttribute="top" secondItem="Vpi-pW-qZa" secondAttribute="top" id="SOl-rc-hcm"/>
+                                            <constraint firstAttribute="bottom" secondItem="1rr-aD-4Jp" secondAttribute="bottom" id="XBe-Vb-T8X"/>
+                                            <constraint firstItem="dXc-ZF-tCg" firstAttribute="width" secondItem="1rr-aD-4Jp" secondAttribute="width" id="YA5-ze-Zlx"/>
+                                            <constraint firstItem="dXc-ZF-tCg" firstAttribute="leading" secondItem="M7n-zf-GHo" secondAttribute="trailing" id="cLH-9H-e0f"/>
+                                            <constraint firstItem="1rr-aD-4Jp" firstAttribute="leading" secondItem="Vpi-pW-qZa" secondAttribute="leading" id="dwn-DJ-au0"/>
+                                            <constraint firstItem="M7n-zf-GHo" firstAttribute="leading" secondItem="1rr-aD-4Jp" secondAttribute="trailing" id="eXO-KY-2ie"/>
+                                            <constraint firstAttribute="bottom" secondItem="dXc-ZF-tCg" secondAttribute="bottom" id="kz5-el-rZ2"/>
+                                            <constraint firstAttribute="trailing" secondItem="dXc-ZF-tCg" secondAttribute="trailing" id="pt0-at-bvj"/>
+                                            <constraint firstItem="M7n-zf-GHo" firstAttribute="width" secondItem="1rr-aD-4Jp" secondAttribute="width" id="v2Z-ts-9Hy"/>
+                                            <constraint firstAttribute="bottom" secondItem="M7n-zf-GHo" secondAttribute="bottom" id="yDM-X7-Fs9"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaB-3F-yPX">
+                                        <rect key="frame" x="0.0" y="607" width="257.5" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGz-Uz-zAf">
+                                                <rect key="frame" x="0.0" y="0.0" width="129" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="yHJ-B3-IXF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <state key="normal" title="离线下载" image="Menu_Download">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtF-as-kpE">
+                                                <rect key="frame" x="129" y="0.0" width="128.5" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="Ip0-11-836"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <state key="normal" title="夜间" image="Menu_Dark">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="AAB-Mm-nz8"/>
+                                            <constraint firstItem="ZGz-Uz-zAf" firstAttribute="top" secondItem="oaB-3F-yPX" secondAttribute="top" id="ARX-wZ-Rfy"/>
+                                            <constraint firstItem="HtF-as-kpE" firstAttribute="top" secondItem="oaB-3F-yPX" secondAttribute="top" id="BHc-N8-pRn"/>
+                                            <constraint firstAttribute="trailing" secondItem="HtF-as-kpE" secondAttribute="trailing" id="COf-mA-BNV"/>
+                                            <constraint firstAttribute="bottom" secondItem="HtF-as-kpE" secondAttribute="bottom" id="IUm-Jw-BLO"/>
+                                            <constraint firstItem="ZGz-Uz-zAf" firstAttribute="leading" secondItem="oaB-3F-yPX" secondAttribute="leading" id="ONV-Qh-rWQ"/>
+                                            <constraint firstItem="HtF-as-kpE" firstAttribute="leading" secondItem="ZGz-Uz-zAf" secondAttribute="trailing" id="T6q-jn-NDQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZGz-Uz-zAf" secondAttribute="bottom" id="b78-er-Rru"/>
+                                            <constraint firstItem="HtF-as-kpE" firstAttribute="width" secondItem="ZGz-Uz-zAf" secondAttribute="width" id="jgd-nZ-vjy"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gGL-Y4-swV">
+                                        <rect key="frame" x="0.0" y="125" width="257.5" height="482"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Vpi-pW-qZa" firstAttribute="top" secondItem="jE7-w4-clk" secondAttribute="bottom" constant="15" id="1Qf-Ny-bie"/>
+                                    <constraint firstItem="ddV-xP-11r" firstAttribute="centerY" secondItem="jE7-w4-clk" secondAttribute="centerY" id="9fh-14-c4q"/>
+                                    <constraint firstAttribute="trailing" secondItem="gGL-Y4-swV" secondAttribute="trailing" id="Duw-Xd-yK1"/>
+                                    <constraint firstItem="jE7-w4-clk" firstAttribute="leading" secondItem="L5l-cd-AzP" secondAttribute="leading" constant="15" id="FZ9-SK-9Eb"/>
+                                    <constraint firstItem="ddV-xP-11r" firstAttribute="leading" secondItem="jE7-w4-clk" secondAttribute="trailing" constant="20" id="Fv2-av-wnZ"/>
+                                    <constraint firstItem="oaB-3F-yPX" firstAttribute="top" secondItem="gGL-Y4-swV" secondAttribute="bottom" id="GLz-HX-hVR"/>
+                                    <constraint firstAttribute="trailing" secondItem="oaB-3F-yPX" secondAttribute="trailing" id="Jql-r4-3Ab"/>
+                                    <constraint firstItem="oaB-3F-yPX" firstAttribute="leading" secondItem="L5l-cd-AzP" secondAttribute="leading" id="OVy-Oq-gvU"/>
+                                    <constraint firstItem="Vpi-pW-qZa" firstAttribute="leading" secondItem="L5l-cd-AzP" secondAttribute="leading" id="UDQ-S6-JVI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vpi-pW-qZa" secondAttribute="trailing" constant="20" id="bKc-25-Ffe"/>
+                                    <constraint firstAttribute="bottom" secondItem="oaB-3F-yPX" secondAttribute="bottom" id="j3S-Pu-j4O"/>
+                                    <constraint firstItem="gGL-Y4-swV" firstAttribute="top" secondItem="Vpi-pW-qZa" secondAttribute="bottom" id="nra-N3-AEq"/>
+                                    <constraint firstItem="jE7-w4-clk" firstAttribute="top" secondItem="L5l-cd-AzP" secondAttribute="top" constant="30" id="vfz-Xd-qa4"/>
+                                    <constraint firstItem="gGL-Y4-swV" firstAttribute="leading" secondItem="L5l-cd-AzP" secondAttribute="leading" id="yKW-6b-eyq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <constraints>
@@ -78,5 +209,13 @@
             <point key="canvasLocation" x="-714.39999999999998" y="-861.3193403298352"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Account_Avatar" width="80" height="80"/>
+        <image name="Menu_Dark" width="22" height="22"/>
+        <image name="Menu_Download" width="22" height="22"/>
+        <image name="Menu_Icon_Collect" width="20" height="20"/>
+        <image name="Menu_Icon_Message" width="20" height="20"/>
+        <image name="Menu_Icon_Setting" width="20" height="20"/>
+    </resources>
     <color key="tintColor" red="0.12919012802403149" green="0.64538826302784247" blue="0.99252361059188843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
