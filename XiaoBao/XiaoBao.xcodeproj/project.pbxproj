@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */; };
+		9A3C18621E582FA400B76999 /* UIView+YAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C18611E582FA400B76999 /* UIView+YAExtension.m */; };
 		9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E11E5489F40099900F /* YARootViewController.m */; };
 		9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E41E548A290099900F /* YASideViewController.m */; };
 		9A4CA4E81E548A980099900F /* YAHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CA4E71E548A980099900F /* YAHomeViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A3C18601E582FA400B76999 /* UIView+YAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YAExtension.h"; sourceTree = "<group>"; };
+		9A3C18611E582FA400B76999 /* UIView+YAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YAExtension.m"; sourceTree = "<group>"; };
 		9A4CA4E01E5489F40099900F /* YARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YARootViewController.h; sourceTree = "<group>"; };
 		9A4CA4E11E5489F40099900F /* YARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YARootViewController.m; sourceTree = "<group>"; };
 		9A4CA4E31E548A290099900F /* YASideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASideViewController.h; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				9ADBF3081E542ACD001F8565 /* YAPrefixHeader.pch */,
 				9A5C154B1E5524FD003BE177 /* YAProgressHUD.h */,
 				9A5C154C1E5524FD003BE177 /* YAProgressHUD.m */,
+				9A3C18601E582FA400B76999 /* UIView+YAExtension.h */,
+				9A3C18611E582FA400B76999 /* UIView+YAExtension.m */,
 			);
 			path = "工具";
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4CA4F01E5497820099900F /* YAStoryItem.m in Sources */,
+				9A3C18621E582FA400B76999 /* UIView+YAExtension.m in Sources */,
 				9A5C15531E558068003BE177 /* YAHomeHeaderView.m in Sources */,
 				9A4CA4E81E548A980099900F /* YAHomeViewController.m in Sources */,
 				9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */,

@@ -14,6 +14,7 @@
 #import "YAProgressHUD.h"
 #import "YASectionHeaderView.h"
 #import "YAHomeHeaderView.h"
+#import <RESideMenu.h>
 #define kHeaderViewHeight 200
 #define kMargin 10
 #define kRefreshViewWH 18
@@ -33,7 +34,7 @@
 @property (nonatomic,strong) UILabel *titleLabel;
 @property (nonatomic,strong) YAHomeHeaderView *headerView;
 
-
+@property (nonatomic,weak) UIButton *sideMenuButton;
 @end
 
 @implementation YAHomeViewController
@@ -102,7 +103,18 @@ static NSString *reuseIdentifier = @"story";
     return _titleLabel;
 }
 
-
+- (UIButton *)sideMenuButton {
+    if (_sideMenuButton == nil) {
+        UIButton *menuButton = [[UIButton alloc] init];
+        [self.view addSubview:menuButton];
+        menuButton.frame = CGRectMake(-10, 0, 60, 40);
+        menuButton.centerY = 37;
+        [menuButton setImage:kGetImage(@"Home_Icon") forState:UIControlStateNormal];
+        [menuButton setImage:kGetImage(@"Home_Icon_Highlight") forState:UIControlStateHighlighted];
+        _sideMenuButton = menuButton;
+    }
+    return _sideMenuButton;
+}
 
 #pragma mark - view初始化
 - (void)viewDidLoad {
@@ -117,11 +129,16 @@ static NSString *reuseIdentifier = @"story";
     
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.titleLabel];
+    
+    
+    // 设置刷新控件
+    self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
     self.view.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
     YARefreshHeader *refreahHeader = (YARefreshHeader *)self.view.ya_refreshHeader;
     refreahHeader.attachScrollView = self.tableView;
 
-    
+    // 设置侧滑
+    [self.sideMenuButton addTarget:self action:@selector(setupSideMenu) forControlEvents:UIControlEventTouchUpInside];
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     // 注册sectionHeaderView
@@ -129,14 +146,18 @@ static NSString *reuseIdentifier = @"story";
 
     
     
-    // 设置刷新控件
-    self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
+    
 
 
     [refreahHeader beginRefreshing];
 
 }
 
+
+#pragma mark - 侧滑配置
+- (void)setupSideMenu {
+    [self.sideMenuViewController presentLeftMenuViewController];
+}
 #pragma mark - 刷新
 // 加载更新
 - (void)refreshForNewStories {

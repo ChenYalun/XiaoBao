@@ -16,4 +16,6 @@
 #import "YARefreshHeader.h"
 #import "YAHTTPManager.h"
 
+// 分类
+#import "UIView+YAExtension.h"
 #endif /* YAPrefixHeader_pch */
