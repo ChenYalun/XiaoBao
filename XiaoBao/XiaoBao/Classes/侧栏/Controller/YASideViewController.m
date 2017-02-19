@@ -9,7 +9,9 @@
 #import "YASideViewController.h"
 #import "YAThemeTableViewCell.h"
 #import "YAThemeItem.h"
-
+#import <RESideMenu.h>
+#import "YAThemeViewController.h"
+#import "YAHomeViewController.h"
 static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 @interface YASideViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
@@ -34,6 +36,7 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
     if (_homeItem == nil) {
         _homeItem = [[YAThemeItem alloc] init];
         _homeItem.name = @"首页";
+        _homeItem.ID = @"首页";
     }
     return _homeItem;
 }
@@ -117,7 +120,24 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 }
 #pragma mark - tableView代理
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSString *themeID = self.themes[indexPath.row].ID;
+    if ([themeID isEqualToString:@"首页"]) {
+        
+        // 返回首页
+        YAHomeViewController *homeViewController = [[YAHomeViewController alloc] init];
+        [self.sideMenuViewController setContentViewController:homeViewController animated:YES];
+        [self.sideMenuViewController hideMenuViewController];
+        
+    } else {
+        YAThemeViewController *themeViewController = [[YAThemeViewController alloc] init];
+        themeViewController.themeID = themeID;
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:themeViewController];
+        [self.sideMenuViewController setContentViewController:navigationController animated:YES];
+        [self.sideMenuViewController hideMenuViewController];
+        
+    }
+ 
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

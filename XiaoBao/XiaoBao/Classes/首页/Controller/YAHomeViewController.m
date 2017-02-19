@@ -122,6 +122,7 @@ static NSString *reuseIdentifier = @"story";
     
     // 设置导航栏
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.navigationBar.hidden = YES;
 
     // 设置控件
     [self.view addSubview:self.tableView];

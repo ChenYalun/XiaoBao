@@ -41,8 +41,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="reV-za-5Wf" firstAttribute="trailing" secondItem="tFU-oU-cUL" secondAttribute="trailing" constant="-3" id="A2V-7O-p70"/>
+                    <constraint firstAttribute="trailing" secondItem="SEg-n7-GrJ" secondAttribute="trailing" constant="105" id="Gzs-yb-bhp"/>
                     <constraint firstItem="reV-za-5Wf" firstAttribute="bottom" secondItem="tFU-oU-cUL" secondAttribute="bottom" id="TI5-ls-thF"/>
-                    <constraint firstItem="tFU-oU-cUL" firstAttribute="leading" secondItem="SEg-n7-GrJ" secondAttribute="trailing" constant="10" id="UDD-Nd-B70"/>
                     <constraint firstItem="SEg-n7-GrJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gDB-F6-SGe"/>
                     <constraint firstItem="tFU-oU-cUL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="j1T-bh-EeF"/>
                     <constraint firstAttribute="trailing" secondItem="tFU-oU-cUL" secondAttribute="trailing" constant="15" id="oeD-9I-XQR"/>
@@ -53,6 +53,7 @@
                 <outlet property="multipleImageView" destination="reV-za-5Wf" id="hx1-8Q-ZHQ"/>
                 <outlet property="picImageView" destination="tFU-oU-cUL" id="aGg-v4-yNx"/>
                 <outlet property="titleLabel" destination="SEg-n7-GrJ" id="7AK-Zb-O4U"/>
+                <outlet property="titleLabelTrailingConstraint" destination="Gzs-yb-bhp" id="uh3-KQ-GZk"/>
             </connections>
             <point key="canvasLocation" x="-98" y="61"/>
         </tableViewCell>

@@ -26,8 +26,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"]];
+    self.contentViewController = navigationController;
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
 
     // 设置代理

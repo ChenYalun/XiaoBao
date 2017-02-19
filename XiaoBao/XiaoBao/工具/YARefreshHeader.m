@@ -128,10 +128,25 @@ NSString *const YARefreshKeyPathPanState = @"state";
     [self.pan addObserver:self forKeyPath:YARefreshKeyPathPanState options:options context:nil];
 }
 
+#warning KVO错误
 - (void)removeObservers
 {
+    // 注意:添加 移除一定要对应
     [self.attachScrollView removeObserver:self forKeyPath:YARefreshKeyPathContentOffset];
-    [self.attachScrollView removeObserver:self forKeyPath:YARefreshKeyPathPanState];
+    [self.pan removeObserver:self forKeyPath:YARefreshKeyPathPanState];
+    
+    
+    // 通过下列方法找出错误
+    @try{
+       [self.attachScrollView removeObserver:self forKeyPath:YARefreshKeyPathPanState];
+    }@catch(id anException){
+        //do nothing, obviously it wasn't attached because an exception was thrown
+        // NSLog(@"%@",anException);
+    }
+    
+
+    
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

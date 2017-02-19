@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 // 多图
 @property (weak, nonatomic) IBOutlet UIImageView *multipleImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelTrailingConstraint;
 
 @end
 @implementation YAStoryTableViewCell
@@ -23,17 +24,29 @@
 - (void)setStory:(YAStoryItem *)story {
     _story = story;
 
+    // 配图
+    if (story.images.count > 0) {
+        self.picImageView.hidden = NO;
+        [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+        self.titleLabelTrailingConstraint.constant = 105;
+        
+    } else {
+        self.picImageView.hidden = YES;
+        self.titleLabelTrailingConstraint.constant = 15;
+    }
     
-    [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
 
-    
-    self.titleLabel.text = story.title;
-    
-    if (story.multipic) {
+    // 多图展示
+    if (story.multipic && story.images.count > 0) {
         self.multipleImageView.hidden = NO;
     } else {
         self.multipleImageView.hidden = YES;
     }
+
+    // 标题
+    self.titleLabel.text = story.title;
+
+
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
