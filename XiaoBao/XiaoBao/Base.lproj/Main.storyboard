@@ -59,7 +59,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5l-cd-AzP">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5l-cd-AzP">
                                 <rect key="frame" x="0.0" y="0.0" width="257.5" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account_Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="jE7-w4-clk">
@@ -171,12 +171,16 @@
                                             <constraint firstItem="HtF-as-kpE" firstAttribute="width" secondItem="ZGz-Uz-zAf" secondAttribute="width" id="jgd-nZ-vjy"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gGL-Y4-swV">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gGL-Y4-swV">
                                         <rect key="frame" x="0.0" y="125" width="257.5" height="482"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="2hJ-9q-GGb" id="u0c-gG-do1"/>
+                                            <outlet property="delegate" destination="2hJ-9q-GGb" id="laO-OF-QLL"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1389620304107666" green="0.16504672169685364" blue="0.19779863953590393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Vpi-pW-qZa" firstAttribute="top" secondItem="jE7-w4-clk" secondAttribute="bottom" constant="15" id="1Qf-Ny-bie"/>
                                     <constraint firstItem="ddV-xP-11r" firstAttribute="centerY" secondItem="jE7-w4-clk" secondAttribute="centerY" id="9fh-14-c4q"/>
@@ -203,6 +207,9 @@
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="themeTableView" destination="gGL-Y4-swV" id="caW-ju-TUZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igt-qX-kOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
