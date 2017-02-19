@@ -7,7 +7,9 @@
 //
 
 #import "YAThemeTableViewCell.h"
-
+#define kFontSize 15
+#define kEdgeMargin 15
+#define kNameLabelLeading 50
 @interface YAThemeTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *homeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *themeNameLabel;
@@ -25,22 +27,38 @@
     
     if ([theme.name isEqualToString:@"首页"]) {
         self.homeImageView.hidden = NO;
-        self.nameLabelLeadingConstraint.constant = 50;
+        self.nameLabelLeadingConstraint.constant = kNameLabelLeading;
     } else {
         self.homeImageView.hidden = YES;
-        self.nameLabelLeadingConstraint.constant = 15;
+        self.nameLabelLeadingConstraint.constant = kEdgeMargin;
     }
     
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+
+   
 }
 
+#pragma mark - 选中状态
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    if (selected) {
+        self.themeNameLabel.textColor = [UIColor whiteColor];
+        self.themeNameLabel.font = [UIFont boldSystemFontOfSize:kFontSize];
+        [self.homeImageView setHighlighted:YES];
+        // 设置选中背景颜色
+        self.contentView.backgroundColor = kRGBColor(27, 34, 42);
+    } else {
+        self.themeNameLabel.textColor = [UIColor lightGrayColor];
+        self.themeNameLabel.font = [UIFont systemFontOfSize:kFontSize];
+        [self.homeImageView setHighlighted:NO];
+        self.contentView.backgroundColor = kRGBColor(35, 42, 50);
+     
+    }
+    
+    
 }
 - (IBAction)subscribeStoryTheme:(UIButton *)sender {
 }
