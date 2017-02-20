@@ -160,9 +160,7 @@ static NSString *reuseIdentifier = @"story";
     [self.sideMenuViewController presentLeftMenuViewController];
 }
 
-- (void)dealloc {
-    NSLog(@"主页控制器销毁");
-}
+
 #pragma mark - 刷新
 // 加载更新
 - (void)refreshForNewStories {

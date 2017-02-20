@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YAThemeViewController">
             <connections>
+                <outlet property="refreshHeader" destination="fo5-77-3c1" id="aLV-mX-v59"/>
                 <outlet property="tableView" destination="aeQ-kY-Mbe" id="JVu-TN-1t5"/>
                 <outlet property="titleLabel" destination="qbC-vR-PbC" id="vh5-kt-DUs"/>
                 <outlet property="topBackgroundImageHeightConstraint" destination="EpZ-4Z-HdG" id="iax-N6-EP5"/>
@@ -32,7 +33,7 @@
                         <outlet property="delegate" destination="-1" id="4Dh-s4-bFb"/>
                     </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iks-eu-JlY">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iks-eu-JlY">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="EpZ-4Z-HdG"/>
@@ -46,8 +47,8 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主题日报" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-vR-PbC">
-                    <rect key="frame" x="153" y="31.5" width="69.5" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="151" y="31.5" width="73.5" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -64,7 +65,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkn-xn-DZl">
-                    <rect key="frame" x="10" y="27" width="30" height="30"/>
+                    <rect key="frame" x="8" y="27" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="dcJ-zG-V1e"/>
                         <constraint firstAttribute="width" constant="30" id="zQY-YW-bG4"/>
@@ -74,6 +75,13 @@
                         <action selector="presentMenuViewController:" destination="-1" eventType="touchUpInside" id="Phw-Dz-RcU"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fo5-77-3c1" customClass="YARefreshHeader">
+                    <rect key="frame" x="121" y="32" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="sbE-p3-fIx"/>
+                        <constraint firstAttribute="height" constant="20" id="vcU-4K-Qcm"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -87,12 +95,14 @@
                 <constraint firstItem="Tyz-A5-8np" firstAttribute="centerY" secondItem="qbC-vR-PbC" secondAttribute="centerY" id="UMX-BY-Gi5"/>
                 <constraint firstItem="qbC-vR-PbC" firstAttribute="centerX" secondItem="ZQt-N4-gzO" secondAttribute="centerX" id="WY8-DB-DUL"/>
                 <constraint firstItem="Pkn-xn-DZl" firstAttribute="centerY" secondItem="qbC-vR-PbC" secondAttribute="centerY" id="ZWD-25-p0R"/>
-                <constraint firstItem="Pkn-xn-DZl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="bUQ-EN-Cl9"/>
+                <constraint firstItem="Pkn-xn-DZl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="bUQ-EN-Cl9"/>
+                <constraint firstItem="fo5-77-3c1" firstAttribute="centerY" secondItem="ZQt-N4-gzO" secondAttribute="centerY" id="fw2-F4-kPe"/>
                 <constraint firstAttribute="trailing" secondItem="iks-eu-JlY" secondAttribute="trailing" id="kq5-UZ-y1n"/>
                 <constraint firstItem="iks-eu-JlY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lAO-V5-bqp"/>
                 <constraint firstItem="aeQ-kY-Mbe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qsI-Lv-FUO"/>
                 <constraint firstItem="ZQt-N4-gzO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r0T-9v-Z4V"/>
                 <constraint firstAttribute="trailing" secondItem="aeQ-kY-Mbe" secondAttribute="trailing" id="tKT-Rf-Cg7"/>
+                <constraint firstItem="qbC-vR-PbC" firstAttribute="leading" secondItem="fo5-77-3c1" secondAttribute="trailing" constant="10" id="uvr-h4-UDE"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="75.5"/>
         </view>

@@ -17,10 +17,7 @@
 /** scrollView偏移量Y */
 @property (nonatomic,assign) CGFloat attachViewOffsetY;
 
-/** 回调对象 */
-@property (weak, nonatomic) id refreshingTarget;
-/** 回调方法 */
-@property (assign, nonatomic) SEL refreshingAction;
+
 @end
 @implementation YARefreshHeader
 

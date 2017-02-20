@@ -12,7 +12,7 @@
 #import "YARefreshHeader.h"
 #import "YAThemeStoryItem.h"
 #import <YYWebImageManager.h>
-#import <MJRefresh.h>
+
 #import <GPUImage.h>
 #import <RESideMenu.h>
 static NSString *reuseIdentifier = @"story";
@@ -23,7 +23,11 @@ static NSString *reuseIdentifier = @"story";
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBackgroundImageHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
+/** 刷新控件 */
+@property (weak, nonatomic) IBOutlet YARefreshHeader *refreshHeader;
+/** 高斯模糊 */
+@property (nonatomic,strong) GPUImageGaussianBlurFilter * blurFilter;
+@property (nonatomic,strong) UIImage *topBackgroundImage;
 @end
 
 @implementation YAThemeViewController
@@ -44,47 +48,24 @@ static NSString *reuseIdentifier = @"story";
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    
-    self.view.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
 
-    self.view.ya_refreshHeader.attachScrollView = self.tableView;
+
+    self.refreshHeader.refreshingTarget = self;
+    self.refreshHeader.refreshingAction = @selector(refreshForNewStories);
+    self.refreshHeader.attachScrollView = self.tableView;
     
-    [self.view.ya_refreshHeader beginRefreshing];
+    [self.refreshHeader beginRefreshing];
     
-//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
-//    
-//    [self.tableView.mj_header beginRefreshing];
-}
-- (void)dealloc {
-    kLog(@"主题控制器销毁");
+
 }
 
-#pragma mark - 设置导航栏
-- (void)setupNavigationBar {
-    // 设置导航条
-    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
-    
-    // 设置导航栏按钮
-    UIButton *leftButton = [[UIButton alloc] init];
-    [leftButton setImage:kGetImage(@"Dark_News_Arrow") forState:UIControlStateNormal];
-    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-    [leftButton sizeToFit];
-    [leftButton addTarget:self action:@selector(presentMenuViewController) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    
-    UIButton *rightButton = [[UIButton alloc] init];
-    [rightButton setImage:kGetImage(@"Dark_Management_Add") forState:UIControlStateNormal];
-    [rightButton setImage:kGetImage(@"Dark_Management_Cancel") forState:UIControlStateSelected];
-    
-    [rightButton sizeToFit];
-    [rightButton addTarget:self action:@selector(subscribeTheme:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+- (GPUImageGaussianBlurFilter *)blurFilter {
+    if (_blurFilter == nil) {
+        _blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
+    }
+    return _blurFilter;
 }
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -92,14 +73,7 @@ static NSString *reuseIdentifier = @"story";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    
 
-    
-    
-    
-}
 #pragma mark - 导航栏按钮事件
 - (IBAction)presentMenuViewController:(UIButton *)sender {
     [self.sideMenuViewController presentLeftMenuViewController];
@@ -120,18 +94,21 @@ static NSString *reuseIdentifier = @"story";
     
     
     requestSuccessBlock sblock = ^(id responseObject){
-        //[self.tableView.mj_header endRefreshing];
+
         YAThemeStoryItem *themeStoryItem = [YAThemeStoryItem themeStoryItemWithKeyValues:responseObject];
         self.stories = (NSMutableArray *)themeStoryItem.stories;
         
         // 设置导航视图
-        [[YYWebImageManager sharedManager]  requestImageWithURL:[NSURL URLWithString:themeStoryItem.image] options:YYWebImageOptionShowNetworkActivity progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+        [[YYWebImageManager sharedManager]  requestImageWithURL:[NSURL URLWithString:themeStoryItem.background] options:YYWebImageOptionShowNetworkActivity progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+            
+            self.topBackgroundImage = image;
+//            NSString *imageKey = [[YYWebImageManager sharedManager] cacheKeyForURL:self.topImageUrl];
+//            UIImage *image = [[YYImageCache sharedCache] getImageForKey:imageKey];
             
             // 高斯模糊
             dispatch_async(dispatch_get_main_queue(), ^{
-                GPUImageGaussianBlurFilter * blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
-                blurFilter.blurRadiusInPixels = 10;// 模糊程度
-                UIImage *blurredImage = [blurFilter imageByFilteringImage:image];
+                self.blurFilter.blurRadiusInPixels = 10;// 模糊程度
+                UIImage *blurredImage = [self.blurFilter imageByFilteringImage:image];
                 self.topBackgroundImageView.image = blurredImage;
             });
 
@@ -149,7 +126,7 @@ static NSString *reuseIdentifier = @"story";
     
     
     requestFailureBlock fblock = ^(NSError *error){
-        //[self.tableView.mj_header endRefreshing];
+   
         kLog(@"刷新失败");
     };
     
@@ -176,14 +153,30 @@ static NSString *reuseIdentifier = @"story";
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    if (-offsetY > 0) {
-        self.topBackgroundImageHeightConstraint.constant = 64 - offsetY;
+    CGPoint contentOffset = scrollView.contentOffset;
+    
+    // 图片拉伸
+    if (-contentOffset.y > 0) {
+        self.topBackgroundImageHeightConstraint.constant = 64 - contentOffset.y;
     } else {
         self.topBackgroundImageHeightConstraint.constant = 64;
     }
     
-    kLog(@"%f",-offsetY);
+    
+    
+    // 禁止继续向下拉动
+    if (-contentOffset.y > 130) {
+        
+        contentOffset.y = -130;
+        scrollView.contentOffset = contentOffset;
+    }
+
+    
+    // 处理图片高斯模糊10---0  0----130
+    self.blurFilter.blurRadiusInPixels = 10 - (-contentOffset.y / 130.0) * 10;
+    UIImage *blurredImage = [self.blurFilter imageByFilteringImage:self.topBackgroundImage];
+    
+    self.topBackgroundImageView.image = blurredImage;
     
 }
 
