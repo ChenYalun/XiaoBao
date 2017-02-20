@@ -15,6 +15,7 @@
 #import "YASectionHeaderView.h"
 #import "YAHomeHeaderView.h"
 #import <RESideMenu.h>
+#import "YAEditorListTableViewController.h"
 #define kHeaderViewHeight 200
 #define kMargin 10
 #define kRefreshViewWH 18
@@ -131,7 +132,7 @@ static NSString *reuseIdentifier = @"story";
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.titleLabel];
     
-    
+    self.tableView.separatorColor = kRGBAColor(237, 237, 237, 0.8);
     // 设置刷新控件
     self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
     self.view.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
@@ -332,5 +333,10 @@ static NSString *reuseIdentifier = @"story";
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    YAEditorListTableViewController *v = [[YAEditorListTableViewController alloc] init];
+    [((UINavigationController *)self.sideMenuViewController.contentViewController) pushViewController:v animated:YES];
+
+}
 
 @end

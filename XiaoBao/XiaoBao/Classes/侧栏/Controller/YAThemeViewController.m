@@ -12,9 +12,11 @@
 #import "YARefreshHeader.h"
 #import "YAThemeStoryItem.h"
 #import <YYWebImageManager.h>
-
+#import "YAThemeTableViewHeader.h"
 #import <GPUImage.h>
 #import <RESideMenu.h>
+#import "YAEditorItem.h"
+#import "YAEditorListTableViewController.h"
 static NSString *reuseIdentifier = @"story";
 @interface YAThemeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,6 +30,9 @@ static NSString *reuseIdentifier = @"story";
 /** 高斯模糊 */
 @property (nonatomic,strong) GPUImageGaussianBlurFilter * blurFilter;
 @property (nonatomic,strong) UIImage *topBackgroundImage;
+
+
+@property (nonatomic,strong) UITapGestureRecognizer *tap;
 @end
 
 @implementation YAThemeViewController
@@ -38,6 +43,14 @@ static NSString *reuseIdentifier = @"story";
     }
     return _stories;
 }
+
+- (UITapGestureRecognizer *)tap {
+    if (_tap == nil) {
+        _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nnnnn)];
+        
+    }
+    return _tap;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -46,6 +59,12 @@ static NSString *reuseIdentifier = @"story";
     
     self.navigationController.navigationBar.hidden = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    // 设置tableView header
+    YAThemeTableViewHeader *headerView = [YAThemeTableViewHeader header];
+    self.tableView.tableHeaderView = headerView;
+
+    [self.tableView.tableHeaderView addGestureRecognizer:self.tap];
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
 
@@ -66,12 +85,17 @@ static NSString *reuseIdentifier = @"story";
     return _blurFilter;
 }
 
-
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+        self.tableView.tableHeaderView.height = 44;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 #pragma mark - 导航栏按钮事件
@@ -83,10 +107,13 @@ static NSString *reuseIdentifier = @"story";
 - (IBAction)subscribeTheme:(UIButton *)sender {
     if (sender.selected) {
         // 取消订阅
+        
     } else {
         // 订阅
     }
+    sender.selected = !sender.selected;
 }
+
 
 #pragma mark - 刷新
 - (void)refreshForNewStories {
@@ -98,12 +125,16 @@ static NSString *reuseIdentifier = @"story";
         YAThemeStoryItem *themeStoryItem = [YAThemeStoryItem themeStoryItemWithKeyValues:responseObject];
         self.stories = (NSMutableArray *)themeStoryItem.stories;
         
+        // 设置tableView header
+        YAThemeTableViewHeader *header = (YAThemeTableViewHeader *)self.tableView.tableHeaderView;
+        header.editors = [YAEditorItem itemsWithKeyValues:responseObject];
+        
+        
         // 设置导航视图
         [[YYWebImageManager sharedManager]  requestImageWithURL:[NSURL URLWithString:themeStoryItem.background] options:YYWebImageOptionShowNetworkActivity progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
             
             self.topBackgroundImage = image;
-//            NSString *imageKey = [[YYWebImageManager sharedManager] cacheKeyForURL:self.topImageUrl];
-//            UIImage *image = [[YYImageCache sharedCache] getImageForKey:imageKey];
+
             
             // 高斯模糊
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -115,6 +146,7 @@ static NSString *reuseIdentifier = @"story";
             
         }];
         
+        // 设置标题
         self.titleLabel.text = themeStoryItem.name;
 
         
@@ -173,11 +205,29 @@ static NSString *reuseIdentifier = @"story";
 
     
     // 处理图片高斯模糊10---0  0----130
-    self.blurFilter.blurRadiusInPixels = 10 - (-contentOffset.y / 130.0) * 10;
-    UIImage *blurredImage = [self.blurFilter imageByFilteringImage:self.topBackgroundImage];
+    if (-contentOffset.y > 0 && -contentOffset.y <= 130) {
+        self.blurFilter.blurRadiusInPixels = 10 - (-contentOffset.y / 130.0) * 10;
+        UIImage *blurredImage = [self.blurFilter imageByFilteringImage:self.topBackgroundImage];
+        
+        self.topBackgroundImageView.image = blurredImage;
+    } else {
+        self.blurFilter.blurRadiusInPixels = 10;
+    }
     
-    self.topBackgroundImageView.image = blurredImage;
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    YAEditorListTableViewController *editorViewController = [[YAEditorListTableViewController alloc] init];
+
+    [self.navigationController pushViewController:editorViewController animated:YES];
+    
+    //[((UINavigationController *)self.sideMenuViewController.contentViewController) pushViewController:editorViewController animated:YES];
+}
+
+- (void)nnnnn {
+    YAEditorListTableViewController *editorViewController = [[YAEditorListTableViewController alloc] init];
+    [self.navigationController pushViewController:editorViewController animated:YES];
+    
+}
 @end

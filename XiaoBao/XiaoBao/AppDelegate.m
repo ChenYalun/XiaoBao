@@ -27,6 +27,9 @@
     [UINavigationBar appearance].barTintColor = kGlobalColor;
 
 
+    // 笔记
+    // 1,设置tableView分割线全屏 可直接在cell 的xib中设置分割线 间距(默认距左边15)
+    
     
     
     
