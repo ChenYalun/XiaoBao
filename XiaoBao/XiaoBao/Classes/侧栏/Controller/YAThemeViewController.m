@@ -19,7 +19,10 @@ static NSString *reuseIdentifier = @"story";
 @interface YAThemeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray <YAStoryItem *> *stories;
+@property (weak, nonatomic) IBOutlet UIImageView *topBackgroundImageView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBackgroundImageHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -33,30 +36,15 @@ static NSString *reuseIdentifier = @"story";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 设置导航条
-    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSForegroundColorAttributeName : [UIColor whiteColor]};
     
-    UIButton *leftButton = [[UIButton alloc] init];
-    [leftButton setImage:kGetImage(@"Dark_News_Arrow") forState:UIControlStateNormal];
-    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-    [leftButton sizeToFit];
-    [leftButton addTarget:self action:@selector(presentMenuViewController) forControlEvents:UIControlEventTouchUpInside];
     
-
+    //[self setupNavigationBar];
     
-    UIButton *rightButton = [[UIButton alloc] init];
-    [rightButton setImage:kGetImage(@"Dark_Management_Add") forState:UIControlStateNormal];
-    [rightButton setImage:kGetImage(@"Dark_Management_Cancel") forState:UIControlStateSelected];
-
-    [rightButton sizeToFit];
-    [rightButton addTarget:self action:@selector(subscribeTheme:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-    
+    self.navigationController.navigationBar.hidden = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    
+//    
 //    self.tableView.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
 //
 //    self.tableView.ya_refreshHeader.attachScrollView = self.tableView;
@@ -67,6 +55,35 @@ static NSString *reuseIdentifier = @"story";
     
     [self.tableView.mj_header beginRefreshing];
 }
+
+
+#pragma mark - 设置导航栏
+- (void)setupNavigationBar {
+    // 设置导航条
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSForegroundColorAttributeName : [UIColor whiteColor]};
+    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    
+    // 设置导航栏按钮
+    UIButton *leftButton = [[UIButton alloc] init];
+    [leftButton setImage:kGetImage(@"Dark_News_Arrow") forState:UIControlStateNormal];
+    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+    [leftButton sizeToFit];
+    [leftButton addTarget:self action:@selector(presentMenuViewController) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    UIButton *rightButton = [[UIButton alloc] init];
+    [rightButton setImage:kGetImage(@"Dark_Management_Add") forState:UIControlStateNormal];
+    [rightButton setImage:kGetImage(@"Dark_Management_Cancel") forState:UIControlStateSelected];
+    
+    [rightButton sizeToFit];
+    [rightButton addTarget:self action:@selector(subscribeTheme:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -82,13 +99,13 @@ static NSString *reuseIdentifier = @"story";
     
 }
 #pragma mark - 导航栏按钮事件
-- (void)presentMenuViewController {
+- (IBAction)presentMenuViewController:(UIButton *)sender {
     [self.sideMenuViewController presentLeftMenuViewController];
 }
 
 #warning 订阅
-- (void)subscribeTheme:(UIButton *)button {
-    if (button.selected) {
+- (IBAction)subscribeTheme:(UIButton *)sender {
+    if (sender.selected) {
         // 取消订阅
     } else {
         // 订阅
@@ -105,24 +122,21 @@ static NSString *reuseIdentifier = @"story";
         YAThemeStoryItem *themeStoryItem = [YAThemeStoryItem themeStoryItemWithKeyValues:responseObject];
         self.stories = (NSMutableArray *)themeStoryItem.stories;
         
-        // 设置导航栏
+        // 设置导航视图
         [[YYWebImageManager sharedManager]  requestImageWithURL:[NSURL URLWithString:themeStoryItem.image] options:YYWebImageOptionShowNetworkActivity progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
             
             // 高斯模糊
             dispatch_async(dispatch_get_main_queue(), ^{
                 GPUImageGaussianBlurFilter * blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
-                blurFilter.blurRadiusInPixels = 5;
+                blurFilter.blurRadiusInPixels = 10;// 模糊程度
                 UIImage *blurredImage = [blurFilter imageByFilteringImage:image];
-                [self.navigationController.navigationBar setBackgroundImage:blurredImage forBarMetrics:UIBarMetricsDefault];
+                self.topBackgroundImageView.image = blurredImage;
             });
-            
-            
-//            如果支持竖屏，那么应该设置UIBarMetricsDefault
-//            如果支持横屏，那么应该设置UIBarMetricsLandscapePhone
+
             
         }];
         
-        self.navigationItem.title = themeStoryItem.name;
+        self.titleLabel.text = themeStoryItem.name;
 
         
         
@@ -157,6 +171,18 @@ static NSString *reuseIdentifier = @"story";
     YAStoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.story = self.stories[indexPath.row];
     return cell;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (-offsetY > 0) {
+        self.topBackgroundImageHeightConstraint.constant = 64 - offsetY;
+    } else {
+        self.topBackgroundImageHeightConstraint.constant = 64;
+    }
+    
+    kLog(@"%f",-offsetY);
+    
 }
 
 @end

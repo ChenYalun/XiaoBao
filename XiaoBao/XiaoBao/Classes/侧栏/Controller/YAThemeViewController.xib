@@ -12,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YAThemeViewController">
             <connections>
                 <outlet property="tableView" destination="aeQ-kY-Mbe" id="JVu-TN-1t5"/>
+                <outlet property="titleLabel" destination="qbC-vR-PbC" id="vh5-kt-DUs"/>
+                <outlet property="topBackgroundImageHeightConstraint" destination="EpZ-4Z-HdG" id="iax-N6-EP5"/>
+                <outlet property="topBackgroundImageView" destination="iks-eu-JlY" id="aNb-a8-2Ly"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-kY-Mbe">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" red="0.9293137789" green="0.92946976420000005" blue="0.92929190399999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
@@ -29,15 +32,74 @@
                         <outlet property="delegate" destination="-1" id="4Dh-s4-bFb"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iks-eu-JlY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="EpZ-4Z-HdG"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQt-N4-gzO">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="s4E-ry-p0X"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主题日报" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-vR-PbC">
+                    <rect key="frame" x="153" y="31.5" width="69.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyz-A5-8np">
+                    <rect key="frame" x="335" y="27" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Qyj-3V-Zej"/>
+                        <constraint firstAttribute="width" constant="30" id="rJq-iA-lvz"/>
+                    </constraints>
+                    <state key="normal" image="Dark_Management_Add"/>
+                    <state key="selected" image="Dark_Management_Cancel"/>
+                    <connections>
+                        <action selector="subscribeTheme:" destination="-1" eventType="touchUpInside" id="h3S-I0-Tjd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkn-xn-DZl">
+                    <rect key="frame" x="10" y="27" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="dcJ-zG-V1e"/>
+                        <constraint firstAttribute="width" constant="30" id="zQY-YW-bG4"/>
+                    </constraints>
+                    <state key="normal" image="Dark_News_Arrow"/>
+                    <connections>
+                        <action selector="presentMenuViewController:" destination="-1" eventType="touchUpInside" id="Phw-Dz-RcU"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="aeQ-kY-Mbe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OEo-ql-jDm"/>
+                <constraint firstAttribute="trailing" secondItem="Tyz-A5-8np" secondAttribute="trailing" constant="10" id="D9U-Uu-QeZ"/>
+                <constraint firstItem="ZQt-N4-gzO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="DTj-md-H8F"/>
+                <constraint firstItem="iks-eu-JlY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FV3-5f-M8X"/>
+                <constraint firstItem="qbC-vR-PbC" firstAttribute="centerY" secondItem="ZQt-N4-gzO" secondAttribute="centerY" id="MO3-jK-8Yq"/>
+                <constraint firstItem="aeQ-kY-Mbe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="OEo-ql-jDm"/>
+                <constraint firstAttribute="trailing" secondItem="ZQt-N4-gzO" secondAttribute="trailing" id="RaK-GQ-ZYu"/>
                 <constraint firstAttribute="bottom" secondItem="aeQ-kY-Mbe" secondAttribute="bottom" id="SdL-Xh-P83"/>
+                <constraint firstItem="Tyz-A5-8np" firstAttribute="centerY" secondItem="qbC-vR-PbC" secondAttribute="centerY" id="UMX-BY-Gi5"/>
+                <constraint firstItem="qbC-vR-PbC" firstAttribute="centerX" secondItem="ZQt-N4-gzO" secondAttribute="centerX" id="WY8-DB-DUL"/>
+                <constraint firstItem="Pkn-xn-DZl" firstAttribute="centerY" secondItem="qbC-vR-PbC" secondAttribute="centerY" id="ZWD-25-p0R"/>
+                <constraint firstItem="Pkn-xn-DZl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="bUQ-EN-Cl9"/>
+                <constraint firstAttribute="trailing" secondItem="iks-eu-JlY" secondAttribute="trailing" id="kq5-UZ-y1n"/>
+                <constraint firstItem="iks-eu-JlY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lAO-V5-bqp"/>
                 <constraint firstItem="aeQ-kY-Mbe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qsI-Lv-FUO"/>
+                <constraint firstItem="ZQt-N4-gzO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r0T-9v-Z4V"/>
                 <constraint firstAttribute="trailing" secondItem="aeQ-kY-Mbe" secondAttribute="trailing" id="tKT-Rf-Cg7"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="75.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Dark_Management_Add" width="22" height="22"/>
+        <image name="Dark_Management_Cancel" width="22" height="22"/>
+        <image name="Dark_News_Arrow" width="22" height="22"/>
+    </resources>
 </document>

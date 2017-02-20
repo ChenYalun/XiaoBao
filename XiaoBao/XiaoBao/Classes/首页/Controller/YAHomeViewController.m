@@ -18,7 +18,7 @@
 #define kHeaderViewHeight 200
 #define kMargin 10
 #define kRefreshViewWH 18
-@interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
 /** 组新闻 */

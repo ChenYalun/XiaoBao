@@ -122,13 +122,17 @@ NSString *const YARefreshKeyPathPanState = @"state";
 - (void)addObservers
 {
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
-    [self.attachScrollView addObserver:self forKeyPath:YARefreshKeyPathContentOffset options:options context:nil];
     
-    self.pan = self.attachScrollView.panGestureRecognizer;
-    [self.pan addObserver:self forKeyPath:YARefreshKeyPathPanState options:options context:nil];
+    if (self.attachScrollView) {
+        [self.attachScrollView addObserver:self forKeyPath:YARefreshKeyPathContentOffset options:options context:nil];
+        self.pan = self.attachScrollView.panGestureRecognizer;
+        [self.pan addObserver:self forKeyPath:YARefreshKeyPathPanState options:options context:nil];
+    }
+    
+    
 }
 
-#warning KVO错误
+#warning KVO错误笔记
 - (void)removeObservers
 {
     // 注意:添加 移除一定要对应
@@ -154,6 +158,7 @@ NSString *const YARefreshKeyPathPanState = @"state";
     // 遇到这些情况就直接返回
     if (!self.userInteractionEnabled) return;
     
+  
     
     if ([keyPath isEqualToString:YARefreshKeyPathContentOffset]) {
         [self scrollViewContentOffsetDidChange:change];
