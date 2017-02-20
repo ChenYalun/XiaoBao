@@ -12,7 +12,7 @@
 
 @interface YARefreshHeader : UIView
 /** 绑定的scrollView */
-@property (nonatomic,weak) UIScrollView *attachScrollView;
+@property (nonatomic,strong) UIScrollView *attachScrollView; // 使用strong
 - (void)beginRefreshing;
 + (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action;
 @end

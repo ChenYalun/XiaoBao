@@ -135,8 +135,8 @@ static NSString *reuseIdentifier = @"story";
     // 设置刷新控件
     self.tableView.mj_footer = [YARefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(refreshForMoreStories)];
     self.view.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
-    YARefreshHeader *refreahHeader = (YARefreshHeader *)self.view.ya_refreshHeader;
-    refreahHeader.attachScrollView = self.tableView;
+
+    self.view.ya_refreshHeader.attachScrollView = self.tableView;
 
     // 设置侧滑
     [self.sideMenuButton addTarget:self action:@selector(setupSideMenu) forControlEvents:UIControlEventTouchUpInside];
@@ -150,7 +150,7 @@ static NSString *reuseIdentifier = @"story";
     
 
 
-    [refreahHeader beginRefreshing];
+    [self.view.ya_refreshHeader beginRefreshing];
 
 }
 
@@ -158,6 +158,10 @@ static NSString *reuseIdentifier = @"story";
 #pragma mark - 侧滑配置
 - (void)setupSideMenu {
     [self.sideMenuViewController presentLeftMenuViewController];
+}
+
+- (void)dealloc {
+    NSLog(@"主页控制器销毁");
 }
 #pragma mark - 刷新
 // 加载更新

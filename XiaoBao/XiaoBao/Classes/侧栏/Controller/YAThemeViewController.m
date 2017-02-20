@@ -9,7 +9,7 @@
 #import "YAThemeViewController.h"
 #import "YAStoryTableViewCell.h"
 #import "YAHTTPManager.h"
-//#import "YARefreshHeader.h"
+#import "YARefreshHeader.h"
 #import "YAThemeStoryItem.h"
 #import <YYWebImageManager.h>
 #import <MJRefresh.h>
@@ -44,18 +44,20 @@ static NSString *reuseIdentifier = @"story";
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-//    
-//    self.tableView.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
-//
-//    self.tableView.ya_refreshHeader.attachScrollView = self.tableView;
-//    
-//    [self.tableView.ya_refreshHeader beginRefreshing];
     
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
-    
-    [self.tableView.mj_header beginRefreshing];
-}
+    self.view.ya_refreshHeader = [YARefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
 
+    self.view.ya_refreshHeader.attachScrollView = self.tableView;
+    
+    [self.view.ya_refreshHeader beginRefreshing];
+    
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshForNewStories)];
+//    
+//    [self.tableView.mj_header beginRefreshing];
+}
+- (void)dealloc {
+    kLog(@"主题控制器销毁");
+}
 
 #pragma mark - 设置导航栏
 - (void)setupNavigationBar {
@@ -118,7 +120,7 @@ static NSString *reuseIdentifier = @"story";
     
     
     requestSuccessBlock sblock = ^(id responseObject){
-        [self.tableView.mj_header endRefreshing];
+        //[self.tableView.mj_header endRefreshing];
         YAThemeStoryItem *themeStoryItem = [YAThemeStoryItem themeStoryItemWithKeyValues:responseObject];
         self.stories = (NSMutableArray *)themeStoryItem.stories;
         
@@ -147,7 +149,7 @@ static NSString *reuseIdentifier = @"story";
     
     
     requestFailureBlock fblock = ^(NSError *error){
-        [self.tableView.mj_header endRefreshing];
+        //[self.tableView.mj_header endRefreshing];
         kLog(@"刷新失败");
     };
     

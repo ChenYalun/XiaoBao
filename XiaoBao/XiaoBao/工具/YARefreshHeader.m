@@ -14,7 +14,6 @@
 @property(nonatomic, weak) UIActivityIndicatorView *indicatorView;
 @property(nonatomic, weak) CAShapeLayer *whiteCircleLayer;
 @property(nonatomic, weak) CAShapeLayer *grayCircleLayer;
-@property (nonatomic,weak) UIPanGestureRecognizer *pan;
 /** scrollView偏移量Y */
 @property (nonatomic,assign) CGFloat attachViewOffsetY;
 
@@ -124,9 +123,12 @@ NSString *const YARefreshKeyPathPanState = @"state";
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
     
     if (self.attachScrollView) {
+        
+       // [self removeObservers];
+        
         [self.attachScrollView addObserver:self forKeyPath:YARefreshKeyPathContentOffset options:options context:nil];
-        self.pan = self.attachScrollView.panGestureRecognizer;
-        [self.pan addObserver:self forKeyPath:YARefreshKeyPathPanState options:options context:nil];
+
+        [self.attachScrollView.panGestureRecognizer addObserver:self forKeyPath:YARefreshKeyPathPanState options:options context:nil];
     }
     
     
@@ -137,7 +139,7 @@ NSString *const YARefreshKeyPathPanState = @"state";
 {
     // 注意:添加 移除一定要对应
     [self.attachScrollView removeObserver:self forKeyPath:YARefreshKeyPathContentOffset];
-    [self.pan removeObserver:self forKeyPath:YARefreshKeyPathPanState];
+    [self.attachScrollView.panGestureRecognizer removeObserver:self forKeyPath:YARefreshKeyPathPanState];
     
     
     // 通过下列方法找出错误
@@ -160,11 +162,11 @@ NSString *const YARefreshKeyPathPanState = @"state";
     
   
     
-    if ([keyPath isEqualToString:YARefreshKeyPathContentOffset]) {
+    if ([object isKindOfClass:[UIScrollView class]] && [keyPath isEqualToString:YARefreshKeyPathContentOffset]) {
         [self scrollViewContentOffsetDidChange:change];
     }
     
-    if ([keyPath isEqualToString:YARefreshKeyPathPanState]) {
+    if ([object isKindOfClass:[UIPanGestureRecognizer class]] && [keyPath isEqualToString:YARefreshKeyPathPanState]) {
         [self scrollViewPanStateDidChange:change];
     }
 
