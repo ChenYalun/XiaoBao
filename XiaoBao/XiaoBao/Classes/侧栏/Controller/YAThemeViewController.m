@@ -16,7 +16,7 @@
 #import <GPUImage.h>
 #import <RESideMenu.h>
 #import "YAEditorItem.h"
-#import "YAEditorListTableViewController.h"
+#import "YAEditorListViewController.h"
 static NSString *reuseIdentifier = @"story";
 @interface YAThemeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -220,7 +220,7 @@ static NSString *reuseIdentifier = @"story";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    YAEditorListTableViewController *editorViewController = [[YAEditorListTableViewController alloc] init];
+    YAEditorListViewController *editorViewController = [[YAEditorListViewController alloc] init];
 
     [self.navigationController pushViewController:editorViewController animated:YES];
     
@@ -237,7 +237,7 @@ static NSString *reuseIdentifier = @"story";
 }
 #pragma mark - 页面跳转到编辑tableView
 - (void)presentEditorListTableViewController {
-    YAEditorListTableViewController *editorViewController = [[YAEditorListTableViewController alloc] init];
+    YAEditorListViewController *editorViewController = [[YAEditorListViewController alloc] init];
     YAThemeTableViewHeader *header = (YAThemeTableViewHeader *)self.tableView.tableHeaderView;
     editorViewController.editors = header.editors;
     [self.navigationController pushViewController:editorViewController animated:YES];

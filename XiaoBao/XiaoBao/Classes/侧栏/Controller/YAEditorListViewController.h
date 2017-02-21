@@ -1,5 +1,5 @@
 //
-//  YAEditorListTableViewController.h
+//  YAEditorListViewController.h
 //  XiaoBao
 //
 //  Created by 陈亚伦 on 2017/2/20.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YAEditorItem.h"
-@interface YAEditorListTableViewController : UITableViewController
+@interface YAEditorListViewController : UIViewController
 /** 编辑数组 */
 @property (nonatomic,strong) NSArray <YAEditorItem *> *editors;
 @end

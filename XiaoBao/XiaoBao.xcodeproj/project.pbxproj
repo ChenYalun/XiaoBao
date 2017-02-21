@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */; };
 		9A1FDED71E5BC20E004C541A /* YAEditorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FDED51E5BC20E004C541A /* YAEditorDetailViewController.m */; };
-		9A1FDED81E5BC20E004C541A /* YAEditorDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1FDED61E5BC20E004C541A /* YAEditorDetailViewController.xib */; };
+		9A1FDEDE1E5C4346004C541A /* YANavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FDEDD1E5C4346004C541A /* YANavigationView.m */; };
+		9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1FDEDF1E5C4358004C541A /* YANavigationView.xib */; };
+		9A1FDEE51E5C5B79004C541A /* YAEditorDetailContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FDEE41E5C5B79004C541A /* YAEditorDetailContentView.m */; };
+		9A1FDEE71E5C5B91004C541A /* YAEditorDetailContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1FDEE61E5C5B91004C541A /* YAEditorDetailContentView.xib */; };
 		9A299E0C1E5AF59D00B88B4F /* YAThemeTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A299E0B1E5AF59D00B88B4F /* YAThemeTableViewHeader.m */; };
 		9A299E0E1E5AF5CA00B88B4F /* YAThemeTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A299E0D1E5AF5CA00B88B4F /* YAThemeTableViewHeader.xib */; };
 		9A299E111E5AF72B00B88B4F /* YAEditorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A299E101E5AF72B00B88B4F /* YAEditorItem.m */; };
-		9A299E151E5B0A2B00B88B4F /* YAEditorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A299E131E5B0A2B00B88B4F /* YAEditorListTableViewController.m */; };
+		9A299E151E5B0A2B00B88B4F /* YAEditorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A299E131E5B0A2B00B88B4F /* YAEditorListViewController.m */; };
 		9A299E1A1E5B203700B88B4F /* YAEditorListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A299E181E5B203700B88B4F /* YAEditorListTableViewCell.m */; };
 		9A299E1B1E5B203700B88B4F /* YAEditorListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A299E191E5B203700B88B4F /* YAEditorListTableViewCell.xib */; };
 		9A3C18621E582FA400B76999 /* UIView+YAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C18611E582FA400B76999 /* UIView+YAExtension.m */; };
@@ -47,14 +50,19 @@
 /* Begin PBXFileReference section */
 		9A1FDED41E5BC20E004C541A /* YAEditorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAEditorDetailViewController.h; sourceTree = "<group>"; };
 		9A1FDED51E5BC20E004C541A /* YAEditorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAEditorDetailViewController.m; sourceTree = "<group>"; };
-		9A1FDED61E5BC20E004C541A /* YAEditorDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAEditorDetailViewController.xib; sourceTree = "<group>"; };
+		9A1FDEDC1E5C4346004C541A /* YANavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YANavigationView.h; sourceTree = "<group>"; };
+		9A1FDEDD1E5C4346004C541A /* YANavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YANavigationView.m; sourceTree = "<group>"; };
+		9A1FDEDF1E5C4358004C541A /* YANavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YANavigationView.xib; sourceTree = "<group>"; };
+		9A1FDEE31E5C5B79004C541A /* YAEditorDetailContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAEditorDetailContentView.h; sourceTree = "<group>"; };
+		9A1FDEE41E5C5B79004C541A /* YAEditorDetailContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAEditorDetailContentView.m; sourceTree = "<group>"; };
+		9A1FDEE61E5C5B91004C541A /* YAEditorDetailContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAEditorDetailContentView.xib; sourceTree = "<group>"; };
 		9A299E0A1E5AF59D00B88B4F /* YAThemeTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAThemeTableViewHeader.h; sourceTree = "<group>"; };
 		9A299E0B1E5AF59D00B88B4F /* YAThemeTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAThemeTableViewHeader.m; sourceTree = "<group>"; };
 		9A299E0D1E5AF5CA00B88B4F /* YAThemeTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAThemeTableViewHeader.xib; sourceTree = "<group>"; };
 		9A299E0F1E5AF72B00B88B4F /* YAEditorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAEditorItem.h; sourceTree = "<group>"; };
 		9A299E101E5AF72B00B88B4F /* YAEditorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAEditorItem.m; sourceTree = "<group>"; };
-		9A299E121E5B0A2B00B88B4F /* YAEditorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAEditorListTableViewController.h; sourceTree = "<group>"; };
-		9A299E131E5B0A2B00B88B4F /* YAEditorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAEditorListTableViewController.m; sourceTree = "<group>"; };
+		9A299E121E5B0A2B00B88B4F /* YAEditorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAEditorListViewController.h; sourceTree = "<group>"; };
+		9A299E131E5B0A2B00B88B4F /* YAEditorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAEditorListViewController.m; sourceTree = "<group>"; };
 		9A299E171E5B203700B88B4F /* YAEditorListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAEditorListTableViewCell.h; sourceTree = "<group>"; };
 		9A299E181E5B203700B88B4F /* YAEditorListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAEditorListTableViewCell.m; sourceTree = "<group>"; };
 		9A299E191E5B203700B88B4F /* YAEditorListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAEditorListTableViewCell.xib; sourceTree = "<group>"; };
@@ -123,6 +131,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A1FDEDB1E5C4326004C541A /* 导航栏 */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FDEDC1E5C4346004C541A /* YANavigationView.h */,
+				9A1FDEDD1E5C4346004C541A /* YANavigationView.m */,
+				9A1FDEDF1E5C4358004C541A /* YANavigationView.xib */,
+			);
+			path = "导航栏";
+			sourceTree = "<group>";
+		};
 		9ADBF2CE1E540FD7001F8565 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +186,7 @@
 		9ADBF2F11E54295D001F8565 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FDEDB1E5C4326004C541A /* 导航栏 */,
 				9ADBF2F21E54295D001F8565 /* 侧栏 */,
 				9ADBF2F61E54295D001F8565 /* 内容页 */,
 				9ADBF2FA1E54295D001F8565 /* 首页 */,
@@ -195,11 +214,10 @@
 				9A74E9B71E5974A1008AD0AC /* YAThemeViewController.h */,
 				9A74E9B81E5974A1008AD0AC /* YAThemeViewController.m */,
 				9A74E9B91E5974A1008AD0AC /* YAThemeViewController.xib */,
-				9A299E121E5B0A2B00B88B4F /* YAEditorListTableViewController.h */,
-				9A299E131E5B0A2B00B88B4F /* YAEditorListTableViewController.m */,
+				9A299E121E5B0A2B00B88B4F /* YAEditorListViewController.h */,
+				9A299E131E5B0A2B00B88B4F /* YAEditorListViewController.m */,
 				9A1FDED41E5BC20E004C541A /* YAEditorDetailViewController.h */,
 				9A1FDED51E5BC20E004C541A /* YAEditorDetailViewController.m */,
-				9A1FDED61E5BC20E004C541A /* YAEditorDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -229,6 +247,9 @@
 				9A299E171E5B203700B88B4F /* YAEditorListTableViewCell.h */,
 				9A299E181E5B203700B88B4F /* YAEditorListTableViewCell.m */,
 				9A299E191E5B203700B88B4F /* YAEditorListTableViewCell.xib */,
+				9A1FDEE31E5C5B79004C541A /* YAEditorDetailContentView.h */,
+				9A1FDEE41E5C5B79004C541A /* YAEditorDetailContentView.m */,
+				9A1FDEE61E5C5B91004C541A /* YAEditorDetailContentView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,9 +431,10 @@
 			files = (
 				9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */,
 				9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */,
+				9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */,
 				9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */,
 				9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */,
-				9A1FDED81E5BC20E004C541A /* YAEditorDetailViewController.xib in Resources */,
+				9A1FDEE71E5C5B91004C541A /* YAEditorDetailContentView.xib in Resources */,
 				9A299E0E1E5AF5CA00B88B4F /* YAThemeTableViewHeader.xib in Resources */,
 				9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */,
 				9A3C18671E5873CA00B76999 /* YAThemeTableViewCell.xib in Resources */,
@@ -482,6 +504,7 @@
 				9A3C18621E582FA400B76999 /* UIView+YAExtension.m in Sources */,
 				9A1FDED71E5BC20E004C541A /* YAEditorDetailViewController.m in Sources */,
 				9A3C18661E5873CA00B76999 /* YAThemeTableViewCell.m in Sources */,
+				9A1FDEE51E5C5B79004C541A /* YAEditorDetailContentView.m in Sources */,
 				9A5C15531E558068003BE177 /* YAHomeHeaderView.m in Sources */,
 				9A4CA4E81E548A980099900F /* YAHomeViewController.m in Sources */,
 				9A74E9BA1E5974A1008AD0AC /* YAThemeViewController.m in Sources */,
@@ -490,7 +513,7 @@
 				9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */,
 				9A74E9BE1E597AD6008AD0AC /* YAThemeStoryItem.m in Sources */,
 				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,
-				9A299E151E5B0A2B00B88B4F /* YAEditorListTableViewController.m in Sources */,
+				9A299E151E5B0A2B00B88B4F /* YAEditorListViewController.m in Sources */,
 				9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */,
 				9A299E111E5AF72B00B88B4F /* YAEditorItem.m in Sources */,
 				9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */,
@@ -500,6 +523,7 @@
 				9A5C15491E551E1D003BE177 /* YAStoryTableViewCell.m in Sources */,
 				9ADBF3011E542A3A001F8565 /* YAHTTPManager.m in Sources */,
 				9A5C15501E554CB2003BE177 /* YASectionHeaderView.m in Sources */,
+				9A1FDEDE1E5C4346004C541A /* YANavigationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

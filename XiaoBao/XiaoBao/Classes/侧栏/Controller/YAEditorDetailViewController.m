@@ -7,80 +7,53 @@
 //
 
 #import "YAEditorDetailViewController.h"
-#import <UIImageView+YYWebImage.h>
+#import "YANavigationView.h"
+#import "YAEditorDetailContentView.h"
+
+#import "YAMain.h"
 @interface YAEditorDetailViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) UIScrollView *scrollView;
 
 
-// 内容View高度约束
-@property (weak, nonatomic) IBOutlet
-NSLayoutConstraint *contentViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
-@property (weak, nonatomic) IBOutlet UILabel *urlLabel;
-@property (weak, nonatomic) IBOutlet UILabel *urlTitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *turnImageView;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *weiboLabel;
-@property (weak, nonatomic) IBOutlet UILabel *siteLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 
 @end
 
 @implementation YAEditorDetailViewController
 
+#pragma mark - 懒加载
+- (UIScrollView *)scrollView {
+    if (_scrollView == nil) {
+        UIScrollView *scrollView = [[UIScrollView alloc] init];
+        [self.view addSubview:scrollView];
+        scrollView.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64);
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.contentInset = UIEdgeInsetsMake(80, 0, 0, 0);
+        scrollView.contentSize = CGSizeMake(kScreenWidth, kScreenHeight - 143);
+        
+        
+        _scrollView = scrollView;
+    }
+    return _scrollView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.scrollView.contentInset = UIEdgeInsetsMake(80, 0, 0, 0);
-    self.contentViewHeightConstraint.constant = kScreenHeight - 64;
+    self.view.backgroundColor = [UIColor whiteColor];
     
+    [self setupNavigationView];
+
     
-    
-    // 导航栏标题
-    self.navigationItem.title = self.editor.name;
-    
-    // 编辑头像
-    [self.iconImageView yy_setImageWithURL:[NSURL URLWithString:self.editor.avatar] options:YYWebImageOptionShowNetworkActivity];
-    // 姓名
-    self.nameLabel.text = self.editor.name;
-    
-    // bio
-    self.bioLabel.text = self.editor.bio;
-    
-    // 知乎地址
-    if (self.editor.url) {
-        self.turnImageView.hidden = NO;
-        self.urlLabel.alpha = 0.7;
-        self.urlTitleLabel.alpha = 1;
-        self.urlLabel.text = self.editor.name;
-    }
-    
-    // 以下信息无法从api中获取
-    // 微博
-    
-    // 个人网站
-    
-    // 电子邮箱
-    
+    YAEditorDetailContentView *editorDetailContentView = [YAEditorDetailContentView editorViewWithItem:self.editor];
+    [self.scrollView addSubview:editorDetailContentView];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 设置导航View
+- (void)setupNavigationView {
+    
+    YANavigationView *navigation = [YANavigationView navigationViewWithTitle:self.editor.name];
+    [self.view addSubview:navigation];
+    
+    
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

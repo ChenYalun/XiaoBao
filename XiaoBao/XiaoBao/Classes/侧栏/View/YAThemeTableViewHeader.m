@@ -8,7 +8,7 @@
 
 #import "YAThemeTableViewHeader.h"
 #import <UIImageView+YYWebImage.h>
-#import "YAEditorListTableViewController.h"
+#import "YAEditorListViewController.h"
 #import <RESideMenu.h>
 @interface YAThemeTableViewHeader()
 @property (weak, nonatomic) IBOutlet UIImageView *firstImageView;

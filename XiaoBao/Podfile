@@ -25,7 +25,7 @@ pod ‘UMengUShare/Social/YouDao'
 pod ‘UMengUShare/Social/EverNote'
 pod ‘UMengUShare/Social/SMS'
 pod ‘UITableView+FDTemplateLayoutCell’
-
+pod 'FDFullscreenPopGesture'
 pod 'YYWebImage'
 pod 'YYCategories'
 

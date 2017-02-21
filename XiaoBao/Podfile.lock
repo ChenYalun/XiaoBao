@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FDFullscreenPopGesture (1.1)
   - GPUImage (0.1.7)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
@@ -62,6 +63,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - FDFullscreenPopGesture
   - GPUImage
   - MJExtension
   - MJRefresh
@@ -84,6 +86,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -99,6 +102,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 04a17e33ac5dc5c607ed2daad0b47d881718bfe6
+PODFILE CHECKSUM: 6c2d332b6f580e3a9469e166482d84515a7713f0
 
 COCOAPODS: 1.2.0
