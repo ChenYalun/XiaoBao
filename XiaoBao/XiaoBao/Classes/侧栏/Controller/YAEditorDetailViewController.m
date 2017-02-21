@@ -9,8 +9,6 @@
 #import "YAEditorDetailViewController.h"
 #import "YANavigationView.h"
 #import "YAEditorDetailContentView.h"
-
-#import "YAMain.h"
 @interface YAEditorDetailViewController ()
 @property (weak, nonatomic) UIScrollView *scrollView;
 

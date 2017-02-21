@@ -15,7 +15,7 @@
 #import "YASectionHeaderView.h"
 #import "YAHomeHeaderView.h"
 #import <RESideMenu.h>
-#import "YAEditorListViewController.h"
+#import "YAContentViewController.h"
 #define kHeaderViewHeight 200
 #define kMargin 10
 #define kRefreshViewWH 18
@@ -334,9 +334,11 @@ static NSString *reuseIdentifier = @"story";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    YAEditorListViewController *v =  [[YAEditorListViewController alloc] init];
-    [((UINavigationController *)self.sideMenuViewController.contentViewController) pushViewController:v animated:YES];
-
+    YAContentViewController *contentViewController =  [[YAContentViewController alloc] init];
+    
+    NSNumber *num = [NSNumber numberWithInteger:indexPath.section];
+    contentViewController.story = self.storySection[num][indexPath.row];
+    [self.navigationController pushViewController:contentViewController animated:YES];
 }
 
 @end

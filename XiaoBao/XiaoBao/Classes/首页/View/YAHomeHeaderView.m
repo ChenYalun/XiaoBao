@@ -8,6 +8,7 @@
 
 #import "YAHomeHeaderView.h"
 #import "YAStoryHeaderView.h"
+#import "YAContentViewController.h"
 #define kHeaderViewHeight 220
 #define kHeaderViewCount 5
 @interface YAHomeHeaderView()<UIScrollViewDelegate>
@@ -19,10 +20,23 @@
 @property (nonatomic,strong) YAStoryHeaderView *leftView;
 @property (nonatomic,strong) YAStoryHeaderView *centerView;
 @property (nonatomic,strong) YAStoryHeaderView *rightView;
+
+/** 手势 */
+@property (nonatomic,strong) UITapGestureRecognizer *tap;
 @end
 @implementation YAHomeHeaderView
 #pragma mark - 懒加载
-
+- (UITapGestureRecognizer *)tap {
+    if (_tap == nil) {
+        _tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(UITapGestureRecognizer *  _Nonnull sender) {
+            YAContentViewController *contentViewController = [[YAContentViewController alloc] init];
+            YAStoryHeaderView *headerView = (YAStoryHeaderView *)sender.view;
+            contentViewController.story = headerView.story;
+            [self.viewController.navigationController pushViewController:contentViewController animated:YES];
+        }];
+    }
+    return _tap;
+}
 
 - (UIPageControl *)pageControl {
     if (_pageControl == nil) {
@@ -67,6 +81,11 @@
         self.leftView = [[NSBundle mainBundle] loadNibNamed:[YAStoryHeaderView className] owner:nil options:nil].firstObject;
         self.centerView = [[NSBundle mainBundle] loadNibNamed:[YAStoryHeaderView className] owner:nil options:nil].firstObject;
         self.rightView = [[NSBundle mainBundle] loadNibNamed:[YAStoryHeaderView className] owner:nil options:nil].firstObject;
+
+        [self.leftView addGestureRecognizer:self.tap];
+        [self.rightView addGestureRecognizer:self.tap];
+        [self.centerView addGestureRecognizer:self.tap];
+        
         [self.picScrollView addSubview:self.leftView];
         [self.picScrollView addSubview:self.centerView];
         [self.picScrollView addSubview:self.rightView];

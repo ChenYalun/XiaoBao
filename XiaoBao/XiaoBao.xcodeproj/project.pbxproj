@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7A7A08E00A71D1556C88E053 /* libPods-XiaoBao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */; };
+		9A0189921E5C80E80022A621 /* YAContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0189901E5C80E80022A621 /* YAContentViewController.m */; };
+		9A0189931E5C80E80022A621 /* YAContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0189911E5C80E80022A621 /* YAContentViewController.xib */; };
 		9A1FDED71E5BC20E004C541A /* YAEditorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FDED51E5BC20E004C541A /* YAEditorDetailViewController.m */; };
 		9A1FDEDE1E5C4346004C541A /* YANavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FDEDD1E5C4346004C541A /* YANavigationView.m */; };
 		9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1FDEDF1E5C4358004C541A /* YANavigationView.xib */; };
@@ -48,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A01898F1E5C80E80022A621 /* YAContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAContentViewController.h; sourceTree = "<group>"; };
+		9A0189901E5C80E80022A621 /* YAContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAContentViewController.m; sourceTree = "<group>"; };
+		9A0189911E5C80E80022A621 /* YAContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAContentViewController.xib; sourceTree = "<group>"; };
 		9A1FDED41E5BC20E004C541A /* YAEditorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAEditorDetailViewController.h; sourceTree = "<group>"; };
 		9A1FDED51E5BC20E004C541A /* YAEditorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAEditorDetailViewController.m; sourceTree = "<group>"; };
 		9A1FDEDC1E5C4346004C541A /* YANavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YANavigationView.h; sourceTree = "<group>"; };
@@ -267,6 +272,9 @@
 		9ADBF2F71E54295D001F8565 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9A01898F1E5C80E80022A621 /* YAContentViewController.h */,
+				9A0189901E5C80E80022A621 /* YAContentViewController.m */,
+				9A0189911E5C80E80022A621 /* YAContentViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -429,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0189931E5C80E80022A621 /* YAContentViewController.xib in Resources */,
 				9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */,
 				9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */,
 				9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */,
@@ -515,6 +524,7 @@
 				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,
 				9A299E151E5B0A2B00B88B4F /* YAEditorListViewController.m in Sources */,
 				9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */,
+				9A0189921E5C80E80022A621 /* YAContentViewController.m in Sources */,
 				9A299E111E5AF72B00B88B4F /* YAEditorItem.m in Sources */,
 				9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */,
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
