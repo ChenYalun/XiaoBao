@@ -8,6 +8,7 @@
 
 #import "YAEditorListTableViewController.h"
 #import "YAEditorListTableViewCell.h"
+#import "YAEditorDetailViewController.h"
 @interface YAEditorListTableViewController ()
 
 @end
@@ -28,14 +29,8 @@ static NSString *reuseIdentifier = @"YAEditorListTableViewController";
     
     self.tableView.separatorColor = kRGBAColor(237, 237, 237, 0.9);
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.navigationItem.title = @"主编";
-
- 
-    self.navigationController.navigationBar.hidden = NO;
     
-    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
-    NSLog(@"%@",self.navigationController);
-    NSLog(@"%@",self.navigationController.navigationBar);
+    self.navigationItem.title = @"编辑";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +62,13 @@ static NSString *reuseIdentifier = @"YAEditorListTableViewController";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 55;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    YAEditorDetailViewController *detailViewController = [[YAEditorDetailViewController alloc] init];
+    detailViewController.editor = self.editors[indexPath.row];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
 }
 
 

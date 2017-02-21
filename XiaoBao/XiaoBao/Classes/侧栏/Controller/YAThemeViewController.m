@@ -46,7 +46,7 @@ static NSString *reuseIdentifier = @"story";
 
 - (UITapGestureRecognizer *)tap {
     if (_tap == nil) {
-        _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nnnnn)];
+        _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentEditorListTableViewController)];
         
     }
     return _tap;
@@ -60,10 +60,12 @@ static NSString *reuseIdentifier = @"story";
     self.navigationController.navigationBar.hidden = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    
     // 设置tableView header
     YAThemeTableViewHeader *headerView = [YAThemeTableViewHeader header];
     self.tableView.tableHeaderView = headerView;
 
+    // 添加手势
     [self.tableView.tableHeaderView addGestureRecognizer:self.tap];
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
@@ -225,8 +227,19 @@ static NSString *reuseIdentifier = @"story";
     //[((UINavigationController *)self.sideMenuViewController.contentViewController) pushViewController:editorViewController animated:YES];
 }
 
-- (void)nnnnn {
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
+}
+#pragma mark - 页面跳转到编辑tableView
+- (void)presentEditorListTableViewController {
     YAEditorListTableViewController *editorViewController = [[YAEditorListTableViewController alloc] init];
+    YAThemeTableViewHeader *header = (YAThemeTableViewHeader *)self.tableView.tableHeaderView;
+    editorViewController.editors = header.editors;
     [self.navigationController pushViewController:editorViewController animated:YES];
     
 }

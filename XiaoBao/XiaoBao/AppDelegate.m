@@ -25,11 +25,21 @@
     
     // 全局颜色
     [UINavigationBar appearance].barTintColor = kGlobalColor;
-
+    // 导航栏标题字体
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    
+    // 导航栏back按钮(edge调整)
+    UIImage *backButtonImage = [kGetImage(@"Dark_News_Arrow") resizableImageWithCapInsets:UIEdgeInsetsMake(0, 18, 0, 0)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -backButtonImage.size.height * 2) forBarMetrics:UIBarMetricsDefault];
 
     // 笔记
     // 1,设置tableView分割线全屏 可直接在cell 的xib中设置分割线 间距(默认距左边15)
     
+    // 2,在xib中添加ScrollView时,先添加Scrollview再添加内容View
+    // 要设置内容View与ScrollView间距为0,同时根据竖屏滚动或横屏滚动设置Horizontally in container 或 Vertically in container
+    // 设置内容View的高度以改正xib中的报错,在代码中添加高度属性,动态改变
     
     
     

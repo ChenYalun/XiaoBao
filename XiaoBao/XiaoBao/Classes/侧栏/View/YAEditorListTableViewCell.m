@@ -19,7 +19,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+    self.selectedBackgroundView.backgroundColor = kRGBAColor(237, 237, 237, 0.8);
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
