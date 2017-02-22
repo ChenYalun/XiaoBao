@@ -21,6 +21,8 @@
 @property (nonatomic,assign) NSInteger ID;
 
 
+
+
 // 字典转模型
 + (NSArray <YAStoryItem *> *)storyItemsWithKeyValues:(id)responseObject;
 + (NSArray <YAStoryItem *> *)topStoryItemWithKeyValues:(id)responseObject;

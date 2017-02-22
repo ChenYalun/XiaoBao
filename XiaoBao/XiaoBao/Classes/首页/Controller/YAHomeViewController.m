@@ -338,6 +338,9 @@ static NSString *reuseIdentifier = @"story";
     
     NSNumber *num = [NSNumber numberWithInteger:indexPath.section];
     contentViewController.story = self.storySection[num][indexPath.row];
+    
+    
+    
     [self.navigationController pushViewController:contentViewController animated:YES];
 }
 

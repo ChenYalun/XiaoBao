@@ -16,35 +16,31 @@
 #define kTopImageHeight 220
 @interface YAContentViewController ()<WKNavigationDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
 /** webView */
-//@property (nonatomic,weak) WKWebView *webView;
+@property (nonatomic,weak) WKWebView *webView;
 /** 头部视图 */
 @property (nonatomic,weak) IBOutlet UIView *topView;
 /** 头部视图图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
+/** 标题 */
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+/** 图片版权 */
+@property (weak, nonatomic) IBOutlet UILabel *imageScourceLabel;
 
 @end
 
 @implementation YAContentViewController
 #pragma mark - 懒加载
-//- (UIView *)topView {
-//    if (_topView == nil) {
-//        UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTopImageHeight)];
-//        topView.contentMode = UIViewContentModeScaleAspectFill;
-//        [self.view addSubview:topView];
-//        _topView = topView;
-//    }
-//    return _topView;
-//}
 
 
-/*
+
+
 - (WKWebView *)webView {
     if (_webView == nil) {
         
         WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 44)];
-//        webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+        webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
         
         // 设置代理
         webView.navigationDelegate = self;
@@ -59,21 +55,19 @@
         [contentController addUserScript:wkUserScript];
         
 
-        [self.view addSubview:webView];
+        [self.view insertSubview:webView atIndex:0];
         _webView = webView;
 
     }
     return _webView;
 }
-*/
+
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-    //self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self requestForData];
     
     
@@ -97,11 +91,17 @@
         // 处理内容
         NSString *htmlString = [NSString stringWithFormat:@"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=%@ /></head><body>%@</body></html>", content.css.firstObject, content.body];
         [self.webView loadHTMLString:htmlString baseURL:nil];
-        self.webView.scrollView.delegate = self;
+
         
         
         // 处理图片
         [self.topImageView yy_setImageWithURL:[NSURL URLWithString:content.image] options:YYWebImageOptionSetImageWithFadeAnimation];
+        
+        // 标题
+        self.titleLabel.text = content.title;
+        
+        // 版权
+        self.imageScourceLabel.text = content.image_source;
         
     };
     
@@ -134,6 +134,36 @@
     if (offsetY >= 0) {
         self.topView.ya_y = - offsetY;
     }
+}
+
+
+#pragma mark - 按钮处理
+// 返回
+- (IBAction)goBack:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// 分享
+- (IBAction)share:(UIButton *)sender {
+    
+}
+
+// 赞
+- (IBAction)zan:(UIButton *)sender {
+    sender.selected = !sender.selected;
+
+    
+}
+
+//下一条
+- (IBAction)nextStory:(UIButton *)sender {
+    
+}
+
+// 评论
+- (IBAction)comment:(UIButton *)sender {
+
+
 }
 
 @end
