@@ -12,30 +12,39 @@
 #import "YAHTTPManager.h"
 #import <UIImageView+YYWebImage.h>
 
-#define kTopImageHeight 125
+// xib 中topView高度约束
+#define kTopImageHeight 220
 @interface YAContentViewController ()<WKNavigationDelegate,UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 /** webView */
-@property (nonatomic,weak) WKWebView *webView;
-/** 头部图片 */
-@property (nonatomic,weak) UIImageView *topImageView;
+//@property (nonatomic,weak) WKWebView *webView;
+/** 头部视图 */
+@property (nonatomic,weak) IBOutlet UIView *topView;
+/** 头部视图图片 */
+@property (weak, nonatomic) IBOutlet UIImageView *topImageView;
+
 @end
 
 @implementation YAContentViewController
 #pragma mark - 懒加载
-- (UIImageView *)topImageView {
-    if (_topImageView == nil) {
-        UIImageView *topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTopImageHeight)];
-        //topImageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self.view addSubview:topImageView];
-        _topImageView = topImageView;
-    }
-    return _topImageView;
-}
+//- (UIView *)topView {
+//    if (_topView == nil) {
+//        UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTopImageHeight)];
+//        topView.contentMode = UIViewContentModeScaleAspectFill;
+//        [self.view addSubview:topView];
+//        _topView = topView;
+//    }
+//    return _topView;
+//}
+
+
+/*
 - (WKWebView *)webView {
     if (_webView == nil) {
         
         WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 44)];
-        webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+//        webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
         
         // 设置代理
         webView.navigationDelegate = self;
@@ -56,12 +65,18 @@
     }
     return _webView;
 }
+*/
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    //self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self requestForData];
+    
+    
     
 }
 
@@ -82,6 +97,7 @@
         // 处理内容
         NSString *htmlString = [NSString stringWithFormat:@"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=%@ /></head><body>%@</body></html>", content.css.firstObject, content.body];
         [self.webView loadHTMLString:htmlString baseURL:nil];
+        self.webView.scrollView.delegate = self;
         
         
         // 处理图片
@@ -100,24 +116,23 @@
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y + 20;
+    CGFloat offsetY = scrollView.contentOffset.y +20;
     kLog(@"%f",offsetY);
     
     // 处理下拉
-
     if (offsetY < 0) {
-        self.topImageView.height = kTopImageHeight  + (- offsetY)*2.1;
+        self.topViewHeightConstraint.constant = kTopImageHeight  + (- offsetY);
         
-        if (offsetY < -50) {
+        if (offsetY < -80) {
             CGPoint point= scrollView.contentOffset;
-            point.y = -70;
+            point.y = -100;
             scrollView.contentOffset = point;
         }
     }
     
     // 处理上拉
     if (offsetY >= 0) {
-        self.topImageView.ya_y = - offsetY;
+        self.topView.ya_y = - offsetY;
     }
 }
 

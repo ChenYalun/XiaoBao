@@ -5,13 +5,17 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YAContentViewController">
             <connections>
+                <outlet property="topImageView" destination="H47-kh-nzw" id="c5X-dG-1Ud"/>
+                <outlet property="topView" destination="qTI-lw-Pqp" id="Ugj-jE-aCt"/>
+                <outlet property="topViewHeightConstraint" destination="RDf-QC-B76" id="KRv-24-IT6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="wY9-DZ-O2S" id="TOr-iv-Iar"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,6 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY9-DZ-O2S">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcB-ws-2rm">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <color key="backgroundColor" red="1" green="0.50173949110000005" blue="0.34515111650000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -26,13 +34,36 @@
                         <constraint firstAttribute="height" constant="44" id="oKl-8u-c33"/>
                     </constraints>
                 </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTI-lw-Pqp">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H47-kh-nzw">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="H47-kh-nzw" secondAttribute="trailing" id="GHt-Iy-8jR"/>
+                        <constraint firstItem="H47-kh-nzw" firstAttribute="leading" secondItem="qTI-lw-Pqp" secondAttribute="leading" id="IcZ-ep-3lW"/>
+                        <constraint firstAttribute="height" constant="220" id="RDf-QC-B76"/>
+                        <constraint firstAttribute="bottom" secondItem="H47-kh-nzw" secondAttribute="bottom" id="YhL-HA-Nlf"/>
+                        <constraint firstItem="H47-kh-nzw" firstAttribute="top" secondItem="qTI-lw-Pqp" secondAttribute="top" id="a7M-D0-ViV"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="wY9-DZ-O2S" secondAttribute="trailing" id="8Ua-1D-vlG"/>
                 <constraint firstAttribute="bottom" secondItem="zcB-ws-2rm" secondAttribute="bottom" id="ArX-rH-0MB"/>
+                <constraint firstAttribute="trailing" secondItem="qTI-lw-Pqp" secondAttribute="trailing" id="Ffb-ce-xsw"/>
+                <constraint firstItem="wY9-DZ-O2S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PK0-bH-pDg"/>
+                <constraint firstItem="zcB-ws-2rm" firstAttribute="top" secondItem="wY9-DZ-O2S" secondAttribute="bottom" id="UZN-lN-NCP"/>
                 <constraint firstAttribute="trailing" secondItem="zcB-ws-2rm" secondAttribute="trailing" id="coS-Zc-XIv"/>
+                <constraint firstItem="wY9-DZ-O2S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ej2-r9-nR6"/>
                 <constraint firstItem="zcB-ws-2rm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n44-Mo-oRk"/>
+                <constraint firstItem="qTI-lw-Pqp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xqo-fb-KSh"/>
+                <constraint firstItem="qTI-lw-Pqp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zKc-1n-QEv"/>
             </constraints>
+            <point key="canvasLocation" x="81" y="56"/>
         </view>
     </objects>
 </document>
