@@ -12,6 +12,7 @@
 /** 回退按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 /** 标题 */
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic,copy) NSString *title;
 + (instancetype)navigationViewWithTitle:(NSString *)title;
 @end

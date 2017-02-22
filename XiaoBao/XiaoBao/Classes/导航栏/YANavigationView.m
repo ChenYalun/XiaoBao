@@ -17,7 +17,7 @@
     YANavigationView *navigationView =  [[NSBundle mainBundle] loadNibNamed:[YANavigationView className] owner:nil options:nil].firstObject;
     navigationView.frame = CGRectMake(0, 0, kScreenWidth, 64);
     navigationView.titleLabel.text = title;
-    
+    navigationView.activityIndicatorView.hidesWhenStopped = YES;
     [navigationView.backButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         [navigationView.viewController.navigationController popViewControllerAnimated:YES];
     }];

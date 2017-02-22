@@ -32,11 +32,17 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Vyz-UU-CHq">
+                            <rect key="frame" x="335" y="12" width="20" height="20"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="t1U-10-wLC" firstAttribute="leading" secondItem="x31-nf-ZHJ" secondAttribute="leading" constant="8" id="4cH-Bn-cMH"/>
                         <constraint firstItem="Cih-Nv-mmh" firstAttribute="centerX" secondItem="x31-nf-ZHJ" secondAttribute="centerX" id="Azx-U8-rkh"/>
                         <constraint firstItem="t1U-10-wLC" firstAttribute="centerY" secondItem="x31-nf-ZHJ" secondAttribute="centerY" id="Okv-rD-isH"/>
+                        <constraint firstItem="Vyz-UU-CHq" firstAttribute="centerY" secondItem="x31-nf-ZHJ" secondAttribute="centerY" id="TN8-j9-wxA"/>
+                        <constraint firstAttribute="trailing" secondItem="Vyz-UU-CHq" secondAttribute="trailing" constant="20" id="bcc-ht-O9Q"/>
                         <constraint firstItem="Cih-Nv-mmh" firstAttribute="centerY" secondItem="x31-nf-ZHJ" secondAttribute="centerY" id="ygQ-wv-4RO"/>
                     </constraints>
                 </view>
@@ -51,6 +57,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="activityIndicatorView" destination="Vyz-UU-CHq" id="479-Zv-1cD"/>
                 <outlet property="backButton" destination="t1U-10-wLC" id="lm9-77-Y8b"/>
                 <outlet property="titleLabel" destination="Cih-Nv-mmh" id="8hZ-52-Juc"/>
             </connections>

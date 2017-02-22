@@ -22,6 +22,8 @@
 		9A299E1A1E5B203700B88B4F /* YAEditorListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A299E181E5B203700B88B4F /* YAEditorListTableViewCell.m */; };
 		9A299E1B1E5B203700B88B4F /* YAEditorListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A299E191E5B203700B88B4F /* YAEditorListTableViewCell.xib */; };
 		9A31B2E91E5D1BBF001494EE /* YAContentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31B2E81E5D1BBF001494EE /* YAContentItem.m */; };
+		9A31B2ED1E5DA4AC001494EE /* YALinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A31B2EB1E5DA4AC001494EE /* YALinkViewController.m */; };
+		9A31B2EE1E5DA4AC001494EE /* YALinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A31B2EC1E5DA4AC001494EE /* YALinkViewController.xib */; };
 		9A3C18621E582FA400B76999 /* UIView+YAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C18611E582FA400B76999 /* UIView+YAExtension.m */; };
 		9A3C18661E5873CA00B76999 /* YAThemeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C18641E5873CA00B76999 /* YAThemeTableViewCell.m */; };
 		9A3C18671E5873CA00B76999 /* YAThemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A3C18651E5873CA00B76999 /* YAThemeTableViewCell.xib */; };
@@ -74,6 +76,9 @@
 		9A299E191E5B203700B88B4F /* YAEditorListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAEditorListTableViewCell.xib; sourceTree = "<group>"; };
 		9A31B2E71E5D1BBF001494EE /* YAContentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAContentItem.h; sourceTree = "<group>"; };
 		9A31B2E81E5D1BBF001494EE /* YAContentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAContentItem.m; sourceTree = "<group>"; };
+		9A31B2EA1E5DA4AC001494EE /* YALinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALinkViewController.h; sourceTree = "<group>"; };
+		9A31B2EB1E5DA4AC001494EE /* YALinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALinkViewController.m; sourceTree = "<group>"; };
+		9A31B2EC1E5DA4AC001494EE /* YALinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YALinkViewController.xib; sourceTree = "<group>"; };
 		9A3C18601E582FA400B76999 /* UIView+YAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YAExtension.h"; sourceTree = "<group>"; };
 		9A3C18611E582FA400B76999 /* UIView+YAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YAExtension.m"; sourceTree = "<group>"; };
 		9A3C18631E5873CA00B76999 /* YAThemeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAThemeTableViewCell.h; sourceTree = "<group>"; };
@@ -278,6 +283,9 @@
 				9A01898F1E5C80E80022A621 /* YAContentViewController.h */,
 				9A0189901E5C80E80022A621 /* YAContentViewController.m */,
 				9A0189911E5C80E80022A621 /* YAContentViewController.xib */,
+				9A31B2EA1E5DA4AC001494EE /* YALinkViewController.h */,
+				9A31B2EB1E5DA4AC001494EE /* YALinkViewController.m */,
+				9A31B2EC1E5DA4AC001494EE /* YALinkViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -443,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A0189931E5C80E80022A621 /* YAContentViewController.xib in Resources */,
+				9A31B2EE1E5DA4AC001494EE /* YALinkViewController.xib in Resources */,
 				9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */,
 				9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */,
 				9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */,
@@ -533,6 +542,7 @@
 				9A299E111E5AF72B00B88B4F /* YAEditorItem.m in Sources */,
 				9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */,
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
+				9A31B2ED1E5DA4AC001494EE /* YALinkViewController.m in Sources */,
 				9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */,
 				9A31B2E91E5D1BBF001494EE /* YAContentItem.m in Sources */,
 				9ADBF2DC1E540FD7001F8565 /* main.m in Sources */,

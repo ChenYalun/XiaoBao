@@ -11,7 +11,7 @@
 #import "YAContentItem.h"
 #import "YAHTTPManager.h"
 #import <UIImageView+YYWebImage.h>
-
+#import "YALinkViewController.h"
 // xib 中topView高度约束
 #define kTopImageHeight 220
 @interface YAContentViewController ()<WKNavigationDelegate,UIScrollViewDelegate>
@@ -165,5 +165,43 @@
 
 
 }
+
+
+#pragma mark - 链接点击
+// 1.在请求开始加载之前调用，决定是否跳转
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+
+    if ([navigationAction.request.URL.absoluteString isEqualToString:@"about:blank"]) {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    } else {
+        YALinkViewController *linkViewController = [[YALinkViewController alloc] init];
+        linkViewController.request = navigationAction.request;
+        [self.navigationController pushViewController:linkViewController animated:YES];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
+
+}
+// 在收到响应开始加载后，决定是否跳转
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+// 2.页面开始加载时调用
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+
+}
+// 3.当内容开始到达时调用
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
+
+}
+//// 页面加载完成之后调用
+//- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{}
+//// 页面加载失败时调用
+//- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{}
+////收到服务器重定向请求后调用
+//- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
+//
+//}
+
 
 @end
