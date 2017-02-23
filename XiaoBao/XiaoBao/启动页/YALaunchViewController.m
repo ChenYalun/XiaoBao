@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     // 图片处理
     [self.backImageView yy_setImageWithURL:[NSURL URLWithString:@"https://bing.ioliu.cn/v1?w=768&h=1280"] options:YYWebImageOptionSetImageWithFadeAnimation];
     
@@ -33,6 +32,7 @@
     };
     
     [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:@"https://bing.ioliu.cn/v1" WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:nil];
+    
     
     // 圆角正方形
     CAShapeLayer *outLayer = [CAShapeLayer layer];
@@ -61,9 +61,6 @@
     [self.animationView.layer addSublayer:layer];
 
     
-    
-    
-    
 
     
     self.menuView.ya_y = kScreenHeight;
@@ -87,11 +84,8 @@
         self.view.alpha = 1;
         
     } completion:^(BOOL finished) {
-        
+        // 移除View
         [self.view removeFromSuperview];
-        
-        
-        
     }];
 
     
