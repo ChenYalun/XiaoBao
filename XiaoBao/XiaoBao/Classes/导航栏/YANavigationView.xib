@@ -26,8 +26,11 @@
                             </constraints>
                             <state key="normal" image="Dark_News_Arrow"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cih-Nv-mmh">
-                            <rect key="frame" x="168.5" y="12" width="37" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cih-Nv-mmh">
+                            <rect key="frame" x="82.5" y="12" width="210" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="210" id="Lh1-Tj-pLo"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -39,11 +42,11 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="t1U-10-wLC" firstAttribute="leading" secondItem="x31-nf-ZHJ" secondAttribute="leading" constant="8" id="4cH-Bn-cMH"/>
-                        <constraint firstItem="Cih-Nv-mmh" firstAttribute="centerX" secondItem="x31-nf-ZHJ" secondAttribute="centerX" id="Azx-U8-rkh"/>
+                        <constraint firstItem="Cih-Nv-mmh" firstAttribute="centerX" secondItem="x31-nf-ZHJ" secondAttribute="centerX" id="9F3-op-Srw"/>
+                        <constraint firstItem="Cih-Nv-mmh" firstAttribute="centerY" secondItem="x31-nf-ZHJ" secondAttribute="centerY" id="IUO-Sh-lCN"/>
                         <constraint firstItem="t1U-10-wLC" firstAttribute="centerY" secondItem="x31-nf-ZHJ" secondAttribute="centerY" id="Okv-rD-isH"/>
                         <constraint firstItem="Vyz-UU-CHq" firstAttribute="centerY" secondItem="x31-nf-ZHJ" secondAttribute="centerY" id="TN8-j9-wxA"/>
                         <constraint firstAttribute="trailing" secondItem="Vyz-UU-CHq" secondAttribute="trailing" constant="20" id="bcc-ht-O9Q"/>
-                        <constraint firstItem="Cih-Nv-mmh" firstAttribute="centerY" secondItem="x31-nf-ZHJ" secondAttribute="centerY" id="ygQ-wv-4RO"/>
                     </constraints>
                 </view>
             </subviews>

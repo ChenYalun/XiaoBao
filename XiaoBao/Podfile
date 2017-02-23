@@ -12,9 +12,9 @@ pod 'AFNetworking'
 pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'MJExtension'
-
+pod ‘MWPhotoBrowser’
 pod 'RESideMenu'
-# pod 'MMDrawerController'
+pod 'MMDrawerController'
 pod ‘UMengUShare/UI’
 pod ‘UMengUShare/Social/Sina'
 pod ‘UMengUShare/Social/WeChat'
@@ -28,10 +28,11 @@ pod ‘UITableView+FDTemplateLayoutCell’
 pod 'FDFullscreenPopGesture'
 pod 'YYWebImage'
 pod 'YYCategories'
-
+# pod 'IDMPhotoBrowser'
 # pod ‘FMDB’
+# pod ‘LTNavigationBar’
 pod 'Realm'
-
+# pod 'SDWebImage'
 # pod 'AMScrollingNavbar'
 pod 'SDCycleScrollView'
 pod ‘GPUImage’

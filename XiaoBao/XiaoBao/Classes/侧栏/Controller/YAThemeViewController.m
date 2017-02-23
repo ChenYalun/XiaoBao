@@ -17,6 +17,7 @@
 #import <RESideMenu.h>
 #import "YAEditorItem.h"
 #import "YAEditorListViewController.h"
+#import "YAContentViewController.h"
 static NSString *reuseIdentifier = @"story";
 @interface YAThemeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -220,11 +221,12 @@ static NSString *reuseIdentifier = @"story";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    YAEditorListViewController *editorViewController = [[YAEditorListViewController alloc] init];
+    YAContentViewController *contentViewController = [[YAContentViewController alloc] init];
+    contentViewController.story = self.stories[indexPath.row];
 
-    [self.navigationController pushViewController:editorViewController animated:YES];
+    [self.navigationController pushViewController:contentViewController animated:YES];
     
-    //[((UINavigationController *)self.sideMenuViewController.contentViewController) pushViewController:editorViewController animated:YES];
+
 }
 
 

@@ -11,12 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YAContentViewController">
             <connections>
+                <outlet property="commentButton" destination="xQx-3m-qdR" id="RhT-NJ-LzV"/>
                 <outlet property="imageScourceLabel" destination="pb6-zf-t2r" id="cX4-fS-hTB"/>
                 <outlet property="titleLabel" destination="Fc1-69-PbK" id="KXn-r0-orl"/>
                 <outlet property="topImageView" destination="H47-kh-nzw" id="c5X-dG-1Ud"/>
                 <outlet property="topView" destination="qTI-lw-Pqp" id="Ugj-jE-aCt"/>
                 <outlet property="topViewHeightConstraint" destination="RDf-QC-B76" id="KRv-24-IT6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="zanButton" destination="0lc-V9-TJz" id="l0l-5Q-lJj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcB-ws-2rm">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcB-ws-2rm" userLabel="额外信息">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lV-eP-zQ7" userLabel="返回">
