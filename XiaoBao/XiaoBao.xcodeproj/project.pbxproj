@@ -48,6 +48,8 @@
 		9A8D0E421E5E84510050C9D7 /* YACommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D0E401E5E84510050C9D7 /* YACommentTableViewCell.xib */; };
 		9A8D0E451E5E84610050C9D7 /* YACommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E441E5E84610050C9D7 /* YACommentItem.m */; };
 		9A8D0E481E5E856F0050C9D7 /* YACommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E471E5E856F0050C9D7 /* YACommentModel.m */; };
+		9A8D0E551E5EE0380050C9D7 /* YALaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E531E5EE0380050C9D7 /* YALaunchViewController.m */; };
+		9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E31E540FD7001F8565 /* Main.storyboard */; };
@@ -128,6 +130,9 @@
 		9A8D0E441E5E84610050C9D7 /* YACommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YACommentItem.m; sourceTree = "<group>"; };
 		9A8D0E461E5E856F0050C9D7 /* YACommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YACommentModel.h; sourceTree = "<group>"; };
 		9A8D0E471E5E856F0050C9D7 /* YACommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YACommentModel.m; sourceTree = "<group>"; };
+		9A8D0E521E5EE0380050C9D7 /* YALaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALaunchViewController.h; sourceTree = "<group>"; };
+		9A8D0E531E5EE0380050C9D7 /* YALaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALaunchViewController.m; sourceTree = "<group>"; };
+		9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YALaunchViewController.xib; sourceTree = "<group>"; };
 		9ADBF2D71E540FD7001F8565 /* XiaoBao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -211,6 +216,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9A8D0E491E5ED1500050C9D7 /* 启动页 */ = {
+			isa = PBXGroup;
+			children = (
+				9A8D0E521E5EE0380050C9D7 /* YALaunchViewController.h */,
+				9A8D0E531E5EE0380050C9D7 /* YALaunchViewController.m */,
+				9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */,
+			);
+			path = "启动页";
+			sourceTree = "<group>";
+		};
 		9ADBF2CE1E540FD7001F8565 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +249,7 @@
 			children = (
 				9ADBF2FE1E542A25001F8565 /* 工具 */,
 				9ADBF2F11E54295D001F8565 /* Classes */,
+				9A8D0E491E5ED1500050C9D7 /* 启动页 */,
 				9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */,
 				9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */,
 				9ADBF2E31E540FD7001F8565 /* Main.storyboard */,
@@ -519,6 +535,7 @@
 				9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */,
 				9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */,
 				9A1FDEE71E5C5B91004C541A /* YAEditorDetailContentView.xib in Resources */,
+				9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */,
 				9A299E0E1E5AF5CA00B88B4F /* YAThemeTableViewHeader.xib in Resources */,
 				9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */,
 				9A3C18671E5873CA00B76999 /* YAThemeTableViewCell.xib in Resources */,
@@ -588,6 +605,7 @@
 				9A8D0E411E5E84510050C9D7 /* YACommentTableViewCell.m in Sources */,
 				9A3C18621E582FA400B76999 /* UIView+YAExtension.m in Sources */,
 				9A1FDED71E5BC20E004C541A /* YAEditorDetailViewController.m in Sources */,
+				9A8D0E551E5EE0380050C9D7 /* YALaunchViewController.m in Sources */,
 				9A3C18661E5873CA00B76999 /* YAThemeTableViewCell.m in Sources */,
 				9A1FDEE51E5C5B79004C541A /* YAEditorDetailContentView.m in Sources */,
 				9A5C15531E558068003BE177 /* YAHomeHeaderView.m in Sources */,

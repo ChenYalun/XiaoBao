@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "YALaunchViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -34,6 +35,35 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -backButtonImage.size.height * 2) forBarMetrics:UIBarMetricsDefault];
 
+    // 设置状态栏
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    
+       
+    
+
+    
+    [self.window makeKeyAndVisible];
+    
+    //设置背景图
+    YALaunchViewController *launchViewController = [[YALaunchViewController alloc] init];
+
+    
+    //把背景图放在最上层
+     launchViewController.view.frame = [UIApplication sharedApplication].keyWindow.bounds;
+    [self.window addSubview:launchViewController.view];
+    
+       
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // 笔记
     // 1,设置tableView分割线全屏 可直接在cell 的xib中设置分割线 间距(默认距左边15)
     
