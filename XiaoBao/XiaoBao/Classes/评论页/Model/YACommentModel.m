@@ -16,6 +16,12 @@
     YACommentModel *model = [[YACommentModel alloc] init];
         model.avatar = obj.avatar;
         model.content = obj.content;
+        model.author = obj.author;
+        model.likes = obj.likes;
+        model.time = @"02-20 14:25";
+        
+        
+        
         
         [models addObject:model];
     }];

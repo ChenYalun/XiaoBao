@@ -13,7 +13,7 @@
 #import "YAExtraItem.h"
 #import <UIImageView+YYWebImage.h>
 #import "YALinkViewController.h"
-
+#import "YACommentViewController.h"
 // xib 中topView高度约束
 #define kTopImageHeight 220
 @interface YAContentViewController ()<WKNavigationDelegate,UIScrollViewDelegate>
@@ -195,6 +195,10 @@
 // 评论
 - (IBAction)comment:(UIButton *)sender {
 
+    YACommentViewController *commentViewController = [[YACommentViewController alloc] init];
+    commentViewController.storyID = self.story.ID;
+    [self.navigationController pushViewController:commentViewController animated:YES];
+    
 
 }
 

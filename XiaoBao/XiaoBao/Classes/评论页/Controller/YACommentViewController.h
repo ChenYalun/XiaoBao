@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface YACommentViewController : UITableViewController
 
+/** storyID */
+@property (nonatomic,assign) NSInteger storyID;
 @end

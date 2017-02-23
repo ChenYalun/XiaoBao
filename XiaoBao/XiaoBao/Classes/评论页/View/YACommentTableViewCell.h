@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YACommentModel.h"
 @interface YACommentTableViewCell : UITableViewCell
-
+/** 评论模型 */
+@property (nonatomic,strong) YACommentModel *comment;
 @end
