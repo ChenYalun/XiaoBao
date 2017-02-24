@@ -21,7 +21,7 @@
 @property (nonatomic,copy) NSString *likes;
 
 /** 回复者 */
-@property (nonatomic,strong) YACommentItem *reply;
+@property (nonatomic,strong) YACommentItem *reply_to;
 
 
 @end

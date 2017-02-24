@@ -8,7 +8,7 @@
 
 #import "YACommentViewController.h"
 #import "YACommentTableViewCell.h"
-#import <UITableView+FDTemplateLayoutCell.h>
+//#import <UITableView+FDTemplateLayoutCell.h>
 #import "YAHTTPManager.h"
 @interface YACommentViewController ()
 
@@ -29,6 +29,13 @@ static NSString *reuseIdentifier = @"comment";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.tableView.estimatedRowHeight = 30;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    
+    
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:[YACommentTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
@@ -84,13 +91,23 @@ static NSString *reuseIdentifier = @"comment";
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView fd_heightForCellWithIdentifier:reuseIdentifier configuration:^(YACommentTableViewCell *cell) {
-     
-    cell.comment = self.comments[indexPath.section][indexPath.row];
-    }];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [tableView fd_heightForCellWithIdentifier:reuseIdentifier configuration:^(YACommentTableViewCell *cell) {
+//     
+//    cell.comment = self.comments[indexPath.section][indexPath.row];
+//    }];
+//}
 
+// 选中后调用
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+//    YACommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//
+//    cell.comment.isOpen = !cell.comment.isOpen;
+//    
+//    [tableView reloadRow:indexPath.row inSection:indexPath.section withRowAnimation:UITableViewRowAnimationNone];
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

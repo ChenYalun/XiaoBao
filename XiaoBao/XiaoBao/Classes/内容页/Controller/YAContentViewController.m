@@ -90,8 +90,8 @@
         
         YAExtraItem *extra = [YAExtraItem extraItemWithKeyValues:responseObject];
         // 处理内容
-        self.zanButton.titleLabel.text = extra.popularity;
-        self.commentButton.titleLabel.text = extra.comments;
+        [self.zanButton setTitle:extra.popularity forState:UIControlStateNormal];
+        [self.commentButton setTitle:extra.comments forState:UIControlStateNormal];
         
     };
     
@@ -184,6 +184,7 @@
 - (IBAction)zan:(UIButton *)sender {
     sender.selected = !sender.selected;
 
+    
     
 }
 

@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="327" height="245"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="327" height="245"/>
+                <rect key="frame" x="0.0" y="0.0" width="327" height="244"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nvh-AZ-ZYP">
@@ -43,10 +43,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//合同文字文字文字文字文字文字文字文字" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5W-5m-lCU">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//合同文字文字文字文字文字文字文字文字" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5W-5m-lCU">
                         <rect key="frame" x="50" y="168" width="267" height="38.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="1" green="0.28617009900000001" blue="0.32983922180000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtT-wm-0KY">
@@ -56,7 +56,7 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
-                        <state key="normal" title="999" image="Dark_Comment_Vote">
+                        <state key="normal" title="0" image="Dark_Comment_Vote">
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -70,16 +70,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAI-f2-h3v">
-                        <rect key="frame" x="282" y="214" width="35" height="20"/>
+                        <rect key="frame" x="277" y="213" width="40" height="22"/>
                         <color key="backgroundColor" red="0.55309634774779748" green="0.80507151921362263" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="lQD-GO-Jbl"/>
-                            <constraint firstAttribute="width" constant="35" id="oZk-V4-kiR"/>
+                            <constraint firstAttribute="height" constant="22" id="lQD-GO-Jbl"/>
+                            <constraint firstAttribute="width" constant="40" id="oZk-V4-kiR"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="展开">
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="openReply:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yQf-wt-KWE"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -102,11 +108,13 @@
                     <constraint firstItem="TiK-vV-9Id" firstAttribute="top" secondItem="PcW-KL-SmQ" secondAttribute="bottom" constant="10" id="xMZ-Ry-TNF"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="contentLabel" destination="TiK-vV-9Id" id="Ahm-1R-sse"/>
                 <outlet property="iconImageView" destination="nvh-AZ-ZYP" id="sIt-mB-bad"/>
                 <outlet property="nameLabel" destination="PcW-KL-SmQ" id="6aC-Fb-cnl"/>
-                <outlet property="replyLabel" destination="L5W-5m-lCU" id="KdP-pA-J32"/>
+                <outlet property="openButton" destination="VAI-f2-h3v" id="wqR-Cf-qru"/>
+                <outlet property="replyLabel" destination="L5W-5m-lCU" id="6cY-Ib-VjJ"/>
                 <outlet property="timeLabel" destination="Arc-sx-U8r" id="fN4-Gq-hQv"/>
                 <outlet property="zanButton" destination="VtT-wm-0KY" id="kXJ-2S-aFB"/>
             </connections>

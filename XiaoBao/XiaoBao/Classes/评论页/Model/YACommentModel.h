@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "YACommentItem.h"
 @interface YACommentModel : NSObject
 /** 作者名称 */
 @property (nonatomic,copy) NSString *author;
@@ -19,9 +18,11 @@
 @property (nonatomic,copy) NSString *time;
 /** 点赞 */
 @property (nonatomic,copy) NSString *likes;
+/** 是否展开 */
+@property (nonatomic,assign) BOOL isOpen;
+/** 回复者内容 */
+@property (nonatomic,copy) NSString *replyContent;
 
-/** 回复者 */
-@property (nonatomic,strong) YACommentItem *reply;
 
 + (NSMutableArray <YACommentModel *> *)commentModelWithKeyValues:(id)responseObject;
 @end
