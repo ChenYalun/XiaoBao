@@ -8,7 +8,7 @@
 
 #import "YARootViewController.h"
 
-@interface YARootViewController ()<RESideMenuDelegate>
+@interface YARootViewController ()
 
 @end
 
@@ -26,11 +26,31 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"]];
-    self.contentViewController = navigationController;
-    self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
+    UINavigationController *contentNavigationController = [[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"]];
+    self.centerViewController = contentNavigationController;
+    
+    self.leftDrawerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
 
+ 
+    // 设置打开/关闭抽屉的手势
+    self.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    self.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    // 设置左右两边抽屉显示的多少
+    self.maximumLeftDrawerWidth = 70 + 0.5 * kScreenWidth;
+    
+    
+    
+    // 设置侧边栏与中心控制器粘性滑动
+    [self setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+        drawerController.leftDrawerViewController.view.ya_x = - (70 + 0.5 * kScreenWidth) * (1 - percentVisible);
+    }];
+//    self.bezelPanningCenterViewRange = 0;
+//    self.maximumRightDrawerWidth = 100;
+//    self.visibleLeftDrawerWidth = kScreenWidth *0.5;
+
+    
     // 设置代理
+    /*
     self.delegate = self;
    
     self.scaleContentView = NO;  //内容视图缩放功能
@@ -57,7 +77,7 @@
     
     
 //        self.contentViewInLandscapeOffsetCenterX = 70;
-    
+    */
     
     //    动画持续时间
     //    @property (assign, readwrite, nonatomic) NSTimeInterval animationDuration;
@@ -92,13 +112,13 @@
 }
 
 #pragma mark - 代理方法
-- (void)sideMenu:(RESideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer {
-    
-    // 根据视图层级关系找到移动的view
-    UIView *view = [UIApplication sharedApplication].keyWindow.subviews.firstObject.subviews.lastObject;
-    if (view.ya_x >= (0.5 * kScreenWidth + 68)) {
-        view.ya_x = 0.5 * kScreenWidth + 70;
-    }
-}
+//- (void)sideMenu:(RESideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer {
+//    
+//    // 根据视图层级关系找到移动的view
+//    UIView *view = [UIApplication sharedApplication].keyWindow.subviews.firstObject.subviews.lastObject;
+//    if (view.ya_x >= (0.5 * kScreenWidth + 68)) {
+//        view.ya_x = 0.5 * kScreenWidth + 70;
+//    }
+//}
 
 @end

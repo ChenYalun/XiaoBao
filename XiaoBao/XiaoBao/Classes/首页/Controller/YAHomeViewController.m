@@ -16,6 +16,7 @@
 #import "YAHomeHeaderView.h"
 #import <RESideMenu.h>
 #import "YAContentViewController.h"
+#import <UIViewController+MMDrawerController.h>
 #define kHeaderViewHeight 200
 #define kMargin 10
 #define kRefreshViewWH 18
@@ -159,7 +160,10 @@ static NSString *reuseIdentifier = @"story";
 
 #pragma mark - 侧滑配置
 - (void)setupSideMenu {
-    [self.sideMenuViewController presentLeftMenuViewController];
+    
+    // 点击打开 再点击关闭
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+
 }
 
 

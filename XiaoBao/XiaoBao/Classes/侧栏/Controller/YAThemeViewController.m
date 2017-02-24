@@ -14,7 +14,7 @@
 #import <YYWebImageManager.h>
 #import "YAThemeTableViewHeader.h"
 #import <GPUImage.h>
-#import <RESideMenu.h>
+#import <UIViewController+MMDrawerController.h>
 #import "YAEditorItem.h"
 #import "YAEditorListViewController.h"
 #import "YAContentViewController.h"
@@ -103,7 +103,9 @@ static NSString *reuseIdentifier = @"story";
 
 #pragma mark - 导航栏按钮事件
 - (IBAction)presentMenuViewController:(UIButton *)sender {
-    [self.sideMenuViewController presentLeftMenuViewController];
+    // 点击打开 再点击关闭
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+
 }
 
 #warning 订阅
