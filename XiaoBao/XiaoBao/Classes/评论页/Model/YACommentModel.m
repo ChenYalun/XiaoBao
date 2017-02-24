@@ -20,11 +20,18 @@
         model.content = obj.content;
         model.author = obj.author;
         model.likes = obj.likes;
-        model.time = @"02-20 14:25";
+        model.time = [model changeDate:obj.time];
         
         // 回复
-        //model.replyName = obj.reply_to.author;
-        model.replyContent = obj.reply_to.content;
+        if (obj.reply_to.content && obj.reply_to.author) {
+            NSMutableAttributedString *reply = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"//%@:  ",obj.reply_to.author] attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:15.0]}];
+            NSAttributedString *content = [[NSMutableAttributedString alloc] initWithString:obj.reply_to.content attributes:@{NSForegroundColorAttributeName : [UIColor darkGrayColor]}];
+            
+            [reply appendAttributedString:content];
+            
+            model.replyContent = reply;
+        }
+
         
         // 标记展开
         model.isOpen = NO;
@@ -34,4 +41,23 @@
     
     return models;
 }
+
+
+// 时间戳转标准时间
+-(NSString *)changeDate:(NSString *)utc{
+    
+    NSTimeInterval time = [utc doubleValue];
+    
+    NSDate *date=[NSDate dateWithTimeIntervalSince1970:time];
+    
+    NSDateFormatter *dateformatter=[[NSDateFormatter alloc] init];
+    
+    [dateformatter setDateFormat:@"MM-dd HH:mm"];
+    
+    NSString *staartstr=[dateformatter stringFromDate:date];
+    
+    return staartstr;
+    
+}
+
 @end

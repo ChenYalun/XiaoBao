@@ -14,14 +14,14 @@
 @property (nonatomic,copy) NSString *content;
 /** 头像 */
 @property (nonatomic,copy) NSString *avatar;
-/** 时间 */
+/** 时间戳 */
 @property (nonatomic,copy) NSString *time;
 /** 点赞 */
 @property (nonatomic,copy) NSString *likes;
 /** 是否展开 */
 @property (nonatomic,assign) BOOL isOpen;
 /** 回复者内容 */
-@property (nonatomic,copy) NSString *replyContent;
+@property (nonatomic,copy) NSAttributedString *replyContent;
 
 
 + (NSMutableArray <YACommentModel *> *)commentModelWithKeyValues:(id)responseObject;

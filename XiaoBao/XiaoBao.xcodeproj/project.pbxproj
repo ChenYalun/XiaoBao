@@ -42,8 +42,11 @@
 		9A74E9BA1E5974A1008AD0AC /* YAThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74E9B81E5974A1008AD0AC /* YAThemeViewController.m */; };
 		9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A74E9B91E5974A1008AD0AC /* YAThemeViewController.xib */; };
 		9A74E9BE1E597AD6008AD0AC /* YAThemeStoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74E9BD1E597AD5008AD0AC /* YAThemeStoryItem.m */; };
+		9A87D10B1E6036C900A262C5 /* YACommentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87D10A1E6036C900A262C5 /* YACommentHeader.m */; };
+		9A87D10D1E6036DB00A262C5 /* YACommentHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A87D10C1E6036DB00A262C5 /* YACommentHeader.xib */; };
+		9A87D1111E60656900A262C5 /* YACommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87D10F1E60656900A262C5 /* YACommentViewController.m */; };
+		9A87D1121E60656900A262C5 /* YACommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A87D1101E60656900A262C5 /* YACommentViewController.xib */; };
 		9A8D0E331E5E80310050C9D7 /* YAExtraItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E321E5E80310050C9D7 /* YAExtraItem.m */; };
-		9A8D0E3D1E5E84370050C9D7 /* YACommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E3C1E5E84370050C9D7 /* YACommentViewController.m */; };
 		9A8D0E411E5E84510050C9D7 /* YACommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E3F1E5E84510050C9D7 /* YACommentTableViewCell.m */; };
 		9A8D0E421E5E84510050C9D7 /* YACommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D0E401E5E84510050C9D7 /* YACommentTableViewCell.xib */; };
 		9A8D0E451E5E84610050C9D7 /* YACommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E441E5E84610050C9D7 /* YACommentItem.m */; };
@@ -119,10 +122,14 @@
 		9A74E9B91E5974A1008AD0AC /* YAThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAThemeViewController.xib; sourceTree = "<group>"; };
 		9A74E9BC1E597AD5008AD0AC /* YAThemeStoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAThemeStoryItem.h; sourceTree = "<group>"; };
 		9A74E9BD1E597AD5008AD0AC /* YAThemeStoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAThemeStoryItem.m; sourceTree = "<group>"; };
+		9A87D1091E6036C900A262C5 /* YACommentHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YACommentHeader.h; sourceTree = "<group>"; };
+		9A87D10A1E6036C900A262C5 /* YACommentHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YACommentHeader.m; sourceTree = "<group>"; };
+		9A87D10C1E6036DB00A262C5 /* YACommentHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YACommentHeader.xib; sourceTree = "<group>"; };
+		9A87D10E1E60656900A262C5 /* YACommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YACommentViewController.h; sourceTree = "<group>"; };
+		9A87D10F1E60656900A262C5 /* YACommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YACommentViewController.m; sourceTree = "<group>"; };
+		9A87D1101E60656900A262C5 /* YACommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YACommentViewController.xib; sourceTree = "<group>"; };
 		9A8D0E311E5E80310050C9D7 /* YAExtraItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAExtraItem.h; sourceTree = "<group>"; };
 		9A8D0E321E5E80310050C9D7 /* YAExtraItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAExtraItem.m; sourceTree = "<group>"; };
-		9A8D0E3B1E5E84370050C9D7 /* YACommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YACommentViewController.h; sourceTree = "<group>"; };
-		9A8D0E3C1E5E84370050C9D7 /* YACommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YACommentViewController.m; sourceTree = "<group>"; };
 		9A8D0E3E1E5E84510050C9D7 /* YACommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YACommentTableViewCell.h; sourceTree = "<group>"; };
 		9A8D0E3F1E5E84510050C9D7 /* YACommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YACommentTableViewCell.m; sourceTree = "<group>"; };
 		9A8D0E401E5E84510050C9D7 /* YACommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YACommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -189,8 +196,9 @@
 		9A8D0E351E5E83C10050C9D7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9A8D0E3B1E5E84370050C9D7 /* YACommentViewController.h */,
-				9A8D0E3C1E5E84370050C9D7 /* YACommentViewController.m */,
+				9A87D10E1E60656900A262C5 /* YACommentViewController.h */,
+				9A87D10F1E60656900A262C5 /* YACommentViewController.m */,
+				9A87D1101E60656900A262C5 /* YACommentViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -212,6 +220,9 @@
 				9A8D0E3E1E5E84510050C9D7 /* YACommentTableViewCell.h */,
 				9A8D0E3F1E5E84510050C9D7 /* YACommentTableViewCell.m */,
 				9A8D0E401E5E84510050C9D7 /* YACommentTableViewCell.xib */,
+				9A87D1091E6036C900A262C5 /* YACommentHeader.h */,
+				9A87D10A1E6036C900A262C5 /* YACommentHeader.m */,
+				9A87D10C1E6036DB00A262C5 /* YACommentHeader.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -530,12 +541,14 @@
 				9A31B2EE1E5DA4AC001494EE /* YALinkViewController.xib in Resources */,
 				9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */,
 				9A8D0E421E5E84510050C9D7 /* YACommentTableViewCell.xib in Resources */,
+				9A87D1121E60656900A262C5 /* YACommentViewController.xib in Resources */,
 				9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */,
 				9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */,
 				9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */,
 				9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */,
 				9A1FDEE71E5C5B91004C541A /* YAEditorDetailContentView.xib in Resources */,
 				9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */,
+				9A87D10D1E6036DB00A262C5 /* YACommentHeader.xib in Resources */,
 				9A299E0E1E5AF5CA00B88B4F /* YAThemeTableViewHeader.xib in Resources */,
 				9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */,
 				9A3C18671E5873CA00B76999 /* YAThemeTableViewCell.xib in Resources */,
@@ -607,6 +620,7 @@
 				9A1FDED71E5BC20E004C541A /* YAEditorDetailViewController.m in Sources */,
 				9A8D0E551E5EE0380050C9D7 /* YALaunchViewController.m in Sources */,
 				9A3C18661E5873CA00B76999 /* YAThemeTableViewCell.m in Sources */,
+				9A87D1111E60656900A262C5 /* YACommentViewController.m in Sources */,
 				9A1FDEE51E5C5B79004C541A /* YAEditorDetailContentView.m in Sources */,
 				9A5C15531E558068003BE177 /* YAHomeHeaderView.m in Sources */,
 				9A4CA4E81E548A980099900F /* YAHomeViewController.m in Sources */,
@@ -624,7 +638,6 @@
 				9ADBF3061E542A53001F8565 /* YARefreshFooter.m in Sources */,
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
 				9A31B2ED1E5DA4AC001494EE /* YALinkViewController.m in Sources */,
-				9A8D0E3D1E5E84370050C9D7 /* YACommentViewController.m in Sources */,
 				9A4CA4E51E548A290099900F /* YASideViewController.m in Sources */,
 				9A31B2E91E5D1BBF001494EE /* YAContentItem.m in Sources */,
 				9ADBF2DC1E540FD7001F8565 /* main.m in Sources */,
@@ -633,6 +646,7 @@
 				9A5C15501E554CB2003BE177 /* YASectionHeaderView.m in Sources */,
 				9A1FDEDE1E5C4346004C541A /* YANavigationView.m in Sources */,
 				9A8D0E331E5E80310050C9D7 /* YAExtraItem.m in Sources */,
+				9A87D10B1E6036C900A262C5 /* YACommentHeader.m in Sources */,
 				9A8D0E481E5E856F0050C9D7 /* YACommentModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

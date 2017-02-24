@@ -22,7 +22,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+    self.selectedBackgroundView.backgroundColor = kRGBAColor(237, 237, 237, 0.8);
 }
 
 - (void)setComment:(YACommentModel *)comment {
@@ -33,22 +35,16 @@
     self.contentLabel.text = comment.content;
     [self.zanButton setTitle:comment.likes forState:UIControlStateNormal];
     self.timeLabel.text = comment.time;
-    self.replyLabel.text = comment.replyContent;
+    self.replyLabel.attributedText = comment.replyContent;
     
     // 是否隐藏展开按钮
-    if (self.replyLabel.text) {
+    if (self.replyLabel.attributedText) {
         self.openButton.hidden = NO;
     } else {
         self.openButton.hidden = YES;
     }
     
-    // 显示回复
-//    if (comment.isOpen) {
-//        self.replyLabel.numberOfLines = 0;
-//    } else {
-//        self.replyLabel.numberOfLines = 2;
-//    }
-    
+    // 按钮的展开与收起
     if (comment.isOpen) {
         [self.openButton setTitle:@"收起" forState:UIControlStateNormal];
         self.replyLabel.numberOfLines = 0;
@@ -56,6 +52,21 @@
         [self.openButton setTitle:@"展开" forState:UIControlStateNormal];
         self.replyLabel.numberOfLines = 2;
     }
+    
+    
+    
+    //  两行可以显示完全则隐藏展开按钮
+    CGSize contentSize = [self.replyLabel.text boundingRectWithSize:CGSizeMake(kScreenWidth - 60, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:15.0]} context:nil].size;
+    
+    CGFloat lineHeight = self.replyLabel.font.lineHeight;
+    
+    if (contentSize.height > lineHeight * 2) {
+        self.openButton.hidden = NO;
+    } else {
+        self.openButton.hidden = YES;
+    }
+    
+
     
 }
 - (IBAction)openReply:(UIButton *)sender {
