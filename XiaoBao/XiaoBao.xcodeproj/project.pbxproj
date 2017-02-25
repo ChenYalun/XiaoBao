@@ -39,6 +39,9 @@
 		9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C154C1E5524FD003BE177 /* YAProgressHUD.m */; };
 		9A5C15501E554CB2003BE177 /* YASectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C154F1E554CB2003BE177 /* YASectionHeaderView.m */; };
 		9A5C15531E558068003BE177 /* YAHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C15521E558068003BE177 /* YAHomeHeaderView.m */; };
+		9A6920871E6101E900F80483 /* YASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6920851E6101E800F80483 /* YASettingViewController.m */; };
+		9A69208A1E61027600F80483 /* YASettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6920891E61027600F80483 /* YASettingViewController.storyboard */; };
+		9A69208C1E61077000F80483 /* YASideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A69208B1E61077000F80483 /* YASideViewController.xib */; };
 		9A74E9BA1E5974A1008AD0AC /* YAThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74E9B81E5974A1008AD0AC /* YAThemeViewController.m */; };
 		9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A74E9B91E5974A1008AD0AC /* YAThemeViewController.xib */; };
 		9A74E9BE1E597AD6008AD0AC /* YAThemeStoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A74E9BD1E597AD5008AD0AC /* YAThemeStoryItem.m */; };
@@ -55,7 +58,6 @@
 		9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
-		9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E31E540FD7001F8565 /* Main.storyboard */; };
 		9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E61E540FD7001F8565 /* Assets.xcassets */; };
 		9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E81E540FD7001F8565 /* LaunchScreen.storyboard */; };
 		9ADBF3011E542A3A001F8565 /* YAHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF3001E542A3A001F8565 /* YAHTTPManager.m */; };
@@ -117,6 +119,10 @@
 		9A5C154F1E554CB2003BE177 /* YASectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASectionHeaderView.m; sourceTree = "<group>"; };
 		9A5C15511E558068003BE177 /* YAHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHomeHeaderView.h; sourceTree = "<group>"; };
 		9A5C15521E558068003BE177 /* YAHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHomeHeaderView.m; sourceTree = "<group>"; };
+		9A6920841E6101E800F80483 /* YASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YASettingViewController.h; sourceTree = "<group>"; };
+		9A6920851E6101E800F80483 /* YASettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YASettingViewController.m; sourceTree = "<group>"; };
+		9A6920891E61027600F80483 /* YASettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YASettingViewController.storyboard; sourceTree = "<group>"; };
+		9A69208B1E61077000F80483 /* YASideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YASideViewController.xib; sourceTree = "<group>"; };
 		9A74E9B71E5974A1008AD0AC /* YAThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAThemeViewController.h; sourceTree = "<group>"; };
 		9A74E9B81E5974A1008AD0AC /* YAThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAThemeViewController.m; sourceTree = "<group>"; };
 		9A74E9B91E5974A1008AD0AC /* YAThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAThemeViewController.xib; sourceTree = "<group>"; };
@@ -144,7 +150,6 @@
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9ADBF2E41E540FD7001F8565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9ADBF2E61E540FD7001F8565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ADBF2E91E540FD7001F8565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ADBF2EB1E540FD7001F8565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,6 +186,40 @@
 				9A1FDEDF1E5C4358004C541A /* YANavigationView.xib */,
 			);
 			path = "导航栏";
+			sourceTree = "<group>";
+		};
+		9A6920791E61007700F80483 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				9A69207A1E61007700F80483 /* Controller */,
+				9A69207B1E61007700F80483 /* Model */,
+				9A69207C1E61007700F80483 /* View */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		9A69207A1E61007700F80483 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A6920841E6101E800F80483 /* YASettingViewController.h */,
+				9A6920851E6101E800F80483 /* YASettingViewController.m */,
+				9A6920891E61027600F80483 /* YASettingViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9A69207B1E61007700F80483 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9A69207C1E61007700F80483 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9A8D0E341E5E83C10050C9D7 /* 评论页 */ = {
@@ -263,7 +302,6 @@
 				9A8D0E491E5ED1500050C9D7 /* 启动页 */,
 				9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */,
 				9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */,
-				9ADBF2E31E540FD7001F8565 /* Main.storyboard */,
 				9ADBF2E61E540FD7001F8565 /* Assets.xcassets */,
 				9ADBF2E81E540FD7001F8565 /* LaunchScreen.storyboard */,
 				9ADBF2EB1E540FD7001F8565 /* Info.plist */,
@@ -283,6 +321,7 @@
 		9ADBF2F11E54295D001F8565 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9A6920791E61007700F80483 /* 设置 */,
 				9A1FDEDB1E5C4326004C541A /* 导航栏 */,
 				9ADBF2F21E54295D001F8565 /* 侧栏 */,
 				9ADBF2F61E54295D001F8565 /* 内容页 */,
@@ -309,6 +348,7 @@
 				9A4CA4E11E5489F40099900F /* YARootViewController.m */,
 				9A4CA4E31E548A290099900F /* YASideViewController.h */,
 				9A4CA4E41E548A290099900F /* YASideViewController.m */,
+				9A69208B1E61077000F80483 /* YASideViewController.xib */,
 				9A74E9B71E5974A1008AD0AC /* YAThemeViewController.h */,
 				9A74E9B81E5974A1008AD0AC /* YAThemeViewController.m */,
 				9A74E9B91E5974A1008AD0AC /* YAThemeViewController.xib */,
@@ -537,8 +577,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A69208A1E61027600F80483 /* YASettingViewController.storyboard in Resources */,
 				9A0189931E5C80E80022A621 /* YAContentViewController.xib in Resources */,
 				9A31B2EE1E5DA4AC001494EE /* YALinkViewController.xib in Resources */,
+				9A69208C1E61077000F80483 /* YASideViewController.xib in Resources */,
 				9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */,
 				9A8D0E421E5E84510050C9D7 /* YACommentTableViewCell.xib in Resources */,
 				9A87D1121E60656900A262C5 /* YACommentViewController.xib in Resources */,
@@ -553,7 +595,6 @@
 				9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */,
 				9A3C18671E5873CA00B76999 /* YAThemeTableViewCell.xib in Resources */,
 				9A299E1B1E5B203700B88B4F /* YAEditorListTableViewCell.xib in Resources */,
-				9ADBF2E51E540FD7001F8565 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +672,7 @@
 				9A74E9BE1E597AD6008AD0AC /* YAThemeStoryItem.m in Sources */,
 				9ADBF3071E542A53001F8565 /* YARefreshHeader.m in Sources */,
 				9A299E151E5B0A2B00B88B4F /* YAEditorListViewController.m in Sources */,
+				9A6920871E6101E900F80483 /* YASettingViewController.m in Sources */,
 				9A4CA4EB1E5492CA0099900F /* YAStoryHeaderView.m in Sources */,
 				9A0189921E5C80E80022A621 /* YAContentViewController.m in Sources */,
 				9A299E111E5AF72B00B88B4F /* YAEditorItem.m in Sources */,
@@ -654,14 +696,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9ADBF2E31E540FD7001F8565 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9ADBF2E41E540FD7001F8565 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9ADBF2E81E540FD7001F8565 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

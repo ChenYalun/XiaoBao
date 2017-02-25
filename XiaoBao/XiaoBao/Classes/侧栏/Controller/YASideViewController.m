@@ -123,7 +123,7 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
     NSString *themeID = self.themes[indexPath.row].ID;
     if ([themeID isEqualToString:@"首页"]) {
         
-        UINavigationController *contentNavigationController = [[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"]];
+        UINavigationController *contentNavigationController = [[UINavigationController alloc] initWithRootViewController:[[YAHomeViewController alloc] init]];
 
         // 设置中心控制器
         [self.mm_drawerController setCenterViewController:contentNavigationController withCloseAnimation:YES completion:nil];

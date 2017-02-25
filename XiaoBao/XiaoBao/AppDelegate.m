@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "YALaunchViewController.h"
+#import "YARootViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -39,8 +40,9 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     
        
+    self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     
-
+    self.window.rootViewController = [[YARootViewController alloc] init];
     
     [self.window makeKeyAndVisible];
     
