@@ -13,7 +13,14 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
+        // 样式
         self.defaultStyle = SVProgressHUDStyleDark;
+        
+        // 消失时间
+        self.minimumDismissTimeInterval = 2.0;
+        
+        // 字体
+        self.font = [UIFont boldSystemFontOfSize:18];
     }
     return self;
 }

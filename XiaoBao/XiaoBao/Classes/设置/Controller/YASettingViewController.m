@@ -8,6 +8,12 @@
 
 #import "YASettingViewController.h"
 #import <UIViewController+MMDrawerController.h>
+#import "YAProgressHUD.h"
+#import <YYWebImageManager.h>
+#import <YYCache.h>
+#define kSectionFooterHeight 15
+#define kSectionHeaderHeight 8
+#define kIconImageWH 38
 @interface YASettingViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
@@ -31,6 +37,13 @@
     
     [self setupNavigationController];
     
+    
+    // 设置tableView顶部间距
+    CGRect frame=CGRectMake(0, 0, 0, 20);
+    self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:frame];
+    
+    
+    
 }
 
 #pragma mark - 设置导航栏
@@ -50,20 +63,19 @@
     // 设置导航栏
     self.navigationItem.leftBarButtonItem = leftItem;
     self.navigationItem.title = @"设置";
-    
-    // 设置tableView顶部间距
-    CGRect frame=CGRectMake(0, 0, 0, 20);
-    self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:frame];
+
     
 
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    self.iconImageView.bounds = CGRectMake(0, 0, 38, 38);
+    self.iconImageView.bounds = CGRectMake(0, 0, kIconImageWH, kIconImageWH);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+    
     // Dispose of any resources that can be recreated.
 }
 
@@ -73,85 +85,119 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
     if (section == 1) { // 返回指定格式的提示文字
+        UIView *view = [[UIView alloc] init];
         UILabel *label = [[UILabel alloc] init];
-        label.height = 20;
-        NSMutableAttributedString *stre = [[NSMutableAttributedString alloc] initWithString:@"       仅Wi-Fi下可用，自动下载最新内容" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:10], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+        label.height = kSectionFooterHeight;
+        NSMutableAttributedString *stre = [[NSMutableAttributedString alloc] initWithString:@"仅 Wi-Fi 下可用，自动下载最新内容" attributes:@{
+                                                                                                                                      NSFontAttributeName : [UIFont systemFontOfSize:10], NSForegroundColorAttributeName : [UIColor lightGrayColor],
+                                                                                                                                      
+                                                                                                                                      }];
         label.attributedText = stre;
-        
-        return label;
+        [view addSubview:label];
+        label.frame = CGRectMake(22, 2, kScreenWidth, kSectionFooterHeight);
+     
+        return view;
     } else {
         return nil;
     }
 
 }
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:; forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return kSectionFooterHeight;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return kSectionHeaderHeight;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    // 去吐槽
+    if (indexPath.section == 4 && indexPath.row == 1) {
+        [self sendEmail];
+    }
     
-    // Pass the selected object to the new view controller.
+    // 去好评
+    if (indexPath.section == 4 && indexPath.row == 0) {
+        [self gotoAppStore];
+    }
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    // 清除缓存
+    if (indexPath.section == 5) {
+        [self clearDisk];
+    }
+    
+
+    // 选中后不久取消选中
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - 发送邮件
+- (void)sendEmail {
+    
+    NSMutableString *mailUrl = [NSMutableString string];
+    
+    //添加收件人
+    NSArray *toRecipients = [NSArray arrayWithObject: @"first@example.com"];
+    [mailUrl appendFormat:@"mailto:%@", [toRecipients componentsJoinedByString:@","]];
+    
+    //添加抄送
+    NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil];
+    [mailUrl appendFormat:@"?cc=%@", [ccRecipients componentsJoinedByString:@","]];
+    
+    //添加密送
+    NSArray *bccRecipients = [NSArray arrayWithObjects:@"fourth@example.com", nil];
+    [mailUrl appendFormat:@"&bcc=%@", [bccRecipients componentsJoinedByString:@","]];
+    
+    //添加主题
+    [mailUrl appendString:@"&subject=my email"];
+    
+    //添加邮件内容
+    [mailUrl appendString:@"&body=<b>email</b> body!"];
+    
+    NSString *email = [mailUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:email]];
 }
-*/
 
+#pragma mark - 清除缓存
+- (void)clearDisk {
+    
+    // 图片缓存
+    kClearDiskCache;
+    kClearMemoryCache;
+
+
+
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    // Caches目录
+    NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).lastObject;
+
+ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+     
+     //拿到path路径的所有的的子文件夹
+     NSArray *subPaths = [fileManager subpathsAtPath:cachesPath];
+     
+     // 遍历路径
+     for (NSString *path in subPaths) {
+         NSString *filePath = [cachesPath stringByAppendingPathComponent:path];
+         [fileManager removeItemAtPath:filePath error:nil];
+     }
+     
+     
+     // 提示
+     dispatch_sync(dispatch_get_main_queue(), ^{
+         [YAProgressHUD showSuccessWithStatus:@"清除成功"];
+     });
+     
+ });
+    
+
+}
+
+
+#pragma mark - 去好评
+- (void)gotoAppStore {
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://appsto.re/cn/Fv7fM.i"]];
+}
 @end

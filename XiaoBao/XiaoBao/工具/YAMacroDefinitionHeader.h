@@ -200,4 +200,14 @@ item.alpha = 0.0; \
 
 // ((void(*)(id,SEL, id,id))objc_msgSend)(self.refreshingTarget,self.refreshingAction, nil, nil);
 
+
+//20清除缓存
+#define kClearMemoryCache  [[YYWebImageManager sharedManager].cache.memoryCache removeAllObjects]
+#define kClearDiskCache  [[YYWebImageManager sharedManager].cache.diskCache removeAllObjects]
+
+
+
+
+
+
 /* kMacroDefinitionHeader_h */
