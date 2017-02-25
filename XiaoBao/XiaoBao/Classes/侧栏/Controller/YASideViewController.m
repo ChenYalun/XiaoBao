@@ -12,6 +12,8 @@
 #import "YAThemeViewController.h"
 #import "YAHomeViewController.h"
 #import <UIViewController+MMDrawerController.h>
+#import "YASettingViewController.h"
+#import "YANavigationView.h"
 static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 @interface YASideViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
@@ -20,6 +22,8 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 /** 首页item */
 @property (nonatomic,strong) YAThemeItem *homeItem;
 @property (nonatomic,assign) BOOL isRefreshing;
+/** 导航视图 */
+//@property (nonatomic,weak) YANavigationView *navigationView;
 @end
 
 @implementation YASideViewController
@@ -40,6 +44,15 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
     }
     return _homeItem;
 }
+
+//- (YANavigationView *)navigationView {
+//    if (_navigationView == nil) {
+//        YANavigationView *navigationView = [YANavigationView navigationViewWithTitle:@"设置"];
+//        self.v
+//    }
+//}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,15 +61,14 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
     
     // 注册tableView
     [self.themeTableView registerNib:[UINib nibWithNibName:[YAThemeTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    
-    
+//    self.navigationController.navigationBarHidden = YES;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    
 //    self.automaticallyAdjustsScrollViewInsets = NO;
 //    UIImageView *i = [[UIImageView alloc] init];
 //    i.layer.masksToBounds = YES;
 //    i.layer.cornerRadius = i.width * 0.5;
-    
-    
-    
+        
     // 自动刷新
     [self refreshForNewState];
 
@@ -163,4 +175,12 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 
     }
 }
+
+#pragma mark - 事件处理
+- (IBAction)pushToSettingViewController:(UIButton *)sender {
+    YASettingViewController *settingViewController = [YASettingViewController settingViewController];
+    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
+    [self.mm_drawerController setCenterViewController:navigationViewController withCloseAnimation:YES completion:nil];
+}
+
 @end

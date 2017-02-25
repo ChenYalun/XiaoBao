@@ -68,6 +68,9 @@
                                     <state key="normal" title="设置" image="Menu_Icon_Setting">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="pushToSettingViewController:" destination="-1" eventType="touchUpInside" id="ucW-mj-kX7"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK0-HK-xY2">
                                     <rect key="frame" x="0.0" y="0.0" width="118.5" height="45"/>

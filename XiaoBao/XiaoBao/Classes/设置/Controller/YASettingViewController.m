@@ -7,8 +7,9 @@
 //
 
 #import "YASettingViewController.h"
-
+#import <UIViewController+MMDrawerController.h>
 @interface YASettingViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 @end
 
@@ -19,13 +20,48 @@
     return settingViewController;
 }
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self = [YASettingViewController settingViewController];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.title = @"设置";
+    [self setupNavigationController];
+    
 }
 
+#pragma mark - 设置导航栏
+- (void)setupNavigationController {
+    // 导航栏item封装button
+    UIButton *leftButton = [[UIButton alloc] init];
+    [leftButton setImage:kGetImage(@"Dark_News_Arrow") forState:UIControlStateNormal];
+    leftButton.frame = CGRectMake(0, 0, 40, 40);
+    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+    
+    // 返回侧栏
+    [leftButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    
+    // 设置导航栏
+    self.navigationItem.leftBarButtonItem = leftItem;
+    self.navigationItem.title = @"设置";
+    
+    // 设置tableView顶部间距
+    CGRect frame=CGRectMake(0, 0, 0, 20);
+    self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:frame];
+    
+
+}
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    self.iconImageView.bounds = CGRectMake(0, 0, 38, 38);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -34,10 +70,23 @@
 #pragma mark - Table view data source
 
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    if (section == 1) { // 返回指定格式的提示文字
+        UILabel *label = [[UILabel alloc] init];
+        label.height = 20;
+        NSMutableAttributedString *stre = [[NSMutableAttributedString alloc] initWithString:@"       仅Wi-Fi下可用，自动下载最新内容" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:10], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+        label.attributedText = stre;
+        
+        return label;
+    } else {
+        return nil;
+    }
 
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:; forIndexPath:indexPath];
     
     // Configure the cell...
     
