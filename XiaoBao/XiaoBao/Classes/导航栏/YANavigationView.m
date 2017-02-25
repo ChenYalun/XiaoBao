@@ -21,6 +21,10 @@
     [navigationView.backButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         [navigationView.viewController.navigationController popViewControllerAnimated:YES];
     }];
+    
+    // 设置背景颜色
+    navigationView.dk_backgroundColorPicker = DKColorPickerWithKey(NavigationViewBackgroundColor);
+    
     return navigationView;
     
 }

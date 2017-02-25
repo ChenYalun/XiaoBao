@@ -11,11 +11,33 @@
 #import "YAProgressHUD.h"
 #import <YYWebImageManager.h>
 #import <YYCache.h>
+
 #define kSectionFooterHeight 15
 #define kSectionHeaderHeight 8
 #define kIconImageWH 38
 @interface YASettingViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *firstCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *secondCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *thirdCell;
+@property (weak, nonatomic) IBOutlet UIView *fourthCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *fifthCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *sixthCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *sevenCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *eightCell;
+@property (weak, nonatomic) IBOutlet UILabel *firstLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thirdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fourthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fifthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sixLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sevenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eightLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *firstSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *secondSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *thirdSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *fourthSwitch;
 
 @end
 
@@ -36,6 +58,52 @@
     [super viewDidLoad];
     
     [self setupNavigationController];
+    
+    // 设置背景颜色
+    self.view.dk_backgroundColorPicker = DKColorPickerWithKey(SettingViewBackgroundColor);
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithKey(NavigationViewBackgroundColor);
+    
+    
+    self.firstCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+    self.secondCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+    self.thirdCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+    self.fourthCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+    self.fifthCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+    self.sixthCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+    self.sevenCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+    self.eightCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
+  
+    
+    
+    self.firstLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    self.secondLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    self.thirdLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    self.fourthLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    self.fifthLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    self.sixLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    self.sevenLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    self.eightLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
+    
+    
+
+    self.firstSwitch.dk_tintColorPicker = DKColorPickerWithKey(SwitchTintColor);
+    self.secondSwitch.dk_tintColorPicker = DKColorPickerWithKey(SwitchTintColor);
+    self.thirdSwitch.dk_tintColorPicker = DKColorPickerWithKey(SwitchTintColor);
+    self.fourthSwitch.dk_tintColorPicker = DKColorPickerWithKey(SwitchTintColor);
+    
+    // 图片的夜间模式
+//    self.iconImageView.dk_imagePicker = DKImagePickerWithImages([UIImage imageNamed:@"Account_Avatar"],[UIImage imageNamed:@"Dark_Account_Avatar"]);
+//
+    self.iconImageView.dk_imagePicker = DKImagePickerWithNames(@"Account_Avatar",@"Dark_Account_Avatar");
+//    self.iconImageView.dk_imagePicker = DKImagePickerWithNames();
+    
+    
+
+    
+    
+    
+    
     
     
     // 设置tableView顶部间距

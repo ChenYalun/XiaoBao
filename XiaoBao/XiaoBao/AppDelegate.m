@@ -26,7 +26,9 @@
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     // 全局颜色
-    [UINavigationBar appearance].barTintColor = kGlobalColor;
+    //[UINavigationBar appearance].dk_backgroundColorPicker = DKColorPickerWithKey(NavigationViewBackgroundColor);
+    
+//    NavigationViewBackgroundColor
     // 导航栏标题字体
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSForegroundColorAttributeName : [UIColor whiteColor]}];
     

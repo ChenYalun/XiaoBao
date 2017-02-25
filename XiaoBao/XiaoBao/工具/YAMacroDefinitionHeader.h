@@ -206,7 +206,8 @@ item.alpha = 0.0; \
 #define kClearDiskCache  [[YYWebImageManager sharedManager].cache.diskCache removeAllObjects]
 
 
-
+// #import <YYWebImageManager.h>
+//#import <YYCache.h>
 
 
 

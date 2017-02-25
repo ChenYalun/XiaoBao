@@ -71,11 +71,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // 设置颜色
+//    
+//    for (UIView *view in self.webView.subviews) {
+//        view.dk_tintColorPicker = DKColorPickerWithKey(ViewBackgroundColor);
+//        view.dk_backgroundColorPicker = DKColorPickerWithKey(ViewBackgroundColor);
+//        view.opaque = NO;
+//    }
+//    self.webView.backgroundColor = [UIColor clearColor];
+//    self.webView.opaque = NO;
+    
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self requestForContentData];
     [self requestForExtraData];
     
-    
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -234,11 +245,14 @@
 }
 //// 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
-
-    
+  
     
     
 }
+    
+    
+    
+
 //// 页面加载失败时调用
 //- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{}
 ////收到服务器重定向请求后调用

@@ -142,6 +142,9 @@
                                     <state key="normal" title="夜间" image="Menu_Dark">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="fallNightMode:" destination="-1" eventType="touchUpInside" id="MYw-8g-ayf"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -157,7 +160,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.13896203039999999" green="0.16504672170000001" blue="0.19779863950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.12155104428529739" green="0.12157902866601944" blue="0.12154714018106461" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="o90-ox-QHP" firstAttribute="leading" secondItem="WEB-wE-QyW" secondAttribute="trailing" constant="20" id="4Me-1U-jp0"/>
                         <constraint firstAttribute="trailing" secondItem="fbI-eG-dJw" secondAttribute="trailing" id="9Bx-eK-irA"/>

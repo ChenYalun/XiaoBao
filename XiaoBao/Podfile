@@ -36,4 +36,5 @@ pod 'Realm'
 # pod 'AMScrollingNavbar'
 pod 'SDCycleScrollView'
 pod ‘GPUImage’
+pod ‘DKNightVersion’
 end

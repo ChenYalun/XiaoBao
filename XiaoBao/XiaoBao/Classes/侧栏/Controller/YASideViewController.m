@@ -14,6 +14,7 @@
 #import <UIViewController+MMDrawerController.h>
 #import "YASettingViewController.h"
 #import "YANavigationView.h"
+
 static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 @interface YASideViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
@@ -56,18 +57,10 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
-    
     
     // 注册tableView
     [self.themeTableView registerNib:[UINib nibWithNibName:[YAThemeTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-//    self.navigationController.navigationBarHidden = YES;
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    UIImageView *i = [[UIImageView alloc] init];
-//    i.layer.masksToBounds = YES;
-//    i.layer.cornerRadius = i.width * 0.5;
+
         
     // 自动刷新
     [self refreshForNewState];
@@ -177,10 +170,25 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 }
 
 #pragma mark - 事件处理
+// 设置页面
 - (IBAction)pushToSettingViewController:(UIButton *)sender {
     YASettingViewController *settingViewController = [YASettingViewController settingViewController];
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
     [self.mm_drawerController setCenterViewController:navigationViewController withCloseAnimation:YES completion:nil];
+}
+
+
+// 夜间模式
+- (IBAction)fallNightMode:(UIButton *)sender {
+    DKThemeVersion *themeVersion = [DKNightVersionManager sharedManager].themeVersion;
+    if ([themeVersion isEqualToString:DKThemeVersionNormal]) {
+        [[DKNightVersionManager sharedManager] nightFalling];
+        [sender setTitle:@"白天" forState:UIControlStateNormal];
+    } else {
+        [[DKNightVersionManager sharedManager] dawnComing];
+        [sender setTitle:@"夜间" forState:UIControlStateNormal];
+    }
+    
 }
 
 @end

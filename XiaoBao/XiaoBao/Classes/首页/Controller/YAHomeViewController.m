@@ -122,6 +122,7 @@ static NSString *reuseIdentifier = @"story";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
     // 设置导航栏
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = YES;
