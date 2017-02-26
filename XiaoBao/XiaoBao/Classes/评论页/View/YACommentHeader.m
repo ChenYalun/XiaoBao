@@ -29,10 +29,10 @@
     
     
     if (section == 0) {
-        header.titleLabel.text = [NSString stringWithFormat:@"%ld 条长评",count];
+        header.titleLabel.text = [NSString stringWithFormat:@"%ld 条长评",(long)count];
         header.indicationImageView.hidden = YES;
     } else {
-        header.titleLabel.text = [NSString stringWithFormat:@"%ld 条短评",count];
+        header.titleLabel.text = [NSString stringWithFormat:@"%ld 条短评",(long)count];
         header.indicationImageView.hidden = NO;
     }
     

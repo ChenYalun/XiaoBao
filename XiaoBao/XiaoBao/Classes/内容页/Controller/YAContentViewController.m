@@ -96,7 +96,7 @@
 
 #pragma mark - 请求额外信息
 - (void)requestForExtraData {
-    NSString *requestUrl = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/story-extra/%ld",self.story.ID];
+    NSString *requestUrl = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/story-extra/%ld",self.ID];
     requestSuccessBlock sblock = ^(id responseObject){
         
         YAExtraItem *extra = [YAExtraItem extraItemWithKeyValues:responseObject];
@@ -118,7 +118,7 @@
 #pragma mark - 请求内容数据
 - (void)requestForContentData {
     
-    NSString *requestUrl = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/news/%ld",self.story.ID];
+    NSString *requestUrl = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/news/%ld",self.ID];
     requestSuccessBlock sblock = ^(id responseObject){
     
         YAContentItem *content = [YAContentItem contentItemWithKeyValues:responseObject];
@@ -197,10 +197,14 @@
 
     
     
+    
 }
 
 //下一条
 - (IBAction)nextStory:(UIButton *)sender {
+    
+    self.ID = 9249241;
+    [self requestForContentData];
     
 }
 
@@ -208,7 +212,7 @@
 - (IBAction)comment:(UIButton *)sender {
 
     YACommentViewController *commentViewController = [[YACommentViewController alloc] init];
-    commentViewController.storyID = self.story.ID;
+    commentViewController.storyID = self.ID;
     [self.navigationController pushViewController:commentViewController animated:YES];
     
 
@@ -261,6 +265,10 @@
 //}
 
 
-
+// 根据类型kind和ID获取上一个ID 下一个ID
+//- (NSInteger)nextIDWithStoryKind:(NSInteger)kind currentStoryId:(NSInteger)ID {
+//    
+//    
+//}
 
 @end

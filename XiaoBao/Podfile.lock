@@ -28,6 +28,7 @@ PODS:
     - DKNightVersion/Core
   - DKNightVersion/UIKit (2.4.2):
     - DKNightVersion/Core
+  - DZNEmptyDataSet (1.8.1)
   - FDFullscreenPopGesture (1.1)
   - GPUImage (0.1.7)
   - MBProgressHUD (0.9.2)
@@ -95,6 +96,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - DKNightVersion
+  - DZNEmptyDataSet
   - FDFullscreenPopGesture
   - GPUImage
   - MJExtension
@@ -122,6 +124,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DKNightVersion: a211bacb8d6a9677722aaf93e292a4e5908490c1
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -141,6 +144,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 12810df86eb10f9d30d04fa0b647ad0e4e97c809
+PODFILE CHECKSUM: 63ae178dc354fd400e36dd97e948e1350c0d1353
 
 COCOAPODS: 1.2.0

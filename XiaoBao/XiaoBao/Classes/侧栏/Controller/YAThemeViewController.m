@@ -224,7 +224,7 @@ static NSString *reuseIdentifier = @"story";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     YAContentViewController *contentViewController = [[YAContentViewController alloc] init];
-    contentViewController.story = self.stories[indexPath.row];
+    contentViewController.ID = self.stories[indexPath.row].ID ;
 
     [self.navigationController pushViewController:contentViewController animated:YES];
     

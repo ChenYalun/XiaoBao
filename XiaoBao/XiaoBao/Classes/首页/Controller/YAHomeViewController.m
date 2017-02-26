@@ -190,6 +190,8 @@ static NSString *reuseIdentifier = @"story";
         self.dateID = responseObject[@"date"];
         // 保存每组索引对应的标题
         [self.titleSection setObject:self.dateID forKey:[NSNumber numberWithInteger:self.sectionID]];
+        
+
         // 刷新
         [self.tableView reloadData];
         
@@ -343,7 +345,8 @@ static NSString *reuseIdentifier = @"story";
     YAContentViewController *contentViewController =  [[YAContentViewController alloc] init];
     
     NSNumber *num = [NSNumber numberWithInteger:indexPath.section];
-    contentViewController.story = self.storySection[num][indexPath.row];
+    YAStoryItem *story = self.storySection[num][indexPath.row];
+    contentViewController.ID = story.ID;
     
     
     

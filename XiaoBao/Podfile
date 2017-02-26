@@ -37,4 +37,5 @@ pod 'Realm'
 pod 'SDCycleScrollView'
 pod ‘GPUImage’
 pod ‘DKNightVersion’
+pod 'DZNEmptyDataSet'
 end

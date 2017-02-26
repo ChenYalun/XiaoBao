@@ -44,11 +44,6 @@
             </connections>
             <point key="canvasLocation" x="26.5" y="60"/>
         </view>
-        <view contentMode="scaleToFill" id="huq-oA-uZn">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <point key="canvasLocation" x="59" y="-33"/>
-        </view>
     </objects>
     <resources>
         <image name="Comment_Icon_Fold" width="17" height="17"/>

@@ -31,7 +31,7 @@
         _tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(UITapGestureRecognizer *  _Nonnull sender) {
             YAContentViewController *contentViewController = [[YAContentViewController alloc] init];
             YAStoryHeaderView *headerView = (YAStoryHeaderView *)sender.view;
-            contentViewController.story = headerView.story;
+            contentViewController.ID = headerView.story.ID;
             [self.viewController.navigationController pushViewController:contentViewController animated:YES];
         }];
     }

@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YAStoryItem.h"
+
 @interface YAContentViewController : UIViewController
-/** 新闻模型 */
-@property (nonatomic,strong) YAStoryItem *story;
-
-
+/** id */
+@property (nonatomic,assign) NSInteger ID;
 @end
