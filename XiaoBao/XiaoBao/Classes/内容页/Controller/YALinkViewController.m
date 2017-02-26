@@ -9,12 +9,15 @@
 #import "YALinkViewController.h"
 #import <WebKit/WebKit.h>
 #import "YANavigationView.h"
+
 @interface YALinkViewController ()<WKNavigationDelegate>
 /** webView */
 @property (nonatomic,weak) WKWebView *webView;
 /** 导航视图 */
 @property (nonatomic,weak) YANavigationView *navigationView;
+/** 网页返回按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+/** 前进按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *forwadrButton;
 @end
 

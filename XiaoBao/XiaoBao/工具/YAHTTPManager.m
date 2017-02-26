@@ -45,7 +45,11 @@
             [self GET:path parameters:parameters progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
-                failure(error);
+                // 容错处理,failure可以为空
+                if(failure) {
+                    failure(error);
+                }
+                
             }];
             break;
         }
@@ -53,7 +57,10 @@
             [self POST:path parameters:parameters progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
-                failure(error);
+                if(failure) {
+                    failure(error);
+                }
+
             }];
             break;
         }

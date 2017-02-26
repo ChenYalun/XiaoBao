@@ -27,7 +27,8 @@
     // 配图
     if (story.images.count > 0) {
         self.picImageView.hidden = NO;
-        [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation];
+        [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] placeholder:kGetImage(@"Image_Preview") options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:nil];
+   
         self.titleLabelTrailingConstraint.constant = 105;
         
     } else {
@@ -37,6 +38,9 @@
     
 
     // 多图展示
+    NSString *multiplePath = [[NSBundle mainBundle] pathForResource:@"/Home_Morepic@2x" ofType:@"png"];
+    NSURL *multipleImageurl = [NSURL fileURLWithPath:multiplePath];
+    [self.multipleImageView yy_setImageWithURL:multipleImageurl placeholder:[[UIImage alloc] init]];
     if (story.multipic && story.images.count > 0) {
         self.multipleImageView.hidden = NO;
     } else {

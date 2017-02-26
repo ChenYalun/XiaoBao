@@ -14,6 +14,14 @@
     if (self = [super initWithFrame:frame]) {
         // 隐藏刷新文字
         self.refreshingTitleHidden = YES;
+        
+        // 设置文字
+        [self setTitle:@"" forState:MJRefreshStateIdle];
+        [self setTitle:@"" forState:MJRefreshStatePulling];
+        [self setTitle:@"" forState:MJRefreshStateRefreshing];
+        [self setTitle:@"" forState:MJRefreshStateWillRefresh];
+        [self setTitle:@"" forState:MJRefreshStateNoMoreData];
+
     }
     return self;
 }

@@ -56,6 +56,9 @@
 		9A8D0E481E5E856F0050C9D7 /* YACommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E471E5E856F0050C9D7 /* YACommentModel.m */; };
 		9A8D0E551E5EE0380050C9D7 /* YALaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E531E5EE0380050C9D7 /* YALaunchViewController.m */; };
 		9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */; };
+		9AA166041E62A05100F122AA /* YAErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA166021E62A05100F122AA /* YAErrorView.m */; };
+		9AA166051E62A05100F122AA /* YAErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA166031E62A05100F122AA /* YAErrorView.xib */; };
+		9AA1660E1E63182F00F122AA /* Home_Morepic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E61E540FD7001F8565 /* Assets.xcassets */; };
@@ -146,6 +149,10 @@
 		9A8D0E521E5EE0380050C9D7 /* YALaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALaunchViewController.h; sourceTree = "<group>"; };
 		9A8D0E531E5EE0380050C9D7 /* YALaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALaunchViewController.m; sourceTree = "<group>"; };
 		9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YALaunchViewController.xib; sourceTree = "<group>"; };
+		9AA166011E62A05100F122AA /* YAErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAErrorView.h; sourceTree = "<group>"; };
+		9AA166021E62A05100F122AA /* YAErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAErrorView.m; sourceTree = "<group>"; };
+		9AA166031E62A05100F122AA /* YAErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAErrorView.xib; sourceTree = "<group>"; };
+		9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home_Morepic@2x.png"; sourceTree = "<group>"; };
 		9ADBF2D71E540FD7001F8565 /* XiaoBao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -276,6 +283,32 @@
 			path = "启动页";
 			sourceTree = "<group>";
 		};
+		9AA165F41E629E9E00F122AA /* 容错页 */ = {
+			isa = PBXGroup;
+			children = (
+				9AA166001E62A05100F122AA /* View */,
+			);
+			path = "容错页";
+			sourceTree = "<group>";
+		};
+		9AA166001E62A05100F122AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9AA166011E62A05100F122AA /* YAErrorView.h */,
+				9AA166021E62A05100F122AA /* YAErrorView.m */,
+				9AA166031E62A05100F122AA /* YAErrorView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9AA166061E62B4FD00F122AA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		9ADBF2CE1E540FD7001F8565 = {
 			isa = PBXGroup;
 			children = (
@@ -297,9 +330,11 @@
 		9ADBF2D91E540FD7001F8565 /* XiaoBao */ = {
 			isa = PBXGroup;
 			children = (
+				9AA166061E62B4FD00F122AA /* images */,
 				9ADBF2FE1E542A25001F8565 /* 工具 */,
 				9ADBF2F11E54295D001F8565 /* Classes */,
 				9A8D0E491E5ED1500050C9D7 /* 启动页 */,
+				9AA165F41E629E9E00F122AA /* 容错页 */,
 				9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */,
 				9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */,
 				9ADBF2E61E540FD7001F8565 /* Assets.xcassets */,
@@ -579,6 +614,7 @@
 			files = (
 				9A69208A1E61027600F80483 /* YASettingViewController.storyboard in Resources */,
 				9A0189931E5C80E80022A621 /* YAContentViewController.xib in Resources */,
+				9AA1660E1E63182F00F122AA /* Home_Morepic@2x.png in Resources */,
 				9A31B2EE1E5DA4AC001494EE /* YALinkViewController.xib in Resources */,
 				9A69208C1E61077000F80483 /* YASideViewController.xib in Resources */,
 				9A74E9BB1E5974A1008AD0AC /* YAThemeViewController.xib in Resources */,
@@ -588,6 +624,7 @@
 				9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */,
 				9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */,
 				9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */,
+				9AA166051E62A05100F122AA /* YAErrorView.xib in Resources */,
 				9A1FDEE71E5C5B91004C541A /* YAEditorDetailContentView.xib in Resources */,
 				9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */,
 				9A87D10D1E6036DB00A262C5 /* YACommentHeader.xib in Resources */,
@@ -667,6 +704,7 @@
 				9A4CA4E81E548A980099900F /* YAHomeViewController.m in Sources */,
 				9A74E9BA1E5974A1008AD0AC /* YAThemeViewController.m in Sources */,
 				9A299E1A1E5B203700B88B4F /* YAEditorListTableViewCell.m in Sources */,
+				9AA166041E62A05100F122AA /* YAErrorView.m in Sources */,
 				9A5C154D1E5524FD003BE177 /* YAProgressHUD.m in Sources */,
 				9A4CA4E21E5489F40099900F /* YARootViewController.m in Sources */,
 				9A74E9BE1E597AD6008AD0AC /* YAThemeStoryItem.m in Sources */,

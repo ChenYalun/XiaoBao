@@ -29,7 +29,7 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="QGB-cw-Vgd" secondAttribute="trailing" id="1Um-At-K8D"/>
                 <constraint firstItem="QGB-cw-Vgd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="XAZ-b7-ay2"/>

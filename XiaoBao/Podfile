@@ -38,4 +38,5 @@ pod 'SDCycleScrollView'
 pod ‘GPUImage’
 pod ‘DKNightVersion’
 pod 'DZNEmptyDataSet'
+pod 'pop'
 end

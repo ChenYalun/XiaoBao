@@ -140,13 +140,17 @@ static NSString *reuseIdentifier = @"story";
             
             self.topBackgroundImage = image;
 
+            // 容错处理,保证image不为空
+            if (image) {
+                // 高斯模糊
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.blurFilter.blurRadiusInPixels = 10;// 模糊程度
+                    UIImage *blurredImage = [self.blurFilter imageByFilteringImage:image];
+                    self.topBackgroundImageView.image = blurredImage;
+                });
+            }
             
-            // 高斯模糊
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.blurFilter.blurRadiusInPixels = 10;// 模糊程度
-                UIImage *blurredImage = [self.blurFilter imageByFilteringImage:image];
-                self.topBackgroundImageView.image = blurredImage;
-            });
+           
 
             
         }];

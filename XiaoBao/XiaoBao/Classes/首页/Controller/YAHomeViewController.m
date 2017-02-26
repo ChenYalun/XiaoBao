@@ -17,10 +17,12 @@
 #import <RESideMenu.h>
 #import "YAContentViewController.h"
 #import <UIViewController+MMDrawerController.h>
+#import "YAErrorView.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #define kHeaderViewHeight 200
 #define kMargin 10
 #define kRefreshViewWH 18
-@interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
 /** 组新闻 */
@@ -29,17 +31,22 @@
 @property (nonatomic,copy) NSString *dateID;
 /** sectionID对应section标题 */
 @property (nonatomic,strong) NSMutableDictionary *titleSection;
+/** 每section对应的ID */
 @property (nonatomic,assign) NSInteger sectionID;
-
+/** 展示story数据的tableView */
 @property (nonatomic,strong) UITableView *tableView;
+/** 自定义导航栏 */
 @property (nonatomic,strong) UIView *navigationView;
+/** "今日热闻"标题label */
 @property (nonatomic,strong) UILabel *titleLabel;
+/** 头部滚动视图 */
 @property (nonatomic,strong) YAHomeHeaderView *headerView;
-
+/** 顶部侧滑按钮 */
 @property (nonatomic,weak) UIButton *sideMenuButton;
 @end
 
 @implementation YAHomeViewController
+
 static NSString *reuseIdentifier = @"story";
 #pragma mark - 懒加载
 - (UIView *)navigationView{
@@ -74,6 +81,8 @@ static NSString *reuseIdentifier = @"story";
     if (_headerView == nil) {
         _headerView = [[YAHomeHeaderView alloc] initWithFrame:CGRectMake(0, -20, kScreenWidth, kHeaderViewHeight + 20)];
         _headerView.contentMode = UIViewContentModeScaleAspectFill;
+        // 默认没有数据时隐藏
+        _headerView.hidden = YES;
     }
     return _headerView;
 }
@@ -86,6 +95,13 @@ static NSString *reuseIdentifier = @"story";
         _tableView.dataSource = self;
         _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight)];
         _tableView.clipsToBounds = NO;
+        
+        // 没有数据隐藏分割线
+        _tableView.tableFooterView = [[UIView alloc] init];
+
+        // 容错视图
+        _tableView.emptyDataSetSource = self;
+        _tableView.emptyDataSetDelegate = self;
     }
     return _tableView;
 }
@@ -123,10 +139,14 @@ static NSString *reuseIdentifier = @"story";
     [super viewDidLoad];
     
 
+    // 隐藏导航栏初始化时的黑色
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    
     // 设置导航栏
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = YES;
-    //[[UIApplication sharedApplication] setStatusBarHidden:NO];
+
     
     // 设置控件
     [self.view addSubview:self.tableView];
@@ -181,6 +201,7 @@ static NSString *reuseIdentifier = @"story";
 
         // 设置轮播图
         self.headerView.storyItems = topStoryItems;
+        self.headerView.hidden = NO;
         
         // 获取普通新闻
         NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
@@ -193,6 +214,12 @@ static NSString *reuseIdentifier = @"story";
         
 
         // 刷新
+
+        
+        if (self.headerView.hidden) {
+            self.headerView.hidden = NO;
+        }
+        
         [self.tableView reloadData];
         
 
@@ -376,4 +403,17 @@ static NSString *reuseIdentifier = @"story";
         [launchView removeFromSuperview];
     }];
 }
+
+
+#pragma mark - 容错视图
+- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView {
+    
+    return [YAErrorView errorView];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIColor whiteColor];
+}
+
+
 @end

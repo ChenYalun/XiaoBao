@@ -50,6 +50,7 @@ PODS:
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
+  - pop (1.0.9)
   - Realm (2.4.2):
     - Realm/Headers (= 2.4.2)
   - Realm/Headers (2.4.2)
@@ -103,6 +104,7 @@ DEPENDENCIES:
   - MJRefresh
   - MMDrawerController
   - MWPhotoBrowser
+  - pop
   - Realm
   - RESideMenu
   - SDCycleScrollView
@@ -132,6 +134,7 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
@@ -144,6 +147,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 63ae178dc354fd400e36dd97e948e1350c0d1353
+PODFILE CHECKSUM: 0171b2af1b05edeca57fea61ecf40fab400914ff
 
 COCOAPODS: 1.2.0

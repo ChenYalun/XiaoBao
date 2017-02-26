@@ -13,17 +13,17 @@
 #import "YAHTTPManager.h"
 #import "YACommentHeader.h"
 #import "YANavigationView.h"
-
+#import "YAErrorView.h"
 @interface YACommentViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) NSMutableArray <NSMutableArray *>*comments;
 
 /** 评论数量 */
 @property (nonatomic,assign) NSInteger commentCount;
-
-
 /** 导航视图 */
 @property (nonatomic,weak) YANavigationView *navigationView;
+/** 网络延迟提示视图 */
+@property (nonatomic,weak) YAErrorView *errorView;
 @end
 
 @implementation YACommentViewController
@@ -44,12 +44,25 @@ static NSString *reuseIdentifier = @"comment";
         _navigationView = [YANavigationView navigationViewWithTitle:nil];
         _navigationView.backButton.hidden = YES;
         [self.view addSubview:_navigationView];
+        _navigationView.hidden = YES;
     }
     return _navigationView;
 }
 
+- (YAErrorView *)errorView {
+    if (_errorView == nil) {
+        YAErrorView *errorView = [YAErrorView errorView];
+        [self.view addSubview:errorView];
+        _errorView = errorView;
+    }
+    return _errorView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    // 网络延迟处理
+    self.errorView.hidden = NO;
     
     
     // 设置YACommentHeader 按钮状态
@@ -77,7 +90,16 @@ static NSString *reuseIdentifier = @"comment";
     
     // 请求路径
     NSString *path = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/story/%@/%@",commentID,kind];
+    
     requestSuccessBlock sblock = ^(id responseObject){
+        
+        // 网络延迟处理
+        if (self.navigationView.hidden) {
+            self.navigationView.hidden = NO;
+        }
+        
+        [self.errorView removeFromSuperview];
+        
         NSArray *array = [YACommentModel commentModelWithKeyValues:responseObject];
         
         // 处理长评论
@@ -150,5 +172,7 @@ static NSString *reuseIdentifier = @"comment";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.001;
 }
+
+
 
 @end
