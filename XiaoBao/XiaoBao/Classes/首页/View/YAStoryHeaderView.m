@@ -12,12 +12,17 @@
 #import "GPUImageBrightnessFilter.h"
 #import <GPUImagePicture.h>
 #import <UIImage+YYWebImage.h>
-@interface YAStoryHeaderView()
-@property (weak, nonatomic) IBOutlet UIImageView *picImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
+@interface YAStoryHeaderView()
+/** 图片 */
+@property (weak, nonatomic) IBOutlet UIImageView *picImageView;
+/** 标题 */
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
 @implementation YAStoryHeaderView
+
+#pragma mark - getter and setter
+
 - (void)setStory:(YAStoryItem *)story {
     _story = story;
     

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "YAStoryItem.h"
 @interface YAStoryTableViewCell : UITableViewCell
+
 /** story */
 @property (nonatomic,strong) YAStoryItem *story;
 @end

@@ -18,46 +18,35 @@
 #import "YAEditorItem.h"
 #import "YAEditorListViewController.h"
 #import "YAContentViewController.h"
-static NSString *reuseIdentifier = @"story";
-@interface YAThemeViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) NSMutableArray <YAStoryItem *> *stories;
-@property (weak, nonatomic) IBOutlet UIImageView *topBackgroundImageView;
 
+static NSString *reuseIdentifier = @"story";
+
+@interface YAThemeViewController ()<UITableViewDelegate,UITableViewDataSource>
+/** 数据展示tableView */
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+/** 存储story的数组 */
+@property (nonatomic,strong) NSMutableArray <YAStoryItem *> *stories;
+/** 背景图片 */
+@property (weak, nonatomic) IBOutlet UIImageView *topBackgroundImageView;
+/** 顶部高度 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBackgroundImageHeightConstraint;
+/** 标题 */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 /** 刷新控件 */
 @property (weak, nonatomic) IBOutlet YARefreshHeader *refreshHeader;
 /** 高斯模糊 */
 @property (nonatomic,strong) GPUImageGaussianBlurFilter * blurFilter;
+/** 背景图片 */
 @property (nonatomic,strong) UIImage *topBackgroundImage;
-
-
+/** 点击手势 */
 @property (nonatomic,strong) UITapGestureRecognizer *tap;
 @end
 
 @implementation YAThemeViewController
-#pragma mark - 懒加载
-- (NSMutableArray *)stories {
-    if (_stories == nil) {
-        _stories = [NSMutableArray array];
-    }
-    return _stories;
-}
-
-- (UITapGestureRecognizer *)tap {
-    if (_tap == nil) {
-        _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentEditorListTableViewController)];
-        
-    }
-    return _tap;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    //[self setupNavigationBar];
-    
+    // 设置导航栏
     self.navigationController.navigationBar.hidden = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -72,43 +61,42 @@ static NSString *reuseIdentifier = @"story";
     [self.tableView registerNib:[UINib nibWithNibName:[YAStoryTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
 
 
+    // 处理刷新控件
     self.refreshHeader.refreshingTarget = self;
     self.refreshHeader.refreshingAction = @selector(refreshForNewStories);
     self.refreshHeader.attachScrollView = self.tableView;
     
+    // 开始刷新
     [self.refreshHeader beginRefreshing];
-    
 
 }
 
-- (GPUImageGaussianBlurFilter *)blurFilter {
-    if (_blurFilter == nil) {
-        _blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
-    }
-    return _blurFilter;
-}
+#pragma mark - life Cycle
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-        self.tableView.tableHeaderView.height = 44;
+    self.tableView.tableHeaderView.height = 44;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
 }
 
+#pragma mark - event response
 
-
-#pragma mark - 导航栏按钮事件
+// 点击菜单按钮
 - (IBAction)presentMenuViewController:(UIButton *)sender {
+    
     // 点击打开 再点击关闭
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 
 }
 
-#warning 订阅
+// 订阅
 - (IBAction)subscribeTheme:(UIButton *)sender {
     if (sender.selected) {
         // 取消订阅
@@ -119,12 +107,9 @@ static NSString *reuseIdentifier = @"story";
     sender.selected = !sender.selected;
 }
 
-
-#pragma mark - 刷新
+// 刷新
 - (void)refreshForNewStories {
 
-    
-    
     requestSuccessBlock sblock = ^(id responseObject){
 
         YAThemeStoryItem *themeStoryItem = [YAThemeStoryItem themeStoryItemWithKeyValues:responseObject];
@@ -150,35 +135,36 @@ static NSString *reuseIdentifier = @"story";
                 });
             }
             
-           
-
-            
         }];
         
         // 设置标题
         self.titleLabel.text = themeStoryItem.name;
 
-        
-        
+        // 刷新数据
         [self.tableView reloadData];
         
-
     };
     
-    
-    requestFailureBlock fblock = ^(NSError *error){
-   
-        kLog(@"刷新失败");
-    };
     
     // 请求路径
     NSString *urlPath = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/theme/%@",self.themeID];
     
     // 发送请求
-    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:urlPath WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:fblock];
+    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:urlPath WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:nil];
 }
 
-#pragma mark - tableView数据源
+// 页面跳转到编辑tableView
+- (void)presentEditorListTableViewController {
+    YAEditorListViewController *editorViewController = [[YAEditorListViewController alloc] init];
+    YAThemeTableViewHeader *header = (YAThemeTableViewHeader *)self.tableView.tableHeaderView;
+    editorViewController.editors = header.editors;
+    [self.navigationController pushViewController:editorViewController animated:YES];
+    
+}
+
+
+#pragma mark - tableView datasource
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 90;
 }
@@ -193,6 +179,8 @@ static NSString *reuseIdentifier = @"story";
     return cell;
 }
 
+#pragma mark - scrollView delegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint contentOffset = scrollView.contentOffset;
     
@@ -203,8 +191,6 @@ static NSString *reuseIdentifier = @"story";
         self.topBackgroundImageHeightConstraint.constant = 64;
     }
     
-    
-    
     // 禁止继续向下拉动
     if (-contentOffset.y > 130) {
         
@@ -212,7 +198,6 @@ static NSString *reuseIdentifier = @"story";
         scrollView.contentOffset = contentOffset;
     }
 
-    
     // 处理图片高斯模糊10---0  0----130
     if (-contentOffset.y > 0 && -contentOffset.y <= 130) {
         self.blurFilter.blurRadiusInPixels = 10 - (-contentOffset.y / 130.0) * 10;
@@ -226,6 +211,8 @@ static NSString *reuseIdentifier = @"story";
     
 }
 
+#pragma mark - tableView delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     YAContentViewController *contentViewController = [[YAContentViewController alloc] init];
     contentViewController.ID = self.stories[indexPath.row].ID;
@@ -233,23 +220,31 @@ static NSString *reuseIdentifier = @"story";
 
     [self.navigationController pushViewController:contentViewController animated:YES];
     
-
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
-    self.navigationController.navigationBar.hidden = YES;
-    
+#pragma mark - getter and setter
+
+- (NSMutableArray *)stories {
+    if (_stories == nil) {
+        _stories = [NSMutableArray array];
+    }
+    return _stories;
 }
-#pragma mark - 页面跳转到编辑tableView
-- (void)presentEditorListTableViewController {
-    YAEditorListViewController *editorViewController = [[YAEditorListViewController alloc] init];
-    YAThemeTableViewHeader *header = (YAThemeTableViewHeader *)self.tableView.tableHeaderView;
-    editorViewController.editors = header.editors;
-    [self.navigationController pushViewController:editorViewController animated:YES];
-    
+
+- (UITapGestureRecognizer *)tap {
+    if (_tap == nil) {
+        _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentEditorListTableViewController)];
+        
+    }
+    return _tap;
 }
+
+- (GPUImageGaussianBlurFilter *)blurFilter {
+    if (_blurFilter == nil) {
+        _blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
+    }
+    return _blurFilter;
+}
+
 @end

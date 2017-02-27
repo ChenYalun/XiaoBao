@@ -7,19 +7,26 @@
 //
 
 #import "YAThemeTableViewCell.h"
+
 #define kFontSize 15
 #define kEdgeMargin 15
 #define kNameLabelLeading 50
-@interface YAThemeTableViewCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *homeImageView;
-@property (weak, nonatomic) IBOutlet UILabel *themeNameLabel;
-@property (weak, nonatomic) IBOutlet UIButton *subscribedButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabelLeadingConstraint;
 
+@interface YAThemeTableViewCell ()
+/** 主页图片 */
+@property (weak, nonatomic) IBOutlet UIImageView *homeImageView;
+/** 主题文字 */
+@property (weak, nonatomic) IBOutlet UILabel *themeNameLabel;
+/** 订阅按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *subscribedButton;
+/** 主题名称leading约束 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabelLeadingConstraint;
 @end
+
 @implementation YAThemeTableViewCell
 
-#pragma mark - 属性方法
+#pragma mark - getter and setter
+
 - (void)setTheme:(YAThemeItem *)theme {
     _theme = theme;
     
@@ -34,13 +41,8 @@
     }
     
 }
-- (void)awakeFromNib {
-    [super awakeFromNib];
 
-   
-}
-
-#pragma mark - 选中状态
+#pragma mark - cell delegate
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -60,9 +62,10 @@
     
     
 }
+
+
 - (IBAction)subscribeStoryTheme:(UIButton *)sender {
     
-   
 }
 
 @end

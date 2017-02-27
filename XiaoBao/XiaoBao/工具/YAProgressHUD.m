@@ -8,7 +8,10 @@
 
 #import "YAProgressHUD.h"
 #import <SVProgressHUD.h>
+
 @implementation YAProgressHUD
+
+#pragma mark - 创建
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

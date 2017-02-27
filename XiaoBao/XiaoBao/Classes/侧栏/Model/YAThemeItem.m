@@ -8,12 +8,17 @@
 
 #import "YAThemeItem.h"
 #import <MJExtension.h>
+
 @implementation YAThemeItem
+
+#pragma mark - event response
+
+// 关键字替换
 + (NSDictionary *)mj_replacedKeyFromPropertyName { // 自己打算使用新的替换旧的
     return @{@"desc" : @"description", @"ID" : @"id"};
 }
 
-#pragma mark - 字典转模型
+// 快速字典转模型
 + (NSArray<YAThemeItem *> *)setupThemeItemsWithArray:(NSArray *)array {
     NSArray *itemArray = [YAThemeItem mj_objectArrayWithKeyValuesArray:array];
     

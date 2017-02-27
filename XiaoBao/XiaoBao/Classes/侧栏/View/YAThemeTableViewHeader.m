@@ -10,17 +10,35 @@
 #import <UIImageView+YYWebImage.h>
 #import "YAEditorListViewController.h"
 #import <RESideMenu.h>
+
 @interface YAThemeTableViewHeader()
 @property (weak, nonatomic) IBOutlet UIImageView *firstImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *thirdImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *fourthImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *fifthImageView;
-
-
-
 @end
 @implementation YAThemeTableViewHeader
+
+#pragma mark - event response
+
+- (void)setupImageView:(UIImageView *)imageView withItem:(YAEditorItem *)item {
+    if (item) {
+        imageView.hidden = NO;
+        [imageView yy_setImageWithURL:[NSURL URLWithString:item.avatar] options:YYWebImageOptionShowNetworkActivity];
+    } else {
+        imageView.hidden = YES;
+    }
+    
+}
+
+#pragma mark - 快速创建
+
++ (instancetype)header {
+    return [[NSBundle mainBundle] loadNibNamed:[YAThemeTableViewHeader className] owner:nil options:nil].firstObject;
+}
+
+#pragma mark - getter and setter
 
 - (void)setEditors:(NSArray<YAEditorItem *> *)editors {
     _editors = editors;
@@ -59,30 +77,4 @@
     
 }
 
-- (void)setupImageView:(UIImageView *)imageView withItem:(YAEditorItem *)item {
-    if (item) {
-        imageView.hidden = NO;
-        [imageView yy_setImageWithURL:[NSURL URLWithString:item.avatar] options:YYWebImageOptionShowNetworkActivity];
-    } else {
-        imageView.hidden = YES;
-    }
-    
-}
-
-+ (instancetype)header {
-    return [[NSBundle mainBundle] loadNibNamed:[YAThemeTableViewHeader className] owner:nil options:nil].firstObject;
-}
-
-
-#pragma mark - 编辑人员页面跳转
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//
-//    YAEditorListTableViewController *editorViewController = [[YAEditorListTableViewController alloc] init];
-//    editorViewController.editors = self.editors;
-//    
-//    [((UINavigationController *)self.viewController.sideMenuViewController.contentViewController) pushViewController:editorViewController animated:YES];
-//    
-////    [self.viewController.navigationController
-//    
-//}
 @end

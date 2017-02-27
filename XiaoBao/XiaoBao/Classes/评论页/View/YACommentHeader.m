@@ -9,14 +9,16 @@
 #import "YACommentHeader.h"
 #import "YACommentViewController.h"
 @interface YACommentHeader()
+/** 评论指示文字 */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+/** 评论指示图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *indicationImageView;
-
-
-
 @end
+
 @implementation YACommentHeader
 
+#pragma mark - event response
+// 快速创建
 + (instancetype)commentHeaderWithIndexPath:(NSInteger)section itemsCount:(NSInteger)count {
     
     YACommentHeader *header = [[NSBundle mainBundle] loadNibNamed:[YACommentHeader className] owner:nil options:nil].firstObject;
@@ -46,7 +48,7 @@
     return header;
 }
 
-
+// 点击处理
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     YACommentViewController *commentViewController = (YACommentViewController *)self.superview.viewController;

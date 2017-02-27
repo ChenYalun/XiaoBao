@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "YAEditorItem.h"
+
 @interface YAEditorDetailViewController : UIViewController
+
 /** 编辑 */
 @property (nonatomic,strong) YAEditorItem *editor;
+
 @end

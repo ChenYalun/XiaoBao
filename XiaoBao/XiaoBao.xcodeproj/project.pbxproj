@@ -56,9 +56,6 @@
 		9A8D0E481E5E856F0050C9D7 /* YACommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E471E5E856F0050C9D7 /* YACommentModel.m */; };
 		9A8D0E551E5EE0380050C9D7 /* YALaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D0E531E5EE0380050C9D7 /* YALaunchViewController.m */; };
 		9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */; };
-		9A921F2A1E644B1400F2B056 /* ya001.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9A921F271E644B1400F2B056 /* ya001.gif */; };
-		9A921F2B1E644B1400F2B056 /* ya002.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9A921F281E644B1400F2B056 /* ya002.gif */; };
-		9A921F2C1E644B1400F2B056 /* ya003.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9A921F291E644B1400F2B056 /* ya003.gif */; };
 		9AA166041E62A05100F122AA /* YAErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA166021E62A05100F122AA /* YAErrorView.m */; };
 		9AA1660E1E63182F00F122AA /* Home_Morepic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
@@ -151,9 +148,6 @@
 		9A8D0E521E5EE0380050C9D7 /* YALaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALaunchViewController.h; sourceTree = "<group>"; };
 		9A8D0E531E5EE0380050C9D7 /* YALaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALaunchViewController.m; sourceTree = "<group>"; };
 		9A8D0E541E5EE0380050C9D7 /* YALaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YALaunchViewController.xib; sourceTree = "<group>"; };
-		9A921F271E644B1400F2B056 /* ya001.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ya001.gif; sourceTree = "<group>"; };
-		9A921F281E644B1400F2B056 /* ya002.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ya002.gif; sourceTree = "<group>"; };
-		9A921F291E644B1400F2B056 /* ya003.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ya003.gif; sourceTree = "<group>"; };
 		9AA166011E62A05100F122AA /* YAErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAErrorView.h; sourceTree = "<group>"; };
 		9AA166021E62A05100F122AA /* YAErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAErrorView.m; sourceTree = "<group>"; };
 		9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home_Morepic@2x.png"; sourceTree = "<group>"; };
@@ -203,8 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				9A69207A1E61007700F80483 /* Controller */,
-				9A69207B1E61007700F80483 /* Model */,
-				9A69207C1E61007700F80483 /* View */,
 			);
 			path = "设置";
 			sourceTree = "<group>";
@@ -217,20 +209,6 @@
 				9A6920891E61027600F80483 /* YASettingViewController.storyboard */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		9A69207B1E61007700F80483 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9A69207C1E61007700F80483 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9A8D0E341E5E83C10050C9D7 /* 评论页 */ = {
@@ -307,9 +285,6 @@
 		9AA166061E62B4FD00F122AA /* images */ = {
 			isa = PBXGroup;
 			children = (
-				9A921F271E644B1400F2B056 /* ya001.gif */,
-				9A921F281E644B1400F2B056 /* ya002.gif */,
-				9A921F291E644B1400F2B056 /* ya003.gif */,
 				9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */,
 			);
 			path = images;
@@ -438,7 +413,6 @@
 			children = (
 				9ADBF2F71E54295D001F8565 /* Controller */,
 				9ADBF2F81E54295D001F8565 /* Model */,
-				9ADBF2F91E54295D001F8565 /* View */,
 			);
 			path = "内容页";
 			sourceTree = "<group>";
@@ -465,13 +439,6 @@
 				9A8D0E321E5E80310050C9D7 /* YAExtraItem.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		9ADBF2F91E54295D001F8565 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9ADBF2FA1E54295D001F8565 /* 首页 */ = {
@@ -620,7 +587,6 @@
 			files = (
 				9A69208A1E61027600F80483 /* YASettingViewController.storyboard in Resources */,
 				9A0189931E5C80E80022A621 /* YAContentViewController.xib in Resources */,
-				9A921F2C1E644B1400F2B056 /* ya003.gif in Resources */,
 				9AA1660E1E63182F00F122AA /* Home_Morepic@2x.png in Resources */,
 				9A31B2EE1E5DA4AC001494EE /* YALinkViewController.xib in Resources */,
 				9A69208C1E61077000F80483 /* YASideViewController.xib in Resources */,
@@ -628,7 +594,6 @@
 				9A8D0E421E5E84510050C9D7 /* YACommentTableViewCell.xib in Resources */,
 				9A87D1121E60656900A262C5 /* YACommentViewController.xib in Resources */,
 				9A5C154A1E551E1D003BE177 /* YAStoryTableViewCell.xib in Resources */,
-				9A921F2B1E644B1400F2B056 /* ya002.gif in Resources */,
 				9A1FDEE01E5C4358004C541A /* YANavigationView.xib in Resources */,
 				9ADBF2EA1E540FD7001F8565 /* LaunchScreen.storyboard in Resources */,
 				9A4CA4ED1E5492D90099900F /* YAStoryHeaderView.xib in Resources */,
@@ -636,7 +601,6 @@
 				9A8D0E561E5EE0380050C9D7 /* YALaunchViewController.xib in Resources */,
 				9A87D10D1E6036DB00A262C5 /* YACommentHeader.xib in Resources */,
 				9A299E0E1E5AF5CA00B88B4F /* YAThemeTableViewHeader.xib in Resources */,
-				9A921F2A1E644B1400F2B056 /* ya001.gif in Resources */,
 				9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */,
 				9A3C18671E5873CA00B76999 /* YAThemeTableViewCell.xib in Resources */,
 				9A299E1B1E5B203700B88B4F /* YAEditorListTableViewCell.xib in Resources */,

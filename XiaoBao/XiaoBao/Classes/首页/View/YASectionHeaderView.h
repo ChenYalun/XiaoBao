@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YASectionHeaderView : UITableViewHeaderFooterView
+
 /** 标题文本 */
 @property (nonatomic,copy) NSString *sectionTitle;
-
-    
 @end

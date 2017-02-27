@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface YANavigationView : UIView
+
 /** 回退按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 /** 标题 */
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+/** 标题文本 */
 @property (nonatomic,copy) NSString *title;
+
+/** 快速创建 */
 + (instancetype)navigationViewWithTitle:(NSString *)title;
 @end

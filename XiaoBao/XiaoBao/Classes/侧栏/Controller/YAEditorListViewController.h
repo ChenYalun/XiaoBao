@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "YAEditorItem.h"
 @interface YAEditorListViewController : UIViewController
+
 /** 编辑数组 */
 @property (nonatomic,strong) NSArray <YAEditorItem *> *editors;
+
 @end

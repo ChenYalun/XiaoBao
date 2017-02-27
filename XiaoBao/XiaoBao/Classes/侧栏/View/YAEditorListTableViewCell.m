@@ -8,14 +8,19 @@
 
 #import "YAEditorListTableViewCell.h"
 #import <UIImageView+YYWebImage.h>
-@interface YAEditorListTableViewCell()
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 
+@interface YAEditorListTableViewCell()
+/** 头像 */
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+/** 姓名 */
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+/** 简介 */
+@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @end
 
 @implementation YAEditorListTableViewCell
+
+#pragma mark - life Cycle
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -25,13 +30,7 @@
 
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-
+#pragma mark - getter and setter
 
 - (void)setEditor:(YAEditorItem *)editor {
     _editor = editor;

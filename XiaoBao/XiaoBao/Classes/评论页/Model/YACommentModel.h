@@ -22,7 +22,6 @@
 @property (nonatomic,assign) BOOL isOpen;
 /** 回复者内容 */
 @property (nonatomic,copy) NSAttributedString *replyContent;
-
-
+// 字典转模型
 + (NSMutableArray <YACommentModel *> *)commentModelWithKeyValues:(id)responseObject;
 @end

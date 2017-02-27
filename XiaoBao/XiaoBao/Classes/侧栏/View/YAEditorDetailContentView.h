@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "YAEditorItem.h"
+
 @interface YAEditorDetailContentView : UIView
-/** 编辑 */
-//@property (nonatomic,strong) YAEditorItem *editor;
+
+// 快速创建
 + (instancetype)editorViewWithItem:(YAEditorItem *)editor;
 @end

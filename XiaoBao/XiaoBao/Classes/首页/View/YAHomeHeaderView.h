@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface YAHomeHeaderView : UIView
+
 @property (nonatomic,strong) NSArray *storyItems;
 @end

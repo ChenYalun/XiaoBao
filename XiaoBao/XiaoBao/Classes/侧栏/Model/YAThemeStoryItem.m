@@ -9,10 +9,16 @@
 #import "YAThemeStoryItem.h"
 #import <MJExtension.h>
 @implementation YAThemeStoryItem
+
+#pragma mark - event response
+
+// 关键字替换
+
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"desc" :@"description"};
 }
 
+// 字典转模型
 + (YAThemeStoryItem *)themeStoryItemWithKeyValues:(id)responseObject {
     YAThemeStoryItem *themeStoryItem = [YAThemeStoryItem mj_objectWithKeyValues:responseObject];
     

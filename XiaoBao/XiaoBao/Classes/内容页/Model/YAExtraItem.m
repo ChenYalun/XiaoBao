@@ -9,6 +9,7 @@
 #import "YAExtraItem.h"
 #import <MJExtension.h>
 @implementation YAExtraItem
+// 快速创建
 + (instancetype)extraItemWithKeyValues:(id)responseObject {
    return [YAExtraItem mj_objectWithKeyValues:responseObject];
 }

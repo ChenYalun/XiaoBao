@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (YAExtension)
+
 // view常用属性
 @property (assign, nonatomic) CGFloat ya_x;
 @property (assign, nonatomic) CGFloat ya_y;
@@ -16,4 +17,5 @@
 @property (assign, nonatomic) CGFloat ya_h;
 @property (assign, nonatomic) CGSize ya_size;
 @property (assign, nonatomic) CGPoint ya_origin;
+
 @end

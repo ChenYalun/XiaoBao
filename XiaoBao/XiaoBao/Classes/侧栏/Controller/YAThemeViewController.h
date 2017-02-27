@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface YAThemeViewController : UIViewController
+
 // 传过来的主题id
 @property (nonatomic,copy) NSString *themeID;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+
 //请求成功回调block
 typedef void (^requestSuccessBlock)(id responseObject);
 
@@ -23,9 +24,7 @@ typedef NS_ENUM(NSUInteger, YAHTTPMethod) {
 };
 
 
-
 @interface YAHTTPManager : AFHTTPSessionManager
-
 
 // 单例manager
 + (instancetype)sharedManager;

@@ -12,5 +12,4 @@
 /** 评论模型 */
 @property (nonatomic,strong) YACommentModel *comment;
 
-
 @end

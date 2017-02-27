@@ -17,6 +17,6 @@
 @property (nonatomic,copy) NSString *short_comments;
 /** 总评论数 */
 @property (nonatomic,copy) NSString *comments;
-
+// 字典转模型
 + (instancetype)extraItemWithKeyValues:(id)responseObject;
 @end

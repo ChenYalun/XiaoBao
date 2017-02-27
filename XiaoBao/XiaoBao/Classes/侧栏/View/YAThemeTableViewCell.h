@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "YAThemeItem.h"
+
 @interface YAThemeTableViewCell : UITableViewCell
+
 @property (nonatomic,strong) YAThemeItem *theme;
+
 @end

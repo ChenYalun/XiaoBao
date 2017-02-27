@@ -10,7 +10,7 @@
 
 @implementation YAHTTPManager
 
-
+#pragma mark - 快速创建
 
 + (instancetype)sharedManager {
     static YAHTTPManager *manager = nil;
@@ -22,22 +22,7 @@
     return manager;
 }
 
-//-(instancetype)initWithBaseURL:(NSURL *)url
-//{
-//    if (self = [super initWithBaseURL:url]) {
-//        // 请求超时设定
-//        self.requestSerializer.timeoutInterval = 5.0;
-//        self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-//        [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//        [self.requestSerializer setValue:url.absoluteString forHTTPHeaderField:@"Referer"];
-//        
-//        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
-//        
-//        self.securityPolicy.allowInvalidCertificates = YES;
-//    }
-//    return self;
-//}
-
+#pragma mark - 发送网络请求
 - (void)requestWithMethod:(YAHTTPMethod)method WithPath:(NSString *)path WithParameters:(NSDictionary *)parameters WithSuccessBlock:(requestSuccessBlock)success WithFailurBlock:(requestFailureBlock)failure {
     
     switch (method) {
@@ -67,8 +52,6 @@
         default:
             break;
     }
-    
-
 
 }
 

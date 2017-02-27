@@ -29,4 +29,5 @@
 @property (nonatomic,strong) NSArray *editors;
 
 + (YAThemeStoryItem *)themeStoryItemWithKeyValues:(id)responseObject;
+
 @end

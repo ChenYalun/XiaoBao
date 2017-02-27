@@ -15,8 +15,10 @@
 #import "YALinkViewController.h"
 #import "YACommentViewController.h"
 #import "YAErrorView.h"
+
 // xib 中topView高度约束
 #define kTopImageHeight 220
+
 @interface YAContentViewController ()<WKNavigationDelegate,UIScrollViewDelegate>
 /** topView高度约束 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
@@ -41,42 +43,8 @@
 @end
 
 @implementation YAContentViewController
-#pragma mark - 懒加载
-- (WKWebView *)webView {
-    if (_webView == nil) {
-        
-        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 44)];
-        
-        
-        // 设置代理
-        webView.navigationDelegate = self;
-        webView.scrollView.delegate = self;
-        
-        // 自适应屏幕宽度js
-        NSString *jSString = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-        WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:jSString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-        WKUserContentController *contentController = webView.configuration.userContentController;
-        
-        // 添加自适应屏幕宽度js调用的方法
-        [contentController addUserScript:wkUserScript];
-        
 
-        [self.view insertSubview:webView atIndex:0];
-        _webView = webView;
-
-    }
-    return _webView;
-}
-
-- (YAErrorView *)errorView {
-    if (_errorView == nil) {
-        YAErrorView *view = [YAErrorView errorView];
-        [self.view addSubview:view];
-        _errorView  =view;
-    }
-    return _errorView;
-}
-
+#pragma mark - life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -101,18 +69,16 @@
    
 }
 
-
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     // 约束处理
     self.topViewHeightConstraint.constant = kTopImageHeight;
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-#pragma mark - 请求额外信息
+
+#pragma mark - event response
+
+// 请求额外信息
 - (void)requestForExtraData {
     NSString *requestUrl = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/story-extra/%ld",self.ID];
     requestSuccessBlock sblock = ^(id responseObject){
@@ -126,13 +92,11 @@
         
     };
     
-    
     [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:requestUrl WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:nil];
-    
-    
 
 }
-#pragma mark - 请求内容数据
+
+// 请求内容数据
 - (void)requestForContentData {
     
     NSString *requestUrl = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/news/%ld",self.ID];
@@ -168,28 +132,6 @@
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y +20;
-    
-    // 处理下拉
-    if (offsetY <= 0) {
-        self.topViewHeightConstraint.constant = kTopImageHeight  + (- offsetY);
-        
-        if (offsetY < -80) {
-            CGPoint point= scrollView.contentOffset;
-            point.y = -100;
-            scrollView.contentOffset = point;
-        }
-    }
-    
-    // 处理上拉
-    if (offsetY >= 0) {
-        self.topView.ya_y = - offsetY;
-    }
-}
-
-
-#pragma mark - 按钮处理
 // 返回
 - (IBAction)goBack:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -215,16 +157,42 @@
 
 // 评论
 - (IBAction)comment:(UIButton *)sender {
-
+    
     YACommentViewController *commentViewController = [[YACommentViewController alloc] init];
     commentViewController.storyID = self.ID;
     [self.navigationController pushViewController:commentViewController animated:YES];
     
-
+    
 }
 
 
-#pragma mark - 链接点击
+#pragma mark - scrollview delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y +20;
+    
+    // 处理下拉
+    if (offsetY <= 0) {
+        self.topViewHeightConstraint.constant = kTopImageHeight  + (- offsetY);
+        
+        if (offsetY < -80) {
+            CGPoint point= scrollView.contentOffset;
+            point.y = -100;
+            scrollView.contentOffset = point;
+        }
+    }
+    
+    // 处理上拉
+    if (offsetY >= 0) {
+        self.topView.ya_y = - offsetY;
+    }
+}
+
+
+
+
+#pragma mark - webView 代理
+
 // 1.在请求开始加载之前调用，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 
@@ -238,40 +206,66 @@
     }
 
 }
+
 // 在收到响应开始加载后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
 
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
 
+
 // 2.页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
 
 }
+
 // 3.当内容开始到达时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
 
 }
-//// 页面加载完成之后调用
+
+// 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
   
-    
     
 }
 
 
-//// 页面加载失败时调用
-//- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{}
-////收到服务器重定向请求后调用
-//- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
-//
-//}
+#pragma mark - getter and setter
 
+- (WKWebView *)webView {
+    if (_webView == nil) {
+        
+        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 44)];
+        
+        
+        // 设置代理
+        webView.navigationDelegate = self;
+        webView.scrollView.delegate = self;
+        
+        // 自适应屏幕宽度js
+        NSString *jSString = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:jSString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+        WKUserContentController *contentController = webView.configuration.userContentController;
+        
+        // 添加自适应屏幕宽度js调用的方法
+        [contentController addUserScript:wkUserScript];
+        
+        
+        [self.view insertSubview:webView atIndex:0];
+        _webView = webView;
+        
+    }
+    return _webView;
+}
 
-// 根据类型kind和ID获取上一个ID 下一个ID
-//- (NSInteger)nextIDWithStoryKind:(NSInteger)kind currentStoryId:(NSInteger)ID {
-//    
-//    
-//}
+- (YAErrorView *)errorView {
+    if (_errorView == nil) {
+        YAErrorView *view = [YAErrorView errorView];
+        [self.view addSubview:view];
+        _errorView  =view;
+    }
+    return _errorView;
+}
 
 @end

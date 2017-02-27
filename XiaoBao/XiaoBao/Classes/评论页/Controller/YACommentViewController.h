@@ -13,6 +13,7 @@
 @property (nonatomic,assign) BOOL isOpen;
 /** storyID */
 @property (nonatomic,assign) NSInteger storyID;
+/** 数据展示tableView */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 

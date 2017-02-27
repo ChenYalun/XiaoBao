@@ -15,9 +15,10 @@
 #define kSectionFooterHeight 15
 #define kSectionHeaderHeight 8
 #define kIconImageWH 38
-@interface YASettingViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
+@interface YASettingViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *firstCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *secondCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *thirdCell;
@@ -43,6 +44,7 @@
 
 @implementation YASettingViewController
 
+#pragma mark - 快速创建
 + (instancetype)settingViewController {
     YASettingViewController *settingViewController = [UIStoryboard storyboardWithName:[self className] bundle:nil].instantiateInitialViewController;
     return settingViewController;
@@ -54,6 +56,9 @@
     }
     return self;
 }
+
+#pragma mark - life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -74,7 +79,6 @@
     self.sevenCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
     self.eightCell.dk_backgroundColorPicker = DKColorPickerWithKey(SettingCellBackgroundColor);
   
-    
     
     self.firstLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
     self.secondLabel.dk_textColorPicker = DKColorPickerWithKey(LabelColor);
@@ -99,13 +103,6 @@
 //    self.iconImageView.dk_imagePicker = DKImagePickerWithNames();
     
     
-
-    
-    
-    
-    
-    
-    
     // 设置tableView顶部间距
     CGRect frame=CGRectMake(0, 0, 0, 20);
     self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:frame];
@@ -113,6 +110,14 @@
     
     
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    self.iconImageView.bounds = CGRectMake(0, 0, kIconImageWH, kIconImageWH);
+}
+
+
 
 #pragma mark - 设置导航栏
 - (void)setupNavigationController {
@@ -135,20 +140,9 @@
     
 
 }
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    
-    self.iconImageView.bounds = CGRectMake(0, 0, kIconImageWH, kIconImageWH);
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
-    
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
-
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
@@ -199,8 +193,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - event response
 
-#pragma mark - 发送邮件
+// 发送邮件
 - (void)sendEmail {
     
     NSMutableString *mailUrl = [NSMutableString string];
@@ -227,16 +222,13 @@
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString:email]];
 }
 
-#pragma mark - 清除缓存
+// 清除缓存
 - (void)clearDisk {
     
     // 图片缓存
     kClearDiskCache;
     kClearMemoryCache;
 
-
-
-    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     // Caches目录
     NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).lastObject;
@@ -252,7 +244,6 @@
          [fileManager removeItemAtPath:filePath error:nil];
      }
      
-     
      // 提示
      dispatch_sync(dispatch_get_main_queue(), ^{
          [YAProgressHUD showSuccessWithStatus:@"清除成功"];
@@ -263,8 +254,7 @@
 
 }
 
-
-#pragma mark - 去好评
+// 去好评
 - (void)gotoAppStore {
     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://appsto.re/cn/Fv7fM.i"]];
 }

@@ -14,10 +14,12 @@
 #import "YACommentHeader.h"
 #import "YANavigationView.h"
 #import "YAErrorView.h"
+
+static NSString *reuseIdentifier = @"comment";
+
 @interface YACommentViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+/** 评论数组 */
 @property (nonatomic,strong) NSMutableArray <NSMutableArray *>*comments;
-
 /** 评论数量 */
 @property (nonatomic,assign) NSInteger commentCount;
 /** 导航视图 */
@@ -27,36 +29,10 @@
 @end
 
 @implementation YACommentViewController
-static NSString *reuseIdentifier = @"comment";
 
-#pragma mark - 懒加载
-- (NSMutableArray<NSMutableArray *> *)comments {
-    if (_comments == nil) {
-        _comments = [NSMutableArray array];
-        _comments[0] = [NSMutableArray array];
-        _comments[1] = [NSMutableArray array];
-    }
-    return _comments;
-}
 
-- (YANavigationView *)navigationView {
-    if (_navigationView == nil) {
-        _navigationView = [YANavigationView navigationViewWithTitle:nil];
-        _navigationView.backButton.hidden = YES;
-        [self.view addSubview:_navigationView];
-        _navigationView.hidden = YES;
-    }
-    return _navigationView;
-}
+#pragma mark - life Cycle
 
-- (YAErrorView *)errorView {
-    if (_errorView == nil) {
-        YAErrorView *errorView = [YAErrorView errorView];
-        [self.view addSubview:errorView];
-        _errorView = errorView;
-    }
-    return _errorView;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -86,6 +62,9 @@ static NSString *reuseIdentifier = @"comment";
     [self refreshForCommentsWithId:[NSString stringWithFormat:@"%ld",self.storyID] kindOfComment:@"short-comments"];
 }
 
+#pragma mark - event response
+
+// 刷新评论
 - (void)refreshForCommentsWithId:(NSString *)commentID kindOfComment:(NSString *)kind {
     
     // 请求路径
@@ -119,12 +98,7 @@ static NSString *reuseIdentifier = @"comment";
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
+#pragma mark - Table view data source and delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -138,7 +112,6 @@ static NSString *reuseIdentifier = @"comment";
     }
     
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YACommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -158,7 +131,6 @@ static NSString *reuseIdentifier = @"comment";
 }
 
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 40;
 }
@@ -174,5 +146,34 @@ static NSString *reuseIdentifier = @"comment";
 }
 
 
+#pragma mark - getter and setter
+
+- (NSMutableArray<NSMutableArray *> *)comments {
+    if (_comments == nil) {
+        _comments = [NSMutableArray array];
+        _comments[0] = [NSMutableArray array];
+        _comments[1] = [NSMutableArray array];
+    }
+    return _comments;
+}
+
+- (YANavigationView *)navigationView {
+    if (_navigationView == nil) {
+        _navigationView = [YANavigationView navigationViewWithTitle:nil];
+        _navigationView.backButton.hidden = YES;
+        [self.view addSubview:_navigationView];
+        _navigationView.hidden = YES;
+    }
+    return _navigationView;
+}
+
+- (YAErrorView *)errorView {
+    if (_errorView == nil) {
+        YAErrorView *errorView = [YAErrorView errorView];
+        [self.view addSubview:errorView];
+        _errorView = errorView;
+    }
+    return _errorView;
+}
 
 @end

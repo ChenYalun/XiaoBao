@@ -10,6 +10,9 @@
 #import <MJExtension.h>
 #import "YACommentItem.h"
 @implementation YACommentModel
+
+#pragma mark - 字典转模型
+
 + (NSMutableArray <YACommentModel *> *)commentModelWithKeyValues:(id)responseObject {
     NSArray *items = [YACommentItem mj_objectArrayWithKeyValuesArray:responseObject[@"comments"]];
     NSMutableArray *models = [NSMutableArray array];
@@ -42,6 +45,7 @@
     return models;
 }
 
+#pragma mark - event response
 
 // 时间戳转标准时间
 -(NSString *)changeDate:(NSString *)utc{

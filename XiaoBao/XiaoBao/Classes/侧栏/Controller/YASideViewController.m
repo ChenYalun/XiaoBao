@@ -16,47 +16,24 @@
 #import "YANavigationView.h"
 
 static NSString *reuseIdentifier = @"YAThemeTableViewCell";
+
 @interface YASideViewController () <UITableViewDelegate,UITableViewDataSource>
+/** 数据展示tableView */
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
 /** theme数组 */
 @property (nonatomic,strong) NSMutableArray <YAThemeItem *> *themes;
 /** 首页item */
 @property (nonatomic,strong) YAThemeItem *homeItem;
+/** 是否正在刷新 */
 @property (nonatomic,assign) BOOL isRefreshing;
-/** 导航视图 */
-//@property (nonatomic,weak) YANavigationView *navigationView;
 @end
 
 @implementation YASideViewController
 
-#pragma mark - 懒加载
-- (NSMutableArray *)themes {
-    if (_themes == nil) {
-        _themes = [NSMutableArray array];
-    }
-    return _themes;
-}
-
-- (YAThemeItem *)homeItem {
-    if (_homeItem == nil) {
-        _homeItem = [[YAThemeItem alloc] init];
-        _homeItem.name = @"首页";
-        _homeItem.ID = @"首页";
-    }
-    return _homeItem;
-}
-
-//- (YANavigationView *)navigationView {
-//    if (_navigationView == nil) {
-//        YANavigationView *navigationView = [YANavigationView navigationViewWithTitle:@"设置"];
-//        self.v
-//    }
-//}
-
+#pragma mark - life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     // 注册tableView
     [self.themeTableView registerNib:[UINib nibWithNibName:[YAThemeTableViewCell className] bundle:nil] forCellReuseIdentifier:reuseIdentifier];
@@ -64,51 +41,11 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
         
     // 自动刷新
     [self refreshForNewState];
-
-    
- 
-        
-        
-    
-
 }
 
 
+#pragma mark - tableView datasource
 
-#pragma mark - 配置刷新
-- (void)refreshForNewState {
-    requestSuccessBlock sblock = ^(id responseObject){
-        self.isRefreshing = NO;
-        [self.themes removeAllObjects];
-        NSMutableArray *array = (NSMutableArray *)[YAThemeItem themeItemsWithOtherKeyValues:responseObject];
- 
-        [array insertObject:self.homeItem atIndex:0];
-        
-        [self.themes addObjectsFromArray:array];
-        
-        [self.themeTableView reloadData];
-        
-
-        // 第一次刷新后选中第一行
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            
-            [self.themeTableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-        });
-        
-    };
-    requestFailureBlock fblock = ^(NSError *error){
-        self.isRefreshing = NO;
-        kLog(@"失败");
-    };
-    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:@"http://news-at.zhihu.com/api/4/themes" WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:fblock];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - tableView 数据源
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.themes.count;
 }
@@ -119,11 +56,12 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YAThemeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.theme = self.themes[indexPath.row];
-    
-    
     return cell;
 }
-#pragma mark - tableView代理
+
+
+#pragma mark - tableView delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *themeID = self.themes[indexPath.row].ID;
     if ([themeID isEqualToString:@"首页"]) {
@@ -133,8 +71,6 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
         // 设置中心控制器
         [self.mm_drawerController setCenterViewController:contentNavigationController withCloseAnimation:YES completion:nil];
 
-        
-        
     } else {
         YAThemeViewController *themeViewController = [[YAThemeViewController alloc] init];
         themeViewController.themeID = themeID;
@@ -142,23 +78,12 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
         
         // 设置中心导航控制器
         [self.mm_drawerController setCenterViewController:navigationController withCloseAnimation:YES completion:nil];
-
-        
     }
  
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 
-}
-
-#pragma mark - scrollView代理
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    //CGFloat offsetY = scrollView.contentOffset.y;
-   // kLog(@"%f",offsetY);
-
-}
+#pragma mark - scrollView delegate
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     CGFloat offsetY = scrollView.contentOffset.y;
@@ -169,7 +94,8 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
     }
 }
 
-#pragma mark - 事件处理
+#pragma mark - event response
+
 // 设置页面
 - (IBAction)pushToSettingViewController:(UIButton *)sender {
     YASettingViewController *settingViewController = [YASettingViewController settingViewController];
@@ -190,5 +116,54 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
     }
     
 }
+
+// 配置刷新
+- (void)refreshForNewState {
+    requestSuccessBlock sblock = ^(id responseObject){
+        self.isRefreshing = NO;
+        [self.themes removeAllObjects];
+        NSMutableArray *array = (NSMutableArray *)[YAThemeItem themeItemsWithOtherKeyValues:responseObject];
+        
+        [array insertObject:self.homeItem atIndex:0];
+        
+        [self.themes addObjectsFromArray:array];
+        
+        [self.themeTableView reloadData];
+        
+        
+        // 第一次刷新后选中第一行
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            
+            [self.themeTableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+        });
+        
+    };
+    requestFailureBlock fblock = ^(NSError *error){
+        self.isRefreshing = NO;
+        kLog(@"失败");
+    };
+    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:@"http://news-at.zhihu.com/api/4/themes" WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:fblock];
+}
+
+
+#pragma mark - getter and setter
+
+- (NSMutableArray *)themes {
+    if (_themes == nil) {
+        _themes = [NSMutableArray array];
+    }
+    return _themes;
+}
+
+- (YAThemeItem *)homeItem {
+    if (_homeItem == nil) {
+        _homeItem = [[YAThemeItem alloc] init];
+        _homeItem.name = @"首页";
+        _homeItem.ID = @"首页";
+    }
+    return _homeItem;
+}
+
 
 @end

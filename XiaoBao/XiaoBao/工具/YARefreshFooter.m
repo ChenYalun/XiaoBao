@@ -10,6 +10,8 @@
 
 @implementation YARefreshFooter
 
+#pragma mark - 创建
+
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // 隐藏刷新文字
@@ -27,3 +29,10 @@
 }
 
 @end
+/*
+ 学习来的标注
+#pragma mark - private method
+#pragma mark - life Cycle
+#pragma mark - getter and setter
+#pragma mark - event response
+*/

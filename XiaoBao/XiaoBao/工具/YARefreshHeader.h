@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-
 @interface YARefreshHeader : UIView
 /** 绑定的scrollView */
 @property (nonatomic,strong) UIScrollView *attachScrollView; // 使用strong
@@ -18,7 +17,9 @@
 /** 回调方法 */
 @property (assign, nonatomic) SEL refreshingAction;
 
+// 开始刷新
 - (void)beginRefreshing;
+// 快速创建
 + (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action;
 @end
 

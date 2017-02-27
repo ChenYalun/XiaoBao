@@ -8,16 +8,25 @@
 
 #import "YAEditorDetailContentView.h"
 #import <UIImageView+YYWebImage.h>
-@interface YAEditorDetailContentView()
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
-@property (weak, nonatomic) IBOutlet UILabel *urlLabel;
-@property (weak, nonatomic) IBOutlet UILabel *urlTitleLabel;
 
+@interface YAEditorDetailContentView()
+/** 头像 */
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+/** 姓名 */
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+/** 简介 */
+@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
+/** url */
+@property (weak, nonatomic) IBOutlet UILabel *urlLabel;
+/** url标题 */
+@property (weak, nonatomic) IBOutlet UILabel *urlTitleLabel;
+/** 指示图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *turnImageView;
 @end
+
 @implementation YAEditorDetailContentView
+
+#pragma mark - 快速创建
 
 + (instancetype)editorViewWithItem:(YAEditorItem *)editor {
     YAEditorDetailContentView *editorView = [[NSBundle mainBundle] loadNibNamed:[YAEditorDetailContentView className] owner:nil options:nil].firstObject;
@@ -40,6 +49,5 @@
 
     return editorView;
 }
-
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YALinkViewController : UIViewController
+
 /** 请求 */
 @property (nonatomic,strong) NSURLRequest *request;
 @end

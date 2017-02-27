@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "YAEditorItem.h"
+
 @interface YAThemeTableViewHeader : UIView
+
 /** editors */
 @property (nonatomic,strong) NSArray <YAEditorItem *> *editors;
 

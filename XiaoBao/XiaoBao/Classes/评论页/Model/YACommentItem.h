@@ -19,7 +19,6 @@
 @property (nonatomic,copy) NSString *time;
 /** 点赞 */
 @property (nonatomic,copy) NSString *likes;
-
 /** 回复者 */
 @property (nonatomic,strong) YACommentItem *reply_to;
 

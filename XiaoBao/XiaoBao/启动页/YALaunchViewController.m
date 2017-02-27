@@ -9,28 +9,37 @@
 #import "YALaunchViewController.h"
 #import "YAHTTPManager.h"
 #import <UIImageView+YYWebImage.h>
+
+
 @interface YALaunchViewController ()
+/** 图片标题 */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+/** 背景图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *backImageView;
+/** 启动动画展现的View */
 @property (weak, nonatomic) IBOutlet UIView *animationView;
+/** 底部视图 */
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 
 @end
+
 
 @implementation YALaunchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 图片处理
-    [self.backImageView yy_setImageWithURL:[NSURL URLWithString:@"https://bing.ioliu.cn/v1?w=768&h=1280"] options:YYWebImageOptionSetImageWithFadeAnimation];
-    
-    // json 数据: https://bing.ioliu.cn/v1
+    // json 数据来源:必应壁纸 https://bing.ioliu.cn/v1
     requestSuccessBlock sblock = ^(id responseObject){
         NSString *title = responseObject[@"data"][@"title"];
         self.titleLabel.text = title;
+        
+        // 图片处理
+        NSURL *imageurl = [NSURL URLWithString:responseObject[@"data"][@"original_pic"]];
+        [self.backImageView yy_setHighlightedImageWithURL:imageurl placeholder:kGetImage(@"LaunchImage-700")];
     };
     
+    // 发送请求
     [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:@"https://bing.ioliu.cn/v1" WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:nil];
     
     
@@ -91,23 +100,10 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)dealloc {
     // 设置状态栏显示
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

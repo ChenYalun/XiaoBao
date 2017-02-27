@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YASettingViewController : UITableViewController
+
+// 快速创建
 + (instancetype)settingViewController;
 @end

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface YAErrorView : UIView
+
 + (instancetype)errorView;
+
 @end
 
 

@@ -9,6 +9,8 @@
 #import "YAContentItem.h"
 #import <MJExtension.h>
 @implementation YAContentItem
+
+// 快速创建
 + (instancetype)contentItemWithKeyValues:(id)responseObject {
     return [YAContentItem mj_objectWithKeyValues:responseObject];
 }

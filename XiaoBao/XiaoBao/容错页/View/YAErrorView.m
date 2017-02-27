@@ -8,18 +8,17 @@
 
 #import "YAErrorView.h"
 #import <POP.h>
+
 @interface YAErrorView()
-
-
-
 @end
+
 @implementation YAErrorView
+
+#pragma mark - 快速创建
 
 + (instancetype)errorView {
     return [[YAErrorView alloc] init];
 }
-
-
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -32,7 +31,9 @@
 }
 
 
-#pragma mark - 设置小球
+#pragma mark - event response
+
+// 设置小球动画
 - (void)setupLayerWithRadius:(CGFloat)radius backgroundColor:(UIColor *)color position:(BOOL)p{
     
     CALayer *layer = [CALayer layer];
@@ -80,9 +81,9 @@
     cornerRadiusAnimation.duration = duration;
     
     
-    [layer pop_addAnimation:positionAnimation forKey:@"firstPositionAnimation"];
-    [layer pop_addAnimation:sizeAnimation forKey:@"firstSizeAnimation"];
-    [layer pop_addAnimation:cornerRadiusAnimation forKey:@"firstCornerRadiusAnimation"];
+    [layer pop_addAnimation:positionAnimation forKey:@"positionAnimation"];
+    [layer pop_addAnimation:sizeAnimation forKey:@"sizeAnimation"];
+    [layer pop_addAnimation:cornerRadiusAnimation forKey:@"cornerRadiusAnimation"];
 }
 
 @end

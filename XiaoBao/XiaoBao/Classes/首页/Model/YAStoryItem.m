@@ -9,6 +9,9 @@
 #import "YAStoryItem.h"
 #import <MJExtension.h>
 @implementation YAStoryItem
+
+#pragma mark - event response
+
 // 替换关键字
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID" : @"id"};
@@ -24,6 +27,7 @@
     return array;
 }
 
+// 格式化时间字符串
 + (NSString *)formatStringWithDateString:(NSString *)string {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyyMMdd"];

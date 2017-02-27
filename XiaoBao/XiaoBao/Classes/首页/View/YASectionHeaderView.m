@@ -7,10 +7,14 @@
 //
 
 #import "YASectionHeaderView.h"
+
 @interface YASectionHeaderView()
+/** 标题文本 */
 @property (nonatomic,strong) UILabel *titleLabel;
 @end
 @implementation YASectionHeaderView
+
+#pragma mark - getter and setter
 
 - (void)setSectionTitle:(NSString *)sectionTitle {
     _sectionTitle = sectionTitle;

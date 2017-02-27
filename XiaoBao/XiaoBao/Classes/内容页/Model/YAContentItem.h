@@ -19,7 +19,6 @@
 @property (nonatomic,copy) NSString *image;
 /** 供在线查看内容与分享至 SNS 用的 URL */
 @property (nonatomic,copy) NSString *share_url;
-
 /** js  */
 @property (nonatomic,strong) NSArray <NSString *> *js;
 /** css */

@@ -7,12 +7,16 @@
 //
 
 #import "YANavigationView.h"
+
 @interface YANavigationView()
 /** 标题 */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
 
 @implementation YANavigationView
+
+#pragma mark - 快速创建
+
 + (instancetype)navigationViewWithTitle:(NSString *)title {
     YANavigationView *navigationView =  [[NSBundle mainBundle] loadNibNamed:[YANavigationView className] owner:nil options:nil].firstObject;
     navigationView.frame = CGRectMake(0, 0, kScreenWidth, 64);
@@ -29,8 +33,7 @@
     
 }
 
-
-
+#pragma mark - get set
 - (void)setTitle:(NSString *)title {
     _title = title;
     self.titleLabel.text =title;

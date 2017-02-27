@@ -9,16 +9,42 @@
 #import "YAEditorDetailViewController.h"
 #import "YANavigationView.h"
 #import "YAEditorDetailContentView.h"
+
 @interface YAEditorDetailViewController ()
 @property (weak, nonatomic) UIScrollView *scrollView;
-
-
-
 @end
 
 @implementation YAEditorDetailViewController
 
-#pragma mark - 懒加载
+
+#pragma mark - life Cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setupNavigationView];
+
+    
+    YAEditorDetailContentView *editorDetailContentView = [YAEditorDetailContentView editorViewWithItem:self.editor];
+    [self.scrollView addSubview:editorDetailContentView];
+
+}
+
+#pragma mark - event response
+
+// 设置导航View
+- (void)setupNavigationView {
+    
+    YANavigationView *navigation = [YANavigationView navigationViewWithTitle:self.editor.name];
+    [self.view addSubview:navigation];
+    
+    
+}
+
+#pragma mark - getter and setter
+
 - (UIScrollView *)scrollView {
     if (_scrollView == nil) {
         UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -33,25 +59,5 @@
     }
     return _scrollView;
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self setupNavigationView];
 
-    
-    YAEditorDetailContentView *editorDetailContentView = [YAEditorDetailContentView editorViewWithItem:self.editor];
-    [self.scrollView addSubview:editorDetailContentView];
-
-}
-
-#pragma mark - 设置导航View
-- (void)setupNavigationView {
-    
-    YANavigationView *navigation = [YANavigationView navigationViewWithTitle:self.editor.name];
-    [self.view addSubview:navigation];
-    
-    
-}
 @end

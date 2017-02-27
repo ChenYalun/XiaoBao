@@ -8,17 +8,26 @@
 
 #import "YACommentTableViewCell.h"
 #import <UIImageView+YYWebImage.h>
-@interface YACommentTableViewCell()
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UIButton *zanButton;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UILabel *replyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *openButton;
 
+@interface YACommentTableViewCell()
+/** 头像 */
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+/** 姓名 */
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+/** 赞按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *zanButton;
+/** 内容 */
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+/** 转发 */
+@property (weak, nonatomic) IBOutlet UILabel *replyLabel;
+/** 时间 */
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+/** 展开按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *openButton;
 @end
 @implementation YACommentTableViewCell
+
+#pragma mark - life Cycle
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -26,6 +35,8 @@
     self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
     self.selectedBackgroundView.backgroundColor = kRGBAColor(237, 237, 237, 0.8);
 }
+
+#pragma mark - getter and setter
 
 - (void)setComment:(YACommentModel *)comment {
     _comment = comment;
@@ -53,8 +64,6 @@
         self.replyLabel.numberOfLines = 2;
     }
     
-    
-    
     //  两行可以显示完全则隐藏展开按钮
     CGSize contentSize = [self.replyLabel.text boundingRectWithSize:CGSizeMake(kScreenWidth - 60, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:15.0]} context:nil].size;
     
@@ -66,9 +75,11 @@
         self.openButton.hidden = YES;
     }
     
-
-    
 }
+
+#pragma mark - event response
+
+// 展开评论
 - (IBAction)openReply:(UIButton *)sender {
     
     /* 方式一:使用beginUpdates\endupdates,但是cell变化太剧烈,不平滑
