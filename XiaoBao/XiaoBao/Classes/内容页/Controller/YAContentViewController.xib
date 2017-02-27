@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="commentButton" destination="xQx-3m-qdR" id="RhT-NJ-LzV"/>
                 <outlet property="imageScourceLabel" destination="pb6-zf-t2r" id="cX4-fS-hTB"/>
+                <outlet property="maskImageView" destination="N5f-j5-oVB" id="DrQ-jq-7Qs"/>
                 <outlet property="titleLabel" destination="Fc1-69-PbK" id="KXn-r0-orl"/>
                 <outlet property="topImageView" destination="H47-kh-nzw" id="c5X-dG-1Ud"/>
                 <outlet property="topView" destination="qTI-lw-Pqp" id="Ugj-jE-aCt"/>
@@ -23,14 +24,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcB-ws-2rm" userLabel="额外信息">
-                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lV-eP-zQ7" userLabel="返回">
-                            <rect key="frame" x="0.0" y="0.0" width="75" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="FA2-90-Ou9"/>
                             </constraints>
@@ -40,7 +41,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzK-hf-QcX" userLabel="分享">
-                            <rect key="frame" x="225" y="0.0" width="75" height="44"/>
+                            <rect key="frame" x="360" y="0.0" width="120" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="A9i-TA-Cd4"/>
                             </constraints>
@@ -50,7 +51,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lc-V9-TJz" userLabel="赞">
-                            <rect key="frame" x="150" y="0.0" width="75" height="44"/>
+                            <rect key="frame" x="240" y="0.0" width="120" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="RBx-0W-GG7"/>
                             </constraints>
@@ -65,7 +66,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVX-dE-HqD" userLabel="下一条">
-                            <rect key="frame" x="75" y="0.0" width="75" height="44"/>
+                            <rect key="frame" x="120" y="0.0" width="120" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="54w-kf-syt"/>
                             </constraints>
@@ -75,7 +76,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQx-3m-qdR" userLabel="评论">
-                            <rect key="frame" x="300" y="0.0" width="75" height="44"/>
+                            <rect key="frame" x="480" y="0.0" width="120" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="aMY-np-bFw"/>
                             </constraints>
@@ -112,22 +113,22 @@
                     </constraints>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTI-lw-Pqp">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H47-kh-nzw">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="News_Image_Mask" translatesAutoresizingMaskIntoConstraints="NO" id="N5f-j5-oVB">
-                            <rect key="frame" x="0.0" y="50" width="375" height="170"/>
+                            <rect key="frame" x="0.0" y="50" width="600" height="170"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题标题标题标题标" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fc1-69-PbK">
-                            <rect key="frame" x="15" y="142" width="340" height="48"/>
+                            <rect key="frame" x="15" y="166" width="565" height="24"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图片仅供参考图片仅供参考图片仅供" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pb6-zf-t2r">
-                            <rect key="frame" x="217" y="199" width="148" height="11"/>
+                            <rect key="frame" x="442" y="199" width="148" height="11"/>
                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>

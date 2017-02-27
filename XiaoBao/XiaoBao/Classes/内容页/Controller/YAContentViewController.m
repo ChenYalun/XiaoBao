@@ -36,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 /** 错误指示view */
 @property (nonatomic,weak) YAErrorView *errorView;
+/** mask图片 */
+@property (weak, nonatomic) IBOutlet UIImageView *maskImageView;
 @end
 
 @implementation YAContentViewController
@@ -83,6 +85,15 @@
     self.topView.hidden = YES;
     [self errorView];
     
+    // 主题日报处理
+    if (self.isThemeStory) {
+        self.topView.hidden = YES;
+        self.topImageView.hidden = YES;
+        self.titleLabel.hidden = YES;
+        self.maskImageView.hidden = YES;
+        self.imageScourceLabel.hidden = YES;
+        
+    }
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self requestForContentData];
     [self requestForExtraData];

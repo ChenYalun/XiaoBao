@@ -11,4 +11,6 @@
 @interface YAContentViewController : UIViewController
 /** id */
 @property (nonatomic,assign) NSInteger ID;
+/** 是否是主题日报 */
+@property (nonatomic,assign) BOOL isThemeStory;
 @end
