@@ -16,24 +16,21 @@
 @implementation YAErrorView
 
 + (instancetype)errorView {
-    return [[NSBundle mainBundle] loadNibNamed:[self className] owner:nil options:nil].firstObject;
+    return [[YAErrorView alloc] init];
 }
 
 
-- (instancetype)init {
-    if (self = [super init]) {
-        self = [YAErrorView errorView];
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupLayerWithRadius:8 backgroundColor:[UIColor redColor] position:YES];
+        
+        [self setupLayerWithRadius:8 backgroundColor:kGlobalColor position:NO];
+
     }
     return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    [self setupLayerWithRadius:8 backgroundColor:[UIColor redColor] position:YES];
-    
-    [self setupLayerWithRadius:8 backgroundColor:kGlobalColor position:NO];
-}
 
 #pragma mark - 设置小球
 - (void)setupLayerWithRadius:(CGFloat)radius backgroundColor:(UIColor *)color position:(BOOL)p{

@@ -18,11 +18,10 @@
 #import "YAContentViewController.h"
 #import <UIViewController+MMDrawerController.h>
 #import "YAErrorView.h"
-#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #define kHeaderViewHeight 200
 #define kMargin 10
 #define kRefreshViewWH 18
-@interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface YAHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 滚动图片新闻 */
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
 /** 组新闻 */
@@ -43,6 +42,10 @@
 @property (nonatomic,strong) YAHomeHeaderView *headerView;
 /** 顶部侧滑按钮 */
 @property (nonatomic,weak) UIButton *sideMenuButton;
+/** 加载视图 */
+@property (nonatomic,weak) YAErrorView *errorView;
+
+
 @end
 
 @implementation YAHomeViewController
@@ -100,8 +103,6 @@ static NSString *reuseIdentifier = @"story";
         _tableView.tableFooterView = [[UIView alloc] init];
 
         // 容错视图
-        _tableView.emptyDataSetSource = self;
-        _tableView.emptyDataSetDelegate = self;
     }
     return _tableView;
 }
@@ -134,6 +135,15 @@ static NSString *reuseIdentifier = @"story";
     return _sideMenuButton;
 }
 
+- (YAErrorView *)errorView {
+    if (_errorView == nil) {
+        YAErrorView *errorView = [YAErrorView errorView];
+        
+        [self.view addSubview:errorView];
+        _errorView = errorView;
+    }
+    return _errorView;
+}
 #pragma mark - view初始化
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -169,11 +179,10 @@ static NSString *reuseIdentifier = @"story";
     // 注册sectionHeaderView
     [self.tableView registerClass:[YASectionHeaderView class] forHeaderFooterViewReuseIdentifier:reuseIdentifier];
 
+    // 加载视图处理
+    self.errorView.hidden = NO;
     
     
-    
-
-
     [self.view.ya_refreshHeader beginRefreshing];
 
 }
@@ -195,6 +204,12 @@ static NSString *reuseIdentifier = @"story";
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
 
+        // 隐藏加载视图
+        if (!self.errorView.hidden) {
+            self.errorView.hidden = YES;
+        }
+        
+        
         // 获取头部视图新闻
         NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
         [self.topStoryItems addObjectsFromArray:topStoryItems];
@@ -214,7 +229,6 @@ static NSString *reuseIdentifier = @"story";
         
 
         // 刷新
-
         
         if (self.headerView.hidden) {
             self.headerView.hidden = NO;
@@ -233,6 +247,11 @@ static NSString *reuseIdentifier = @"story";
 - (void)refreshForMoreStories {
     // 成功回调
     requestSuccessBlock sblock = ^(id responseObject){
+        // 隐藏加载视图
+        if (!self.errorView.hidden) {
+            self.errorView.hidden = YES;
+        }
+        
         // 停止刷新
         [self.tableView.mj_footer endRefreshing];
         
@@ -405,15 +424,6 @@ static NSString *reuseIdentifier = @"story";
 }
 
 
-#pragma mark - 容错视图
-- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView {
-    
-    return [YAErrorView errorView];
-}
-
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIColor whiteColor];
-}
 
 
 @end
