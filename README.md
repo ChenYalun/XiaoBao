@@ -12,19 +12,23 @@
 # 晓报  
 (高仿 知乎日报 2.6.7)
 
+内容API:感谢 [izzyleung](https://github.com/izzyleung/ZhihuDailyPurify/wiki/知乎日报-API-分析) 
+启动页API:感谢 [xCss](https://github.com/xCss/bing)
+
 ## 截图
 
 
-![1.gif](https://github.com/ChenYalun/YAXiaoBao/blob/master/XiaoBao/XiaoBao/images/ya001.gif?raw=true)
+![1.gif](https://github.com/ChenYalun/YAImages/blob/master/ya001.gif?raw=true)
 
 
-![2.gif](https://github.com/ChenYalun/YAXiaoBao/blob/master/XiaoBao/XiaoBao/images/ya002.gif?raw=true)
+![2.gif](https://github.com/ChenYalun/YAImages/blob/master/ya002.gif?raw=true)
 
 
-![3.gif](https://github.com/ChenYalun/YAXiaoBao/blob/master/XiaoBao/XiaoBao/images/ya003.gif?raw=true)
+![3.gif](https://github.com/ChenYalun/YAImages/blob/master/ya003.gif?raw=true)
 
 
 ## 更新日志
+- 添加注释重构代码  ----- 2017-02-28
 - 设计加载指示动画  ----- 2017-02-27
 - 测试无网络与网络延迟  ----- 2017-02-26
 - 开始实现夜间模式  ----- 2017-02-25

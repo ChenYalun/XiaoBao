@@ -20,7 +20,6 @@
 		9AE6AC631E656ABA0010097B /* YARefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AC5E1E656ABA0010097B /* YARefreshHeader.m */; };
 		9AE6AC681E656AC70010097B /* YALaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AC661E656AC70010097B /* YALaunchViewController.m */; };
 		9AE6AC691E656AC70010097B /* YALaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE6AC671E656AC70010097B /* YALaunchViewController.xib */; };
-		9AE6AC6E1E656ACE0010097B /* YAErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AC6D1E656ACE0010097B /* YAErrorView.m */; };
 		9AE6ACD31E656AD80010097B /* YACommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AC731E656AD80010097B /* YACommentViewController.m */; };
 		9AE6ACD41E656AD80010097B /* YACommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE6AC741E656AD80010097B /* YACommentViewController.xib */; };
 		9AE6ACD51E656AD80010097B /* YACommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AC771E656AD80010097B /* YACommentItem.m */; };
@@ -66,6 +65,7 @@
 		9AE6ACFE1E656AD80010097B /* YAThemeTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6ACD11E656AD80010097B /* YAThemeTableViewHeader.m */; };
 		9AE6ACFF1E656AD80010097B /* YAThemeTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE6ACD21E656AD80010097B /* YAThemeTableViewHeader.xib */; };
 		9AE6AD031E656ADB0010097B /* UIBarButtonItem+MenuBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AD021E656ADB0010097B /* UIBarButtonItem+MenuBarButtonItem.m */; };
+		9AE6AD081E656EA70010097B /* YAErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6AD071E656EA70010097B /* YAErrorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,8 +92,6 @@
 		9AE6AC651E656AC70010097B /* YALaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALaunchViewController.h; sourceTree = "<group>"; };
 		9AE6AC661E656AC70010097B /* YALaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALaunchViewController.m; sourceTree = "<group>"; };
 		9AE6AC671E656AC70010097B /* YALaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YALaunchViewController.xib; sourceTree = "<group>"; };
-		9AE6AC6C1E656ACE0010097B /* YAErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAErrorView.h; sourceTree = "<group>"; };
-		9AE6AC6D1E656ACE0010097B /* YAErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAErrorView.m; sourceTree = "<group>"; };
 		9AE6AC721E656AD80010097B /* YACommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YACommentViewController.h; sourceTree = "<group>"; };
 		9AE6AC731E656AD80010097B /* YACommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YACommentViewController.m; sourceTree = "<group>"; };
 		9AE6AC741E656AD80010097B /* YACommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YACommentViewController.xib; sourceTree = "<group>"; };
@@ -169,6 +167,8 @@
 		9AE6ACD21E656AD80010097B /* YAThemeTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YAThemeTableViewHeader.xib; sourceTree = "<group>"; };
 		9AE6AD011E656ADB0010097B /* UIBarButtonItem+MenuBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+MenuBarButtonItem.h"; sourceTree = "<group>"; };
 		9AE6AD021E656ADB0010097B /* UIBarButtonItem+MenuBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+MenuBarButtonItem.m"; sourceTree = "<group>"; };
+		9AE6AD061E656EA70010097B /* YAErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAErrorView.h; sourceTree = "<group>"; };
+		9AE6AD071E656EA70010097B /* YAErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAErrorView.m; sourceTree = "<group>"; };
 		C6B17FCB41470B899FCCDB18 /* Pods-XiaoBao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao.debug.xcconfig"; sourceTree = "<group>"; };
 		DAC2A0320F510D133DC05600 /* Pods-XiaoBao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBao.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBao/Pods-XiaoBao.release.xcconfig"; sourceTree = "<group>"; };
 		DF6DB9D8A96F1D4CF7A8FD87 /* libPods-XiaoBao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiaoBao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,10 +215,10 @@
 		9ADBF2D91E540FD7001F8565 /* XiaoBao */ = {
 			isa = PBXGroup;
 			children = (
+				9AE6AD041E656EA70010097B /* Error */,
 				9AA166061E62B4FD00F122AA /* images */,
 				9AE6AD001E656ADB0010097B /* Category */,
 				9AE6AC6F1E656AD80010097B /* Classes */,
-				9AE6AC6A1E656ACE0010097B /* Error */,
 				9AE6AC641E656AC70010097B /* Launch */,
 				9AE6AC541E656ABA0010097B /* Tool */,
 				9AE6AC451E6567590010097B /* YAMacroDefinitionHeader.h */,
@@ -266,23 +266,6 @@
 				9AE6AC671E656AC70010097B /* YALaunchViewController.xib */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		9AE6AC6A1E656ACE0010097B /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				9AE6AC6B1E656ACE0010097B /* View */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
-		9AE6AC6B1E656ACE0010097B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9AE6AC6C1E656ACE0010097B /* YAErrorView.h */,
-				9AE6AC6D1E656ACE0010097B /* YAErrorView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9AE6AC6F1E656AD80010097B /* Classes */ = {
@@ -550,6 +533,23 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		9AE6AD041E656EA70010097B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				9AE6AD051E656EA70010097B /* View */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		9AE6AD051E656EA70010097B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9AE6AD061E656EA70010097B /* YAErrorView.h */,
+				9AE6AD071E656EA70010097B /* YAErrorView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9B28F5F1CE8491A96C446E87 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,8 +720,8 @@
 				9ADBF2DC1E540FD7001F8565 /* main.m in Sources */,
 				9AE6ACE71E656AD80010097B /* YAEditorListTableViewCell.m in Sources */,
 				9AE6ACFE1E656AD80010097B /* YAThemeTableViewHeader.m in Sources */,
-				9AE6AC6E1E656ACE0010097B /* YAErrorView.m in Sources */,
 				9AE6ACDE1E656AD80010097B /* YALinkViewController.m in Sources */,
+				9AE6AD081E656EA70010097B /* YAErrorView.m in Sources */,
 				9AE6ACED1E656AD80010097B /* YAStoryHeaderView.m in Sources */,
 				9AE6ACF51E656AD80010097B /* YARootViewController.m in Sources */,
 				9AE6ACF11E656AD80010097B /* YANavigationView.m in Sources */,
