@@ -52,18 +52,18 @@
      launchViewController.view.frame = [UIApplication sharedApplication].keyWindow.bounds;
     [self.window addSubview:launchViewController.view];
     
+    /*
+     笔记
+     1,设置tableView分割线全屏 可直接在cell 的xib中设置分割线 间距(默认距左边15)
     
-    
-    // 笔记
-    // 1,设置tableView分割线全屏 可直接在cell 的xib中设置分割线 间距(默认距左边15)
-    
-    // 2,在xib中添加ScrollView时,先添加Scrollview再添加内容View
-    // 要设置内容View与ScrollView间距为0,同时根据竖屏滚动或横屏滚动设置Horizontally in container 或 Vertically in container
-    // 设置内容View的高度以改正xib中的报错,在代码中添加高度属性,动态改变
+     2,在xib中添加ScrollView时,先添加Scrollview再添加内容View
+     要设置内容View与ScrollView间距为0,同时根据竖屏滚动或横屏滚动设置Horizontally in container 或 Vertically in container
+     设置内容View的高度以改正xib中的报错,在代码中添加高度属性,动态改变
     
     
 //    导航栏 渐变LTNavigationBar
 
+     */
     return YES;
 }
 
