@@ -1,0 +1,14 @@
+NORMAL   NIGHT    
+#ffffff  #343434  BG
+#aaaaaa  #313131  SEP
+#0000ff  #ffffff  TINT
+#000000  #ffffff  TEXT
+#ffffff  #444444  BAR
+#f0f0f0  #222222  HIGHLIGHTED
+
+#F8F8F8  #343434  SettingViewBackgroundColor
+#FFFFFF  #3D3D3D  SettingCellBackgroundColor
+#27A1EC  #444444  NavigationViewBackgroundColor
+#000000  #B9B9B9  LabelColor
+#C5C5C5  #343434  SwitchTintColor
+#F6F6F6  #343434  ViewBackgroundColor

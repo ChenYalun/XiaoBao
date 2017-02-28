@@ -14,7 +14,6 @@
 #import "YAProgressHUD.h"
 #import "YASectionHeaderView.h"
 #import "YAHomeHeaderView.h"
-#import <RESideMenu.h>
 #import "YAContentViewController.h"
 #import <UIViewController+MMDrawerController.h>
 #import "YAErrorView.h"

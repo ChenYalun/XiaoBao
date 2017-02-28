@@ -13,7 +13,6 @@
 #import "YAThemeStoryItem.h"
 #import <YYWebImageManager.h>
 #import "YAThemeTableViewHeader.h"
-#import <GPUImage.h>
 #import <UIViewController+MMDrawerController.h>
 #import "YAEditorItem.h"
 #import "YAEditorListViewController.h"
@@ -35,7 +34,7 @@ static NSString *reuseIdentifier = @"story";
 /** 刷新控件 */
 @property (weak, nonatomic) IBOutlet YARefreshHeader *refreshHeader;
 /** 高斯模糊 */
-@property (nonatomic,strong) GPUImageGaussianBlurFilter * blurFilter;
+//@property (nonatomic,strong) GPUImageGaussianBlurFilter * blurFilter;
 /** 背景图片 */
 @property (nonatomic,strong) UIImage *topBackgroundImage;
 /** 点击手势 */
@@ -121,19 +120,22 @@ static NSString *reuseIdentifier = @"story";
         
         
         // 设置导航视图
+    
         [[YYWebImageManager sharedManager]  requestImageWithURL:[NSURL URLWithString:themeStoryItem.background] options:YYWebImageOptionShowNetworkActivity progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
             
             self.topBackgroundImage = image;
 
+#warning 高斯模糊
             // 容错处理,保证image不为空
-            if (image) {
-                // 高斯模糊
+//            if (image) {
+//                // 高斯模糊
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.blurFilter.blurRadiusInPixels = 10;// 模糊程度
-                    UIImage *blurredImage = [self.blurFilter imageByFilteringImage:image];
-                    self.topBackgroundImageView.image = blurredImage;
+//                    self.blurFilter.blurRadiusInPixels = 10;// 模糊程度
+//                    UIImage *blurredImage = [self.blurFilter imageByFilteringImage:image];
+                    self.topBackgroundImageView.image = image;
                 });
-            }
+//            }
+//            
             
         }];
         
@@ -198,16 +200,16 @@ static NSString *reuseIdentifier = @"story";
         scrollView.contentOffset = contentOffset;
     }
 
-    // 处理图片高斯模糊10---0  0----130
-    if (-contentOffset.y > 0 && -contentOffset.y <= 130) {
-        self.blurFilter.blurRadiusInPixels = 10 - (-contentOffset.y / 130.0) * 10;
-        UIImage *blurredImage = [self.blurFilter imageByFilteringImage:self.topBackgroundImage];
-        
-        self.topBackgroundImageView.image = blurredImage;
-    } else {
-        self.blurFilter.blurRadiusInPixels = 10;
-    }
-    
+//    // 处理图片高斯模糊10---0  0----130
+//    if (-contentOffset.y > 0 && -contentOffset.y <= 130) {
+//        self.blurFilter.blurRadiusInPixels = 10 - (-contentOffset.y / 130.0) * 10;
+//        UIImage *blurredImage = [self.blurFilter imageByFilteringImage:self.topBackgroundImage];
+//        
+//        self.topBackgroundImageView.image = blurredImage;
+//    } else {
+//        self.blurFilter.blurRadiusInPixels = 10;
+//    }
+//    
     
 }
 
@@ -240,11 +242,11 @@ static NSString *reuseIdentifier = @"story";
     return _tap;
 }
 
-- (GPUImageGaussianBlurFilter *)blurFilter {
-    if (_blurFilter == nil) {
-        _blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
-    }
-    return _blurFilter;
-}
+//- (GPUImageGaussianBlurFilter *)blurFilter {
+//    if (_blurFilter == nil) {
+//        _blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
+//    }
+//    return _blurFilter;
+//}
 
 @end

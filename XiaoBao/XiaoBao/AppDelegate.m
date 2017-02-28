@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <UMSocialCore/UMSocialCore.h>
 #import "YALaunchViewController.h"
 #import "YARootViewController.h"
 
