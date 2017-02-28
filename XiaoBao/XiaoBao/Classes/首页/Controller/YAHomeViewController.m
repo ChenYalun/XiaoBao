@@ -56,7 +56,6 @@ static NSString *reuseIdentifier = @"story";
 #pragma mark - view初始化
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
     // 隐藏导航栏初始化时的黑色
     self.view.backgroundColor = [UIColor whiteColor];
