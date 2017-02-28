@@ -59,9 +59,8 @@
      2,在xib中添加ScrollView时,先添加Scrollview再添加内容View
      要设置内容View与ScrollView间距为0,同时根据竖屏滚动或横屏滚动设置Horizontally in container 或 Vertically in container
      设置内容View的高度以改正xib中的报错,在代码中添加高度属性,动态改变
-    
-    
-//    导航栏 渐变LTNavigationBar
+
+ 导航栏框架 : 渐变LTNavigationBar
 
      */
     return YES;
