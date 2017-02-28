@@ -1,0 +1,5 @@
+*.h linguist-language=objective-c
+*.m linguist-language=objective-c
+*.c linguist-language=objective-c
+*.cc linguist-language=objective-c
+*.cpp linguist-language=objective-c
