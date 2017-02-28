@@ -215,6 +215,7 @@
 		9ADBF2D91E540FD7001F8565 /* XiaoBao */ = {
 			isa = PBXGroup;
 			children = (
+				9AA166061E62B4FD00F122AA /* images */,
 				9AE6AD001E656ADB0010097B /* Category */,
 				9AE6AC6F1E656AD80010097B /* Classes */,
 				9AE6AC6A1E656ACE0010097B /* Error */,
@@ -222,7 +223,6 @@
 				9AE6AC541E656ABA0010097B /* Tool */,
 				9AE6AC451E6567590010097B /* YAMacroDefinitionHeader.h */,
 				9AE6AC441E6566CC0010097B /* YAPrefixHeader.pch */,
-				9AA166061E62B4FD00F122AA /* images */,
 				9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */,
 				9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */,
 				9ADBF2E61E540FD7001F8565 /* Assets.xcassets */,
