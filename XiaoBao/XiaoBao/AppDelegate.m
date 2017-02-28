@@ -10,8 +10,8 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "YALaunchViewController.h"
 #import "YARootViewController.h"
-@interface AppDelegate ()
 
+@interface AppDelegate ()
 @end
 
 @implementation AppDelegate
@@ -25,10 +25,8 @@
     }];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
-    // 全局颜色
-    //[UINavigationBar appearance].dk_backgroundColorPicker = DKColorPickerWithKey(NavigationViewBackgroundColor);
+
     
-//    NavigationViewBackgroundColor
     // 导航栏标题字体
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
@@ -56,16 +54,6 @@
      launchViewController.view.frame = [UIApplication sharedApplication].keyWindow.bounds;
     [self.window addSubview:launchViewController.view];
     
-       
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     // 笔记
@@ -76,22 +64,11 @@
     // 设置内容View的高度以改正xib中的报错,在代码中添加高度属性,动态改变
     
     
-    
-    
 //    导航栏 渐变LTNavigationBar
 
     return YES;
 }
 
- // 友盟授权回调
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
-    if (!result) {
-        // 其他如支付等SDK的回调
-    }
-    return result;
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
