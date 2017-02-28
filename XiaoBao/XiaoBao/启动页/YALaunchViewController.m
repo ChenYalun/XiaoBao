@@ -35,8 +35,17 @@
         self.titleLabel.text = title;
         
         // 图片处理
-        NSURL *imageurl = [NSURL URLWithString:responseObject[@"data"][@"original_pic"]];
-        [self.backImageView yy_setHighlightedImageWithURL:imageurl placeholder:kGetImage(@"LaunchImage-700")];
+        NSURL *imageurl = [NSURL URLWithString:responseObject[@"data"][@"url"]];
+        
+        // API 容错处理
+        if (imageurl) {
+         [self.backImageView yy_setImageWithURL:imageurl placeholder:kGetImage(@"LaunchImage-700")];
+            
+        } else {
+            self.backImageView.image = kGetImage(@"Splash_Image");
+        }
+        
+        
     };
     
     // 发送请求
