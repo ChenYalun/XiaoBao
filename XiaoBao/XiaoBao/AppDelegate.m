@@ -24,13 +24,11 @@
         NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
     }];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
 
-    
     // 导航栏标题字体
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
-    
+
     // 导航栏back按钮(edge调整)
     UIImage *backButtonImage = [kGetImage(@"Dark_News_Arrow") resizableImageWithCapInsets:UIEdgeInsetsMake(0, 18, 0, 0)];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
