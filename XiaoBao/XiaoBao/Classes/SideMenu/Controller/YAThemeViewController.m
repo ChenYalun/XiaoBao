@@ -17,6 +17,7 @@
 #import "YAEditorItem.h"
 #import "YAEditorListViewController.h"
 #import "YAContentViewController.h"
+#import "UIImage+YAVImage.h"
 
 static NSString *reuseIdentifier = @"story";
 
@@ -124,18 +125,11 @@ static NSString *reuseIdentifier = @"story";
         [[YYWebImageManager sharedManager]  requestImageWithURL:[NSURL URLWithString:themeStoryItem.background] options:YYWebImageOptionShowNetworkActivity progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
             
             self.topBackgroundImage = image;
-
-#warning 高斯模糊
-            // 容错处理,保证image不为空
-//            if (image) {
-//                // 高斯模糊
-                dispatch_async(dispatch_get_main_queue(), ^{
-//                    self.blurFilter.blurRadiusInPixels = 10;// 模糊程度
-//                    UIImage *blurredImage = [self.blurFilter imageByFilteringImage:image];
-                    self.topBackgroundImageView.image = image;
-                });
-//            }
-//            
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.topBackgroundImageView.image = [UIImage boxblurImage:self.topBackgroundImage withBlurNumber:1];
+            });
+            
             
         }];
         
@@ -200,16 +194,14 @@ static NSString *reuseIdentifier = @"story";
         scrollView.contentOffset = contentOffset;
     }
 
-//    // 处理图片高斯模糊10---0  0----130
-//    if (-contentOffset.y > 0 && -contentOffset.y <= 130) {
-//        self.blurFilter.blurRadiusInPixels = 10 - (-contentOffset.y / 130.0) * 10;
-//        UIImage *blurredImage = [self.blurFilter imageByFilteringImage:self.topBackgroundImage];
-//        
-//        self.topBackgroundImageView.image = blurredImage;
-//    } else {
-//        self.blurFilter.blurRadiusInPixels = 10;
-//    }
-//    
+    // 处理图片高斯模糊1---0  0----130
+    if (-contentOffset.y > 0 && -contentOffset.y <= 130) {
+        CGFloat blurRadiusInPixels = 1 + contentOffset.y / 130.0 ;
+        self.topBackgroundImageView.image = [UIImage boxblurImage:self.topBackgroundImage withBlurNumber:blurRadiusInPixels];
+    } else {
+        self.topBackgroundImageView.image = [UIImage boxblurImage:self.topBackgroundImage withBlurNumber:1];
+    }
+    
     
 }
 

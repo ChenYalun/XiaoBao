@@ -9,7 +9,7 @@
 #import "YAStoryHeaderView.h"
 #import <UIImageView+YYWebImage.h>
 #import <UIImage+YYWebImage.h>
-
+#import "UIImage+YAVImage.h"
 @interface YAStoryHeaderView()
 /** 图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *picImageView;
@@ -23,40 +23,13 @@
 - (void)setStory:(YAStoryItem *)story {
     _story = story;
     
-//    [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.image] placeholder:nil options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
-//        GPUImageBrightnessFilter *filter = [[GPUImageBrightnessFilter alloc] init];
-//        filter.brightness = 0.2;
-//        image =  [filter imageFromCurrentFramebuffer];
-//    }];
+    [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.image] placeholder:nil options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+        
+        image = [UIImage boxblurImage:image withBlurNumber:1];
+    }];
 
-    [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.image] options:YYWebImageOptionSetImageWithFadeAnimation];
+   // [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.image] options:YYWebImageOptionSetImageWithFadeAnimation];
     
-//    [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.image]
-//                      placeholder:nil
-//                          options:YYWebImageOptionSetImageWithFadeAnimation
-//                         progress:nil
-//                        transform:^UIImage *(UIImage *image, NSURL *url) {
-       
-#warning 高斯模糊
-//                            GPUImageBrightnessFilter *filter = [[GPUImageBrightnessFilter alloc] init];
-//                            // 调节亮度 +增加 -减少 默认0不增不减
-//                            filter.brightness = -0.25;
-//                            //设置要渲染的区域
-//                            [filter forceProcessingAtSize:image.size];
-//                            [filter useNextFrameForImageCapture];
-//                            
-//                            //获取数据源
-//                            GPUImagePicture *picture = [[GPUImagePicture alloc] initWithImage:image];
-//                            //添加滤镜
-//                            [picture addTarget:filter];
-//                            //开始渲染
-//                            [picture processImage];
-//                            //获取渲染后的图片
-//
-//                            return [filter imageFromCurrentFramebuffer];;
-//                            return image;
-//                        }
-//                       completion:nil];
 
     
     self.titleLabel.text = story.title;
