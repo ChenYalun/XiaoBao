@@ -11,6 +11,9 @@
 
 #define kRefreshViewWH 20
 
+NSString *const YARefreshKeyPathContentOffset = @"contentOffset";
+NSString *const YARefreshKeyPathPanState = @"state";
+
 @interface YARefreshHeader()
 /** 指示视图 */
 @property(nonatomic, weak) UIActivityIndicatorView *indicatorView;
@@ -25,7 +28,7 @@
 
 @implementation YARefreshHeader
 
-#pragma mark - 父类方法
+#pragma mark – Life Cycle
 
 - (void)dealloc {
    // self.attachScrollView remov
@@ -33,10 +36,16 @@
     
 }
 
+// 控件快速创建
++ (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action {
+    YARefreshHeader *header = [[YARefreshHeader alloc] initWithFrame:CGRectMake(100, 28, kRefreshViewWH, kRefreshViewWH)];
+    [header setRefreshingTarget:target refreshingAction:action];
+    return header;
+}
 
-#pragma mark - KVO监听
-NSString *const YARefreshKeyPathContentOffset = @"contentOffset";
-NSString *const YARefreshKeyPathPanState = @"state";
+#pragma mark - Events
+
+// KVO监听
 - (void)addObservers
 {
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
@@ -88,7 +97,42 @@ NSString *const YARefreshKeyPathPanState = @"state";
 
 }
 
-#pragma mark - scrollView点击与滑动
+// 控件方法
+-(void)updateProgress:(CGFloat)progress {
+    if (progress <= 0) {
+        self.whiteCircleLayer.opacity = 0;
+        self.grayCircleLayer.opacity = 0;
+    } else {
+        self.whiteCircleLayer.opacity = 1;
+        self.grayCircleLayer.opacity = 1;
+    }
+    
+    if (progress > 1) {
+        progress = 1;
+    }
+    self.whiteCircleLayer.strokeEnd = progress;
+}
+
+-(void)startAnimation {
+    self.grayCircleLayer.hidden = YES;
+    self.whiteCircleLayer.hidden = YES;
+    [self.indicatorView startAnimating];
+}
+
+-(void)stopAnimation {
+    self.grayCircleLayer.hidden = NO;
+    self.whiteCircleLayer.hidden = NO;
+    [self.indicatorView stopAnimating];
+}
+
+- (void)beginRefreshing {
+    
+    if ([self.refreshingTarget respondsToSelector:self.refreshingAction]) {
+        kMsgSend(kMsgTarget(self.refreshingTarget),self.refreshingAction, self);
+    };
+}
+
+#pragma mark - ScrollViewDelegate
 
 - (void)scrollViewContentOffsetDidChange:(NSDictionary *)change{
 
@@ -128,56 +172,6 @@ NSString *const YARefreshKeyPathPanState = @"state";
         }
     }
     
-}
-
-
-#pragma mark - 控件方法
--(void)updateProgress:(CGFloat)progress {
-    if (progress <= 0) {
-        self.whiteCircleLayer.opacity = 0;
-        self.grayCircleLayer.opacity = 0;
-    } else {
-        self.whiteCircleLayer.opacity = 1;
-        self.grayCircleLayer.opacity = 1;
-    }
-    
-    if (progress > 1) {
-        progress = 1;
-    }
-    self.whiteCircleLayer.strokeEnd = progress;
-}
-
--(void)startAnimation {
-    self.grayCircleLayer.hidden = YES;
-    self.whiteCircleLayer.hidden = YES;
-    [self.indicatorView startAnimating];
-}
-
--(void)stopAnimation {
-    self.grayCircleLayer.hidden = NO;
-    self.whiteCircleLayer.hidden = NO;
-    [self.indicatorView stopAnimating];
-}
-
-- (void)beginRefreshing {
-   
-    if ([self.refreshingTarget respondsToSelector:self.refreshingAction]) {
-        kMsgSend(kMsgTarget(self.refreshingTarget),self.refreshingAction, self);
-    };
-}
-
-#pragma mark - 控件快速创建
-+ (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action {
-    YARefreshHeader *header = [[YARefreshHeader alloc] initWithFrame:CGRectMake(100, 28, kRefreshViewWH, kRefreshViewWH)];
-    [header setRefreshingTarget:target refreshingAction:action];
-    return header;
-}
-
-
-- (void)setRefreshingTarget:(id)target refreshingAction:(SEL)action
-{
-    self.refreshingTarget = target;
-    self.refreshingAction = action;
 }
 
 
@@ -262,4 +256,9 @@ NSString *const YARefreshKeyPathPanState = @"state";
 }
 
 
+- (void)setRefreshingTarget:(id)target refreshingAction:(SEL)action
+{
+    self.refreshingTarget = target;
+    self.refreshingAction = action;
+}
 @end

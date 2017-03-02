@@ -10,7 +10,7 @@
 
 @implementation YAHTTPManager
 
-#pragma mark - 快速创建
+#pragma mark – Life Cycle
 
 + (instancetype)sharedManager {
     static YAHTTPManager *manager = nil;
@@ -25,7 +25,9 @@
 + (instancetype)manager {
     return [YAHTTPManager sharedManager];
 }
-#pragma mark - 发送网络请求
+
+ #pragma mark - Events
+
 - (void)requestWithMethod:(YAHTTPMethod)method WithPath:(NSString *)path WithParameters:(NSDictionary *)parameters WithSuccessBlock:(requestSuccessBlock)success WithFailurBlock:(requestFailureBlock)failure {
     
     switch (method) {
@@ -58,4 +60,8 @@
 
 }
 
+// 单例:取消内存检测
+- (BOOL)willDealloc {
+    return NO;
+}
 @end

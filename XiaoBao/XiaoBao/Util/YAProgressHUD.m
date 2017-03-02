@@ -11,7 +11,7 @@
 
 @implementation YAProgressHUD
 
-#pragma mark - 创建
+#pragma mark – Life Cycle
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

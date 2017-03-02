@@ -18,6 +18,7 @@ target 'XiaoBao' do
 # pod 'DZNEmptyDataSet'
 # pod 'SDCycleScrollView'
 # pod ‘GPUImage’
+
 pod 'AFNetworking'
 pod 'SVProgressHUD'
 pod 'MJRefresh'
@@ -30,4 +31,7 @@ pod 'YYCategories'
 pod 'Realm'
 pod ‘DKNightVersion’
 pod 'pop'
+
+pod 'MLeaksFinder' #基于FBRetainCycleDetector
+# pod 'Bugly'
 end

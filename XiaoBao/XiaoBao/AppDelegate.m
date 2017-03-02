@@ -93,4 +93,31 @@
 }
 
 
+
+/*
+ 
+ 
+ #pragma mark – Life Cycle  li
+ 
+ #pragma mark - Events ev
+ 
+ #pragma mark – Private Methods pr
+ 
+ #pragma mark - UITextFieldDelegate text
+ 
+ #pragma mark - UITableViewDataSource tda
+ 
+ #pragma mark - UITableViewDelegate tde
+ 
+ #pragma mark - Custom Delegates cde
+ 
+ #pragma mark – Getters and Setters get
+ 
+ #pragma mark - ScrollViewDelegate sde
+ 
+ 
+ 
+ 
+ 
+ */
 @end

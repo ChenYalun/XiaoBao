@@ -25,6 +25,7 @@
 
 
 #pragma mark 头部刷新控件分类 
+
 @interface UIView (YARefreshHeader)
 @property  YARefreshHeader *ya_refreshHeader;
 @end
@@ -36,6 +37,7 @@ static const char YARefreshHeadererKey = '\0';
 - (YARefreshHeader *)ya_refreshHeader {
     return objc_getAssociatedObject(self, &YARefreshHeadererKey);
 }
+
 - (void)setYa_refreshHeader:(UIView *)ya_refreshHeader {
 
     if (ya_refreshHeader != self.ya_refreshHeader) {

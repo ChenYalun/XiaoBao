@@ -30,12 +30,10 @@ static NSString *reuseIdentifier = @"comment";
 
 @implementation YACommentViewController
 
-
-#pragma mark - life Cycle
+ #pragma mark – Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     // 网络延迟处理
     self.errorView.hidden = NO;
@@ -62,7 +60,7 @@ static NSString *reuseIdentifier = @"comment";
     [self refreshForCommentsWithId:[NSString stringWithFormat:@"%ld",self.storyID] kindOfComment:@"short-comments"];
 }
 
-#pragma mark - event response
+ #pragma mark - Events
 
 // 刷新评论
 - (void)refreshForCommentsWithId:(NSString *)commentID kindOfComment:(NSString *)kind {
@@ -122,11 +120,11 @@ static NSString *reuseIdentifier = @"comment";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return [tableView fd_heightForCellWithIdentifier:reuseIdentifier configuration:^(YACommentTableViewCell *cell){
+
+    return [tableView fd_heightForCellWithIdentifier:reuseIdentifier cacheByIndexPath:indexPath configuration:^(YACommentTableViewCell *cell) {
         cell.comment = self.comments[indexPath.section][indexPath.row];
-        
     }];
+    
     
 }
 

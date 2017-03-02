@@ -27,9 +27,12 @@ PODS:
     - DKNightVersion/Core
   - DKNightVersion/UIKit (2.4.2):
     - DKNightVersion/Core
+  - FBRetainCycleDetector (0.1.3)
   - FDFullscreenPopGesture (1.1)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
+  - MLeaksFinder (0.2.1):
+    - FBRetainCycleDetector
   - MMDrawerController (0.6.0):
     - MMDrawerController/Core (= 0.6.0)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
@@ -65,6 +68,7 @@ DEPENDENCIES:
   - FDFullscreenPopGesture
   - MJExtension
   - MJRefresh
+  - MLeaksFinder
   - MMDrawerController
   - pop
   - Realm
@@ -76,9 +80,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DKNightVersion: a211bacb8d6a9677722aaf93e292a4e5908490c1
+  FBRetainCycleDetector: f0c7b290bf48ae77f6ae060843ce34ae341781eb
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MLeaksFinder: 0850e2f2abc7227adc4d4e2d1992b431264eb4d5
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
@@ -89,6 +95,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 96113f6d7b37dd2379491a751618300b83f46bfa
+PODFILE CHECKSUM: ec2e838f4513af7ecf587150dc0c2a1bc2aa4db0
 
 COCOAPODS: 1.2.0
