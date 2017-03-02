@@ -17,6 +17,7 @@
 #import "YAContentViewController.h"
 #import <UIViewController+MMDrawerController.h>
 #import "YAErrorView.h"
+#import "YAStoryDAL.h"
 
 #define kHeaderViewHeight 200
 #define kMargin 10
@@ -29,7 +30,7 @@ static NSString *reuseIdentifier = @"story";
 @property (nonatomic,strong)NSMutableArray *topStoryItems;
 /** 组新闻 */
 @property (nonatomic,strong) NSMutableDictionary *storySection;
-/** 日期20170214 */
+///** 日期20170214 */
 @property (nonatomic,copy) NSString *dateID;
 /** sectionID对应section标题 */
 @property (nonatomic,strong) NSMutableDictionary *titleSection;
@@ -104,34 +105,29 @@ static NSString *reuseIdentifier = @"story";
 
 }
 
-// 加载更新
+// 加载最新
 - (void)refreshForNewStories {
     
-    // 成功回调
-    requestSuccessBlock sblock = ^(id responseObject){
-
+    [YAStoryDAL obtainNewStoryItemsWithSuccessBlock:^(NSArray<YAStoryItem *> *topStoryItems, NSArray<YAStoryItem *> *storyItems, NSString *dateID) {
         // 隐藏加载视图
         if (!self.errorView.hidden) {
             self.errorView.hidden = YES;
         }
-        
         // 获取头部视图新闻
-        NSArray *topStoryItems = [YAStoryItem topStoryItemWithKeyValues:responseObject];
         [self.topStoryItems addObjectsFromArray:topStoryItems];
-
+        
         // 设置轮播图
         self.headerView.storyItems = topStoryItems;
         self.headerView.hidden = NO;
         
         // 获取普通新闻
-        NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
         [self.storySection setObject:storyItems forKey:[NSNumber numberWithInteger:self.sectionID]];
         
         // 存储日期ID
-        self.dateID = responseObject[@"date"];
+        self.dateID = dateID;
+        
         // 保存每组索引对应的标题
         [self.titleSection setObject:self.dateID forKey:[NSNumber numberWithInteger:self.sectionID]];
-        
         
         if (self.headerView.hidden) {
             self.headerView.hidden = NO;
@@ -141,16 +137,14 @@ static NSString *reuseIdentifier = @"story";
         [self.tableView reloadData];
         
 
-    };
-    
-    // 发送请求
-    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:@"http://news-at.zhihu.com/api/4/news/latest" WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:nil];
+    } failureBlock:nil];
+
 }
 
 // 加载更多
 - (void)refreshForMoreStories {
-    // 成功回调
-    requestSuccessBlock sblock = ^(id responseObject){
+    
+    [YAStoryDAL obtainStoryItemsWithDateID:self.dateID successBlock:^(NSArray<YAStoryItem *> *storyItems, NSString *dateID) {
         // 隐藏加载视图
         if (!self.errorView.hidden) {
             self.errorView.hidden = YES;
@@ -161,28 +155,20 @@ static NSString *reuseIdentifier = @"story";
         
         self.sectionID += 1;
         
-        // 获取普通新闻
-        NSArray *storyItems = [YAStoryItem storyItemsWithKeyValues:responseObject];
         [self.storySection setObject:storyItems forKey:[NSNumber numberWithInteger:self.sectionID]];
         
         // 存储ID
-        self.dateID = responseObject[@"date"];
+        self.dateID = dateID;
         // 保存每组索引对应的标题
         [self.titleSection setObject:self.dateID forKey:[NSNumber numberWithInteger:self.sectionID]];
         // 刷新
         [self.tableView reloadData];
         
-    };
-    
-    // 失败回调
-    requestFailureBlock fblock = ^(NSError *error){
+    } failureBlock:^(NSError *error) {
         // 停止刷新
         [self.tableView.mj_header endRefreshing];
-    };
+    }];
     
-    // 发送请求
-    NSString *path = [NSString stringWithFormat:@"http://news-at.zhihu.com/api/4/news/before/%@",self.dateID];
-    [[YAHTTPManager sharedManager] requestWithMethod:GET WithPath:path WithParameters:nil WithSuccessBlock:sblock WithFailurBlock:fblock];
 }
 
 

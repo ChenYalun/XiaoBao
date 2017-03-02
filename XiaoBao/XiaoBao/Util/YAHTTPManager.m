@@ -17,11 +17,14 @@
     static dispatch_once_t onceToken;
     // 使用dispatch_once保证线程安全
     dispatch_once(&onceToken, ^{
-        manager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://chenyalum.com/"]];
+        manager = [super manager];
     });
     return manager;
 }
 
++ (instancetype)manager {
+    return [YAHTTPManager sharedManager];
+}
 #pragma mark - 发送网络请求
 - (void)requestWithMethod:(YAHTTPMethod)method WithPath:(NSString *)path WithParameters:(NSDictionary *)parameters WithSuccessBlock:(requestSuccessBlock)success WithFailurBlock:(requestFailureBlock)failure {
     

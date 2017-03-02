@@ -35,12 +35,24 @@
 - (void)setStory:(YAStoryItem *)story {
     _story = story;
     
+    YAImageObject *imageObject = story.imageUrls.firstObject;
+    
+    
     // 配图
-    if (story.images.count > 0) {
-        self.picImageView.hidden = NO;
-        [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] placeholder:kGetImage(@"Image_Preview") options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:nil];
+    if (story.images.count > 0 || imageObject.url) {
         
-        self.titleLabelTrailingConstraint.constant = 105;
+        if (story.images.count > 0) {
+            self.picImageView.hidden = NO;
+            [self.picImageView yy_setImageWithURL:[NSURL URLWithString:story.images.firstObject] placeholder:kGetImage(@"Image_Preview") options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:nil];
+            
+            self.titleLabelTrailingConstraint.constant = 105;
+        } else {
+            self.picImageView.hidden = NO;
+            [self.picImageView yy_setImageWithURL:[NSURL URLWithString:imageObject.url] placeholder:kGetImage(@"Image_Preview") options:YYWebImageOptionShowNetworkActivity|YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:nil];
+            
+            self.titleLabelTrailingConstraint.constant = 105;
+        }
+       
         
     } else {
         self.picImageView.hidden = YES;

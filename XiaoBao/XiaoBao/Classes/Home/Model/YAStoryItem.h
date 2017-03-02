@@ -8,13 +8,17 @@
 
 
 #import <Foundation/Foundation.h>
-#import <Realm/Realm.h>
+#import <Realm.h>
+#import "YAImageObject.h"
 
-@interface YAStoryItem : NSObject
+
+RLM_ARRAY_TYPE(YAImageObject)
+
+@interface YAStoryItem : RLMObject
 /** title */
 @property (nonatomic,copy) NSString *title;
 /** images */
-@property (nonatomic,strong) NSArray *images;
+@property (nonatomic,strong) NSMutableArray  *images; // 不支持NSArray
 /** multipic是否包含多张图片 */
 @property (nonatomic,assign) BOOL multipic;
 /** image--top */
@@ -22,11 +26,24 @@
 /** id */
 @property (nonatomic,assign) NSInteger ID;
 
+
+
+/** Realm中存储的图片数组 */
+@property(nonatomic,strong)RLMArray <YAImageObject> *imageUrls;
+/** story所属的日期 */
+@property (nonatomic,copy) NSString *storyDate;
 // 字典转模型
 + (NSArray <YAStoryItem *> *)storyItemsWithKeyValues:(id)responseObject;
 + (NSArray <YAStoryItem *> *)topStoryItemWithKeyValues:(id)responseObject;
 
 // 根据字符串'20170214'返回指定格式'02月14日 星期二'
 + (NSString *)formatStringWithDateString:(NSString *)string;
+
+
+/*
+ 
+ All properties must be primitives, NSString, NSDate, NSData, NSNumber, RLMArray, RLMLinkingObjects, or subclasses of RLMObject. See https://realm.io/docs/objc/latest/api/Classes/RLMObject.html for more information.'
+ 
+ */
 
 @end
