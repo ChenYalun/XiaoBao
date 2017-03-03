@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (YAVImage)
+
+// 返回高斯模糊图片
 + (UIImage *)boxblurImage:(UIImage *)image withBlurNumber:(CGFloat)blur;
+
+// 返回圆形图片
++(UIImage *)imageToRoundImageWithImage:(UIImage *)image;
 @end

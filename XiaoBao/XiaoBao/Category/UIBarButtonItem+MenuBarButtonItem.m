@@ -9,6 +9,9 @@
 #import "UIBarButtonItem+MenuBarButtonItem.h"
 
 @implementation UIBarButtonItem (MenuBarButtonItem)
+
+#pragma mark – Life Cycle
+
 + (instancetype)itemWithImage:(NSString *)image selectedImage:(NSString *)selImage target:(id)target action:(SEL)action
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

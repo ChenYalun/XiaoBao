@@ -874,6 +874,7 @@
 			baseConfigurationReference = C6B17FCB41470B899FCCDB18 /* Pods-XiaoBao.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A4G5CBWX96;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/chenyalun/Desktop/iOS/XiaoBao/XiaoBao/XiaoBao/YAPrefixHeader.pch;

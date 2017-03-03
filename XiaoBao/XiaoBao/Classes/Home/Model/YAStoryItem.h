@@ -36,8 +36,7 @@ RLM_ARRAY_TYPE(YAImageObject)
 + (NSArray <YAStoryItem *> *)storyItemsWithKeyValues:(id)responseObject;
 + (NSArray <YAStoryItem *> *)topStoryItemWithKeyValues:(id)responseObject;
 
-// 根据字符串'20170214'返回指定格式'02月14日 星期二'
-+ (NSString *)formatStringWithDateString:(NSString *)string;
+
 
 
 /*

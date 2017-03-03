@@ -10,6 +10,8 @@
 
 @implementation UIView (YAExtension)
 
+ #pragma mark – Getters and Setters
+
 - (void)setYa_x:(CGFloat)ya_x {
     CGRect frame = self.frame;
     frame.origin.x = ya_x;

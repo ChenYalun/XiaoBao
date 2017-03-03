@@ -48,6 +48,8 @@ static NSString *reuseIdentifier = @"story";
 @property (nonatomic,weak) UIButton *sideMenuButton;
 /** 加载视图 */
 @property (nonatomic,weak) YAErrorView *errorView;
+/** 日期格式化 */
+@property (nonatomic,strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation YAHomeViewController
@@ -80,6 +82,7 @@ static NSString *reuseIdentifier = @"story";
 
     self.view.ya_refreshHeader.attachScrollView = self.tableView;
 
+    self.tableView.rowHeight = 90;
     // 设置侧滑
     [self.sideMenuButton addTarget:self action:@selector(setupSideMenu) forControlEvents:UIControlEventTouchUpInside];
     // 注册cell
@@ -192,9 +195,7 @@ static NSString *reuseIdentifier = @"story";
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90;
-}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) { // 隐藏第0组标题
@@ -212,7 +213,7 @@ static NSString *reuseIdentifier = @"story";
   
     
     YASectionHeaderView *sectionHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifier];
-    NSString *formatString = [YAStoryItem formatStringWithDateString:[self.titleSection objectForKey:[NSNumber numberWithInteger:section]]];
+    NSString *formatString = [self formatStringWithDateString:[self.titleSection objectForKey:[NSNumber numberWithInteger:section]]];
     sectionHeaderView.sectionTitle = formatString;
     
     if (section == 0) { // 隐藏第0组标题
@@ -306,6 +307,16 @@ static NSString *reuseIdentifier = @"story";
     }];
 }
 
+// 格式化时间字符串
+- (NSString *)formatStringWithDateString:(NSString *)string {
+    [self.dateFormatter setDateFormat:@"yyyyMMdd"];
+    NSDate *date = [self.dateFormatter dateFromString:string];
+    
+    NSString *firstString = [NSString stringWithFormat:@"%02ld月%02ld日",date.month,date.day];
+    [self.dateFormatter setDateFormat:@"EEEE"];
+    
+    return [NSString stringWithFormat:@"%@ %@",firstString,[self.dateFormatter stringFromDate:date]];
+}
 
 #pragma mark - getter and setter
 
@@ -402,5 +413,10 @@ static NSString *reuseIdentifier = @"story";
     return _errorView;
 }
 
-
+- (NSDateFormatter *)dateFormatter {
+    if (_dateFormatter == nil) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    return _dateFormatter;
+}
 @end

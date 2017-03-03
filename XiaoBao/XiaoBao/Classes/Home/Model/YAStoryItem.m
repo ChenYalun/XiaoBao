@@ -8,6 +8,7 @@
 
 #import "YAStoryItem.h"
 #import <MJExtension.h>
+#include <time.h>
 
 @implementation YAStoryItem
 
@@ -63,17 +64,7 @@
     return array;
 }
 
-// 格式化时间字符串
-+ (NSString *)formatStringWithDateString:(NSString *)string {
-    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyyMMdd"];
-    NSDate *date = [formatter dateFromString:string];
-    
-    NSString *firstString = [NSString stringWithFormat:@"%02ld月%02ld日",date.month,date.day];
-    [formatter setDateFormat:@"EEEE"];
-    
-    return [NSString stringWithFormat:@"%@ %@",firstString,[formatter stringFromDate:date]];
-}
+
 
 
 @end

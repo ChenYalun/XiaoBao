@@ -38,4 +38,8 @@
     _title = title;
     self.titleLabel.text =title;
 }
+
+- (void)dealloc {
+    
+}
 @end

@@ -8,6 +8,7 @@
 
 #import "YACommentTableViewCell.h"
 #import <UIImageView+YYWebImage.h>
+#import "UIImage+YAVImage.h"
 
 @interface YACommentTableViewCell()
 /** 头像 */
@@ -41,7 +42,14 @@
 - (void)setComment:(YACommentModel *)comment {
     _comment = comment;
     
-    [self.iconImageView yy_setImageWithURL:[NSURL URLWithString:comment.avatar] options:YYWebImageOptionShowNetworkActivity];
+//    [self.iconImageView yy_setImageWithURL:[NSURL URLWithString:comment.avatar] options:YYWebImageOptionShowNetworkActivity];
+    [self.iconImageView yy_setImageWithURL:[NSURL URLWithString:comment.avatar]  placeholder:nil options:YYWebImageOptionShowNetworkActivity completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+        UIImage *circleImage = [UIImage imageToRoundImageWithImage:image];
+        self.iconImageView.image = circleImage;
+    }];
+    
+    
+    
     self.nameLabel.text = comment.author;
     self.contentLabel.text = comment.content;
     [self.zanButton setTitle:comment.likes forState:UIControlStateNormal];

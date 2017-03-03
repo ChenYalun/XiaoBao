@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIBarButtonItem (MenuBarButtonItem)
+
 + (instancetype)itemWithImage:(NSString *)image selectedImage:(NSString *)selImage target:(id)target action:(SEL)action;
 @end

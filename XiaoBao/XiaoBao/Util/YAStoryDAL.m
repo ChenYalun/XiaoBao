@@ -11,7 +11,7 @@
 
 @implementation YAStoryDAL
 
-#pragma mark - event response
+#pragma mark - Events
 
 + (void)obtainNewStoryItemsWithSuccessBlock:(obtainNewStorySuccessBlock)successBlock failureBlock:(obtainStoryFailureBlock)failureBlock {
     
@@ -76,7 +76,7 @@
 
 
 
-#pragma mark - private method
+ #pragma mark – Private Methods
 
 // 获取数据库
 + (RLMRealm *)obtainRealm {

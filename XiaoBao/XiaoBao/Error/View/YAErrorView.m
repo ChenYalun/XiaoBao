@@ -14,7 +14,7 @@
 
 @implementation YAErrorView
 
-#pragma mark - 快速创建
+#pragma mark – Life Cycle
 
 + (instancetype)errorView {
     return [[YAErrorView alloc] init];
@@ -30,8 +30,7 @@
     return self;
 }
 
-
-#pragma mark - event response
+#pragma mark - Events
 
 // 设置小球动画
 - (void)setupLayerWithRadius:(CGFloat)radius backgroundColor:(UIColor *)color position:(BOOL)p{

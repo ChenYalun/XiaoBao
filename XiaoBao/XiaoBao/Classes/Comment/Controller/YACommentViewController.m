@@ -60,7 +60,7 @@ static NSString *reuseIdentifier = @"comment";
     [self refreshForCommentsWithId:[NSString stringWithFormat:@"%ld",self.storyID] kindOfComment:@"short-comments"];
 }
 
- #pragma mark - Events
+ #pragma mark – Events
 
 // 刷新评论
 - (void)refreshForCommentsWithId:(NSString *)commentID kindOfComment:(NSString *)kind {
