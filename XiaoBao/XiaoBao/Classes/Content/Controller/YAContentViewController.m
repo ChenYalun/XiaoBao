@@ -15,11 +15,16 @@
 #import "YALinkViewController.h"
 #import "YACommentViewController.h"
 #import "YAErrorView.h"
-
+#import "YAShareViewController.h"
+// 无交互
+//#import "YATransitionAnimator.h"
+// 交互式
+//#import "YAInteractiveTransition.h"
+#import "YAPresentationController.h"
 // xib 中topView高度约束
 #define kTopImageHeight 220
 
-@interface YAContentViewController ()<WKNavigationDelegate,UIScrollViewDelegate>
+@interface YAContentViewController ()<WKNavigationDelegate, UIScrollViewDelegate,UIViewControllerTransitioningDelegate>
 /** topView高度约束 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 /** webView */
@@ -66,8 +71,8 @@
     [self requestForContentData];
     [self requestForExtraData];
     
-   
 }
+
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -140,6 +145,17 @@
 // 分享
 - (IBAction)share:(UIButton *)sender {
     
+
+    YAShareViewController *shareViewController = [[YAShareViewController alloc] init];
+    
+    // 设置转场代理
+    shareViewController.transitioningDelegate = self;
+    // 设置转场类型
+    shareViewController.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:shareViewController animated:YES completion:nil];
+    
+    
+
 }
 
 // 赞
@@ -267,5 +283,11 @@
     }
     return _errorView;
 }
+
+ - (nullable UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(nullable UIViewController *)presenting sourceViewController:(UIViewController *)source {
+     return [[YAPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
+ }
+ 
+
 
 @end

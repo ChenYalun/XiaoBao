@@ -39,7 +39,5 @@
     self.titleLabel.text =title;
 }
 
-- (void)dealloc {
-    
-}
+
 @end
