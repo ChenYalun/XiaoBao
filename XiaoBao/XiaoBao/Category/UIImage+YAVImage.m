@@ -12,7 +12,8 @@
 //@import Accelerate;
 
 @implementation UIImage (YAVImage)
-+ (UIImage *)boxblurImage:(UIImage *)image withBlurNumber:(CGFloat)blur {
++(UIImage *)boxblurImage:(UIImage *)image withBlurNumber:(CGFloat)blur
+{
     if (blur < 0.f || blur > 1.f) {
         blur = 0.5f;
     }
@@ -22,11 +23,9 @@
     vImage_Buffer inBuffer, outBuffer;
     vImage_Error error;
     void *pixelBuffer;
-    
     //从CGImage中获取数据
     CGDataProviderRef inProvider = CGImageGetDataProvider(img);
     CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
-    
     //设置从CGImage获取对象的属性
     inBuffer.width = CGImageGetWidth(img);
     inBuffer.height = CGImageGetHeight(img);
@@ -39,7 +38,6 @@
     outBuffer.width = CGImageGetWidth(img);
     outBuffer.height = CGImageGetHeight(img);
     outBuffer.rowBytes = CGImageGetBytesPerRow(img);
-    
     error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
     if (error) {
         NSLog(@"error from convolution %ld", error);
@@ -48,7 +46,6 @@
     CGContextRef ctx = CGBitmapContextCreate( outBuffer.data, outBuffer.width, outBuffer.height, 8, outBuffer.rowBytes, colorSpace, kCGImageAlphaNoneSkipLast);
     CGImageRef imageRef = CGBitmapContextCreateImage (ctx);
     UIImage *returnImage = [UIImage imageWithCGImage:imageRef];
-    
     //clean up CGContextRelease(ctx);
     CGColorSpaceRelease(colorSpace);
     free(pixelBuffer);
@@ -57,7 +54,6 @@
     CGImageRelease(imageRef);
     return returnImage;
 }
-
 + (UIImage *)imageToRoundImageWithImage:(UIImage *)image{
     if (!image)return nil;
     

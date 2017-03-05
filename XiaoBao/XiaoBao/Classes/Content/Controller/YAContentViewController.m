@@ -16,11 +16,8 @@
 #import "YACommentViewController.h"
 #import "YAErrorView.h"
 #import "YAShareViewController.h"
-// 无交互
-//#import "YATransitionAnimator.h"
-// 交互式
-//#import "YAInteractiveTransition.h"
 #import "YAPresentationController.h"
+
 // xib 中topView高度约束
 #define kTopImageHeight 220
 
@@ -48,6 +45,7 @@
 @end
 
 @implementation YAContentViewController
+
 
 #pragma mark - life Cycle
 

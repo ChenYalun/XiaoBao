@@ -205,9 +205,45 @@ item.alpha = 0.0; \
 #define kClearMemoryCache  [[YYWebImageManager sharedManager].cache.memoryCache removeAllObjects]
 #define kClearDiskCache  [[YYWebImageManager sharedManager].cache.diskCache removeAllObjects]
 
+// 21单例
+#define YASingH(Name) + (instancetype)shared##Name;
 
-// #import <YYWebImageManager.h>
-//#import <YYCache.h>
+#define YASingM(Name) \
+static id _instace = nil; \
++ (id)allocWithZone:(struct _NSZone *)zone \
+{ \
+if (_instace == nil) { \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+_instace = [super allocWithZone:zone]; \
+}); \
+} \
+return _instace; \
+} \
+\
+- (id)init \
+{ \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+_instace = [super init]; \
+}); \
+return _instace; \
+} \
+\
++ (instancetype)shared##Name \
+{ \
+return [[self alloc] init]; \
+} \
+- (instancetype)copy \
+{ \
+return _instace; \
+} \
+\
+- (instancetype)mutableCopy \
+{ \
+return _instace; \
+}
+
 
 
 

@@ -46,7 +46,7 @@
     
     // 3.动画
     // 出场
-    if (self.transitionAnimatorType == TransitionAnimatorPresent) {
+    if (self.transitionAnimatorType == TransitionAnimatorPush) {
         // 2.添加toView,不一定是addSubview方式
         [containerView addSubview:toView];
         [UIView animateWithDuration:2.5 animations:^{
@@ -59,7 +59,7 @@
 
 
     // 消失
-    if (self.transitionAnimatorType == TransitionAnimatorDismiss) {
+    if (self.transitionAnimatorType == TransitionAnimatorPop) {
         [UIView animateWithDuration:2.5 animations:^{
             fromView.origin = CGPointMake(0, kScreenHeight);
         } completion:^(BOOL finished) {

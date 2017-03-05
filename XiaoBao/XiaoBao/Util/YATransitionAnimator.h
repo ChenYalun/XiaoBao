@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, TransitionAnimatorType) {
-    TransitionAnimatorPresent,
-    TransitionAnimatorDismiss,
+    TransitionAnimatorPush,
+    TransitionAnimatorPop,
 };
 
 @interface YATransitionAnimator : NSObject<UIViewControllerAnimatedTransitioning>

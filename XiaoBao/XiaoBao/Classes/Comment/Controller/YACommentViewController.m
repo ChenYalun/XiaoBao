@@ -157,10 +157,11 @@ static NSString *reuseIdentifier = @"comment";
 
 - (YANavigationView *)navigationView {
     if (_navigationView == nil) {
-        _navigationView = [YANavigationView navigationViewWithTitle:nil];
-        _navigationView.backButton.hidden = YES;
-        [self.view addSubview:_navigationView];
-        _navigationView.hidden = YES;
+        YANavigationView *navigationView = [YANavigationView navigationViewWithTitle:nil];
+        navigationView.backButton.hidden = YES;
+        [self.view addSubview:navigationView];
+        navigationView.hidden = YES;
+        _navigationView = navigationView;
     }
     return _navigationView;
 }

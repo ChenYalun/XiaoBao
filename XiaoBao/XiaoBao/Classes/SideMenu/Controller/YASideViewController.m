@@ -106,6 +106,7 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
 
 // 夜间模式
 - (IBAction)fallNightMode:(UIButton *)sender {
+    /*
     DKThemeVersion *themeVersion = [DKNightVersionManager sharedManager].themeVersion;
     if ([themeVersion isEqualToString:DKThemeVersionNormal]) {
         [[DKNightVersionManager sharedManager] nightFalling];
@@ -114,7 +115,7 @@ static NSString *reuseIdentifier = @"YAThemeTableViewCell";
         [[DKNightVersionManager sharedManager] dawnComing];
         [sender setTitle:@"夜间" forState:UIControlStateNormal];
     }
-    
+    */
 }
 
 // 配置刷新

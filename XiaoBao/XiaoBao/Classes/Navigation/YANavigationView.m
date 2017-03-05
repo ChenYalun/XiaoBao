@@ -39,5 +39,7 @@
     self.titleLabel.text =title;
 }
 
-
+- (BOOL)willDealloc {
+    return NO;
+}
 @end
