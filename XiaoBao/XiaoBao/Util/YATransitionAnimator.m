@@ -8,8 +8,10 @@
 
 #import "YATransitionAnimator.h"
 
-#define kShareViewHeight 250
+#define kShareViewHeight 350
 @interface YATransitionAnimator ()
+/** 蒙版 */
+@property (nonatomic,strong) UIView *backgroundView;
 @end
 
 @implementation YATransitionAnimator
@@ -27,7 +29,7 @@
 
 //返回动画时间
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext {
-    return 5.0;
+    return 1.0;
 }
 
 //执行动画的地方
@@ -38,19 +40,25 @@
     // fromeView要使用viewControllerForKey获取,否则为空
     UIView *fromView = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view;
     UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
-    
-    toView.origin = CGPointMake(0, kScreenHeight);
+
     // present时，要把toView加入到container的视图层级。
     // dismiss时，要把fromView从container的视图层级中移除。
-
     
     // 3.动画
     // 出场
-    if (self.transitionAnimatorType == TransitionAnimatorPush) {
+    if (self.transitionAnimatorType == TransitionAnimatorPresent) {
+
+        // toView的初始位置
+        toView.size = CGSizeMake(kScreenWidth, kShareViewHeight);
+        toView.origin = CGPointMake(0, kScreenHeight);
+        
+        // 添加蒙版
+        [containerView addSubview:self.backgroundView];
+        
         // 2.添加toView,不一定是addSubview方式
         [containerView addSubview:toView];
-        [UIView animateWithDuration:2.5 animations:^{
-            toView.origin = CGPointMake(0, 0);
+        [UIView animateWithDuration:0.2 animations:^{
+            toView.origin = CGPointMake(0, kScreenHeight - kShareViewHeight);
         } completion:^(BOOL finished) {
             // 完成
             [transitionContext completeTransition:YES];
@@ -59,12 +67,13 @@
 
 
     // 消失
-    if (self.transitionAnimatorType == TransitionAnimatorPop) {
-        [UIView animateWithDuration:2.5 animations:^{
+    if (self.transitionAnimatorType == TransitionAnimatorDismiss) {
+        [UIView animateWithDuration:0.2 animations:^{
             fromView.origin = CGPointMake(0, kScreenHeight);
         } completion:^(BOOL finished) {
             // 2.添加toView,不一定是addSubview方式
             [fromView removeFromSuperview];
+            [self.backgroundView removeFromSuperview];
             // 完成
             [transitionContext completeTransition:YES];
         }];
@@ -86,5 +95,15 @@
  }
  */
 
+ #pragma mark – Getters and Setters
+- (UIView *)backgroundView {
+    if (_backgroundView == nil) {
+        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        backgroundView.backgroundColor = [UIColor blackColor];
+        backgroundView.alpha = 0.3;
+        _backgroundView = backgroundView;
+    }
+    return _backgroundView;
+}
 
 @end

@@ -17,6 +17,7 @@
 #import "YAErrorView.h"
 #import "YAShareViewController.h"
 #import "YAPresentationController.h"
+#import "YATransitionAnimator.h"
 
 // xib 中topView高度约束
 #define kTopImageHeight 220
@@ -282,10 +283,22 @@
     return _errorView;
 }
 
+#pragma mark - UIViewControllerTransitioningDelegate
+
+/*
  - (nullable UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(nullable UIViewController *)presenting sourceViewController:(UIViewController *)source {
      return [[YAPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
  }
  
+ */
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    return [YATransitionAnimator transitionAnimatorWithType:TransitionAnimatorPresent];
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [YATransitionAnimator transitionAnimatorWithType:TransitionAnimatorDismiss];
+}
 
 
 @end

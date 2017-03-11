@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,22 +16,44 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjx-8d-aBj">
-                    <rect key="frame" x="0.0" y="347" width="375" height="320"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKM-hV-1vQ">
+                    <rect key="frame" x="20" y="290" width="335" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="320" id="AiG-as-3kH"/>
+                        <constraint firstAttribute="height" constant="40" id="3cN-EK-jXh"/>
                     </constraints>
-                </view>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="取消"/>
+                    <connections>
+                        <action selector="dismissViewController:" destination="-1" eventType="touchUpInside" id="6Gz-ta-l2B"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HG9-Zu-8dI">
+                    <rect key="frame" x="20" y="235" width="335" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="收藏">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
+            <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94140625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Vjx-8d-aBj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DN7-G3-Si2"/>
-                <constraint firstAttribute="trailing" secondItem="Vjx-8d-aBj" secondAttribute="trailing" id="jex-zy-2yL"/>
-                <constraint firstAttribute="bottom" secondItem="Vjx-8d-aBj" secondAttribute="bottom" id="wHt-S5-ela"/>
+                <constraint firstItem="CKM-hV-1vQ" firstAttribute="top" secondItem="HG9-Zu-8dI" secondAttribute="bottom" constant="15" id="6yv-fA-ybK"/>
+                <constraint firstAttribute="bottom" secondItem="CKM-hV-1vQ" secondAttribute="bottom" constant="20" id="CmS-bu-xud"/>
+                <constraint firstItem="HG9-Zu-8dI" firstAttribute="height" secondItem="CKM-hV-1vQ" secondAttribute="height" id="JRn-2z-DAr"/>
+                <constraint firstItem="CKM-hV-1vQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Omy-sP-Ud0"/>
+                <constraint firstItem="HG9-Zu-8dI" firstAttribute="width" secondItem="CKM-hV-1vQ" secondAttribute="width" id="m2i-Cl-G4a"/>
+                <constraint firstItem="HG9-Zu-8dI" firstAttribute="leading" secondItem="CKM-hV-1vQ" secondAttribute="leading" id="oRb-M1-0FK"/>
+                <constraint firstAttribute="trailing" secondItem="CKM-hV-1vQ" secondAttribute="trailing" constant="20" id="zDc-Xz-aCh"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>

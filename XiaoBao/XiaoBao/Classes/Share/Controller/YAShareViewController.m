@@ -15,16 +15,22 @@
 
 @implementation YAShareViewController
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    // 获取蒙版View
+    UIView *backgroundView = self.view.superview.subviews.firstObject;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissViewController:)];
+    [backgroundView addGestureRecognizer:tap];
+}
+- (IBAction)dismissViewController:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
