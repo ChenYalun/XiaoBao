@@ -18,6 +18,7 @@
 #import "YAShareViewController.h"
 #import "YAPresentationController.h"
 #import "YATransitionAnimator.h"
+#import "YAPhotoBrowser.h"
 
 // xib 中topView高度约束
 #define kTopImageHeight 220
@@ -211,14 +212,35 @@
 // 1.在请求开始加载之前调用，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 
+    if ([navigationAction.request.URL.scheme hasPrefix:@"hyb-image-preview"]) {
+        NSString *src = [navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:@"hyb-image-preview:" withString:@""];
+        if (src.length > 0) {
+            //这里实现点击跳转到图片浏览器
+            YAPhotoBrowser *browser = [[YAPhotoBrowser alloc] initWithPhotoURLs:@[[NSURL URLWithString:src]]];
+            [self presentViewController:browser animated:YES completion:^{
+                return;
+            }];
+            
+            
+            
+        }
+    }
+    
+    
+
+    
+    
+    
     if ([navigationAction.request.URL.absoluteString isEqualToString:@"about:blank"]) {
         decisionHandler(WKNavigationActionPolicyAllow);
+        
     } else {
         YALinkViewController *linkViewController = [[YALinkViewController alloc] init];
         linkViewController.request = navigationAction.request;
         [self.navigationController pushViewController:linkViewController animated:YES];
         decisionHandler(WKNavigationActionPolicyCancel);
     }
+
 
 }
 
@@ -242,7 +264,25 @@
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
   
+    NSString *js = @"function addImgClickEvent() {\
+    var imgs = document.getElementsByTagName('img');\
+    for (var i = 0; i < imgs.length; ++i) {\
+        var img = imgs[i];\
+        img.onclick = function () {\
+            window.location.href = 'hyb-image-preview:' + this.src;\
+        }; \
+    } \
+}";
+
+
+    //注入js代码
+    [webView evaluateJavaScript:js completionHandler:^(id Result , NSError * _Nullable error) {
+    }];
     
+    //执行js
+    [webView evaluateJavaScript:@"addImgClickEvent();"  completionHandler:^(id _Nullable resp, NSError * _Nullable error) {
+        
+    }];
 }
 
 

@@ -13,7 +13,6 @@
 		9A0AD0751E6A613C00733EEA /* YATransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0AD0741E6A613C00733EEA /* YATransitionAnimator.m */; };
 		9A0AD0781E6AA50900733EEA /* YAInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0AD0771E6AA50800733EEA /* YAInteractiveTransition.m */; };
 		9A0AD07B1E6AD2CE00733EEA /* YAPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0AD07A1E6AD2CE00733EEA /* YAPresentationController.m */; };
-		9A3975B41E67D673002A66DA /* YAImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3975B31E67D673002A66DA /* YAImageObject.m */; };
 		9A3975BA1E6822D8002A66DA /* UIBarButtonItem+MenuBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3975B71E6822D8002A66DA /* UIBarButtonItem+MenuBarButtonItem.m */; };
 		9A3975BB1E6822D8002A66DA /* UIView+YAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3975B91E6822D8002A66DA /* UIView+YAExtension.m */; };
 		9A3975C71E6822DE002A66DA /* YAHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3975BE1E6822DE002A66DA /* YAHTTPManager.m */; };
@@ -22,7 +21,9 @@
 		9A3975CA1E6822DE002A66DA /* YARefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3975C41E6822DE002A66DA /* YARefreshHeader.m */; };
 		9A3975CB1E6822DE002A66DA /* YAStoryDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3975C61E6822DE002A66DA /* YAStoryDAL.m */; };
 		9A412CF61E682D6C00C52E02 /* UIImage+YAVImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A412CF51E682D6C00C52E02 /* UIImage+YAVImage.m */; };
+		9A91993E1E778C7600563FF1 /* YAPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A91993D1E778C7600563FF1 /* YAPhotoBrowser.m */; };
 		9AA1660E1E63182F00F122AA /* Home_Morepic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */; };
+		9ACE59101E7530E100D85CB7 /* YAImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE590F1E7530E100D85CB7 /* YAImageObject.m */; };
 		9ADBF2DC1E540FD7001F8565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DB1E540FD7001F8565 /* main.m */; };
 		9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBF2DE1E540FD7001F8565 /* AppDelegate.m */; };
 		9ADBF2E71E540FD7001F8565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADBF2E61E540FD7001F8565 /* Assets.xcassets */; };
@@ -86,8 +87,6 @@
 		9A0AD0771E6AA50800733EEA /* YAInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAInteractiveTransition.m; sourceTree = "<group>"; };
 		9A0AD0791E6AD2CE00733EEA /* YAPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAPresentationController.h; sourceTree = "<group>"; };
 		9A0AD07A1E6AD2CE00733EEA /* YAPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPresentationController.m; sourceTree = "<group>"; };
-		9A3975B21E67D673002A66DA /* YAImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAImageObject.h; sourceTree = "<group>"; };
-		9A3975B31E67D673002A66DA /* YAImageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAImageObject.m; sourceTree = "<group>"; };
 		9A3975B61E6822D8002A66DA /* UIBarButtonItem+MenuBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+MenuBarButtonItem.h"; sourceTree = "<group>"; };
 		9A3975B71E6822D8002A66DA /* UIBarButtonItem+MenuBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+MenuBarButtonItem.m"; sourceTree = "<group>"; };
 		9A3975B81E6822D8002A66DA /* UIView+YAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YAExtension.h"; sourceTree = "<group>"; };
@@ -104,7 +103,11 @@
 		9A3975C61E6822DE002A66DA /* YAStoryDAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAStoryDAL.m; sourceTree = "<group>"; };
 		9A412CF41E682D6C00C52E02 /* UIImage+YAVImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YAVImage.h"; sourceTree = "<group>"; };
 		9A412CF51E682D6C00C52E02 /* UIImage+YAVImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YAVImage.m"; sourceTree = "<group>"; };
+		9A91993C1E778C7600563FF1 /* YAPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAPhotoBrowser.h; sourceTree = "<group>"; };
+		9A91993D1E778C7600563FF1 /* YAPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAPhotoBrowser.m; sourceTree = "<group>"; };
 		9AA1660D1E63182E00F122AA /* Home_Morepic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home_Morepic@2x.png"; sourceTree = "<group>"; };
+		9ACE590E1E7530E100D85CB7 /* YAImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAImageObject.h; sourceTree = "<group>"; };
+		9ACE590F1E7530E100D85CB7 /* YAImageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAImageObject.m; sourceTree = "<group>"; };
 		9ADBF2D71E540FD7001F8565 /* XiaoBao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADBF2DB1E540FD7001F8565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9ADBF2DD1E540FD7001F8565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				9A0AD0771E6AA50800733EEA /* YAInteractiveTransition.m */,
 				9A0AD0791E6AD2CE00733EEA /* YAPresentationController.h */,
 				9A0AD07A1E6AD2CE00733EEA /* YAPresentationController.m */,
+				9A91993C1E778C7600563FF1 /* YAPhotoBrowser.h */,
+				9A91993D1E778C7600563FF1 /* YAPhotoBrowser.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -487,8 +492,8 @@
 			children = (
 				9AE6ACA51E656AD80010097B /* YAStoryItem.h */,
 				9AE6ACA61E656AD80010097B /* YAStoryItem.m */,
-				9A3975B21E67D673002A66DA /* YAImageObject.h */,
-				9A3975B31E67D673002A66DA /* YAImageObject.m */,
+				9ACE590E1E7530E100D85CB7 /* YAImageObject.h */,
+				9ACE590F1E7530E100D85CB7 /* YAImageObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -768,11 +773,11 @@
 				9AE6ACD61E656AD80010097B /* YACommentModel.m in Sources */,
 				9AE6ACEC1E656AD80010097B /* YASectionHeaderView.m in Sources */,
 				9A0AD0781E6AA50900733EEA /* YAInteractiveTransition.m in Sources */,
+				9ACE59101E7530E100D85CB7 /* YAImageObject.m in Sources */,
 				9A412CF61E682D6C00C52E02 /* UIImage+YAVImage.m in Sources */,
 				9ADBF2DF1E540FD7001F8565 /* AppDelegate.m in Sources */,
 				9AE6ACFB1E656AD80010097B /* YAThemeStoryItem.m in Sources */,
 				9AE6ACEA1E656AD80010097B /* YAStoryItem.m in Sources */,
-				9A3975B41E67D673002A66DA /* YAImageObject.m in Sources */,
 				9ADBF2DC1E540FD7001F8565 /* main.m in Sources */,
 				9AE6ACE71E656AD80010097B /* YAEditorListTableViewCell.m in Sources */,
 				9A0AD07B1E6AD2CE00733EEA /* YAPresentationController.m in Sources */,
@@ -786,6 +791,7 @@
 				9AE6ACEB1E656AD80010097B /* YAHomeHeaderView.m in Sources */,
 				9AE6ACF31E656AD80010097B /* YASettingViewController.m in Sources */,
 				9AE6ACDA1E656AD80010097B /* YACommentTableViewCell.m in Sources */,
+				9A91993E1E778C7600563FF1 /* YAPhotoBrowser.m in Sources */,
 				9A3975CB1E6822DE002A66DA /* YAStoryDAL.m in Sources */,
 				9AE6ACE41E656AD80010097B /* YAEditorItem.m in Sources */,
 				9AE6ACDC1E656AD80010097B /* YAContentViewController.m in Sources */,
@@ -918,7 +924,7 @@
 			baseConfigurationReference = C6B17FCB41470B899FCCDB18 /* Pods-XiaoBao.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/chenyalun/Desktop/iOS/XiaoBao/XiaoBao/XiaoBao/YAPrefixHeader.pch;
@@ -936,6 +942,7 @@
 			baseConfigurationReference = DAC2A0320F510D133DC05600 /* Pods-XiaoBao.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = A4G5CBWX96;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = /Users/chenyalun/Desktop/iOS/XiaoBao/XiaoBao/XiaoBao/YAPrefixHeader.pch;

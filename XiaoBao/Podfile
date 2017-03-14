@@ -8,9 +8,7 @@ target 'XiaoBao' do
   # Pods for XiaoBao
 
 # pod 'SDWebImage'
-# pod ‘MWPhotoBrowser’
 # pod 'RESideMenu'
-# pod 'IDMPhotoBrowser'
 # pod ‘FMDB’
 # pod ‘LTNavigationBar’
 # pod 'SDWebImage'
@@ -18,6 +16,7 @@ target 'XiaoBao' do
 # pod 'DZNEmptyDataSet'
 # pod 'SDCycleScrollView'
 # pod ‘GPUImage’
+# pod "MWPhotoBrowser"
 
 pod 'AFNetworking'
 pod 'SVProgressHUD'
@@ -31,7 +30,7 @@ pod 'YYCategories'
 pod 'Realm'
 pod ‘DKNightVersion’
 pod 'pop'
-
-pod 'MLeaksFinder' #基于FBRetainCycleDetector
+pod 'IDMPhotoBrowser'
+# pod 'MLeaksFinder' 
 # pod 'Bugly'
 end

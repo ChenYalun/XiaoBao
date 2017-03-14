@@ -11,8 +11,8 @@
 #import <Realm.h>
 #import "YAImageObject.h"
 
-
 RLM_ARRAY_TYPE(YAImageObject)
+
 
 @interface YAStoryItem : RLMObject
 /** title */
@@ -46,3 +46,7 @@ RLM_ARRAY_TYPE(YAImageObject)
  */
 
 @end
+
+
+
+
