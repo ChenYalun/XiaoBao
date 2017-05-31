@@ -4,9 +4,10 @@
 </p>
 
 <p align="center">
-<a href="https://img.shields.io/badge/Language-%20Objective--C%20-orange.svg"><img src="https://img.shields.io/badge/Language-%20Objective--C%20-orange.svg"></a>
-<a href="https://img.shields.io/badge/platform-iOS8-blue.svg?style=flat"><img src="https://img.shields.io/badge/platform-iOS8-blue.svg?style=flat"></a>
-<a href="http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat"><img src="http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat"></a>
+<a href="http://blog.chenyalun.com"><img src="https://img.shields.io/badge/Language-%20Objective--C%20-orange.svg"></a>
+<a href="http://blog.chenyalun.com"><img src="https://img.shields.io/badge/platform-iOS8-blue.svg?style=flat"></a>
+<a href="http://blog.chenyalun.com"><img src="http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat"></a>
+<a href="http://blog.chenyalun.com"><img src="https://travis-ci.org/ChenYalun/YAXiaoBao.svg?branch=master"></a>
 </p>
 
 # 晓报  
